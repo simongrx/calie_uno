@@ -436,8 +436,15 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* ============================================
    IMÁGENES
+   En @layer base para que las utilidades de Tailwind (h-*, w-*, etc.)
+   puedan SOBREESCRIBIR estos defaults. Sin la capa, `img { height: auto }`
+   (sin capa) gana sobre h-32/w-auto en el build de producción y el logo
+   se renderiza a su tamaño intrínseco (se ve gigante en Vercel, aunque en
+   `next dev` el orden de capas hace que la utilidad gane).
    ============================================ */
-img { max-width: 100%; height: auto; display: block; }
+@layer base {
+  img { max-width: 100%; height: auto; display: block; }
+}
 
 /* ============================================
    SCROLLBAR
