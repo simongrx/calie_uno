@@ -27,11 +27,11 @@ const pilarLabels: Record<PilarType, string> = {
 };
 
 const glassActive = {
-  background: 'rgba(249, 115, 22, 0.2)',
+  background: 'rgba(255, 41, 0, 0.2)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(249, 115, 22, 0.5)',
-  boxShadow: '0 8px 24px rgba(249, 115, 22, 0.2)',
+  border: '1px solid rgba(255, 41, 0, 0.5)',
+  boxShadow: '0 8px 24px rgba(255, 41, 0, 0.2)',
 };
 
 const glassInactive = {
@@ -46,7 +46,9 @@ export const MapaSection: React.FC = () => {
   const pilares: PilarType[] = ['cultura', 'naturaleza', 'gastronomia', 'bienestar'];
 
   return (
-    <section className="section bg-[#0A1636]">
+    // relative + z-10 crea un contexto de apilamiento que contiene los
+    // z-index internos de Leaflet (hasta ~1000) por debajo del header (z-50).
+    <section className="section bg-[#0A1636] relative z-10">
       <div className="container-custom">
         <SectionTitle
           titulo="Mapa Interactivo"

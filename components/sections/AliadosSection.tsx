@@ -73,8 +73,8 @@ export const AliadosSection: React.FC = () => {
               <ScrollReveal key={categoria}>
                 {/* Cabecera de categoría */}
                 <div className="flex items-center gap-3 mb-5 px-1">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg text-orange-400"
-                    style={{ background: 'rgba(249,115,22,0.12)', border: '1px solid rgba(249,115,22,0.2)' }}>
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg text-red-500"
+                    style={{ background: 'rgba(255, 41, 0,0.12)', border: '1px solid rgba(255, 41, 0,0.2)' }}>
                     {categoryIcons[categoria]}
                   </div>
                   <h3 className="text-base font-semibold text-white/80 tracking-wide uppercase"

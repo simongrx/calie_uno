@@ -24,7 +24,7 @@ const baseStyles = cn(
 const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
   primary: cn(
     'bg-brand-orange text-white shadow-md',
-    'hover:bg-[#E67D2D] hover:shadow-glow-orange hover:animate-glow-pulse',
+    'hover:bg-[#D92200] hover:shadow-glow-orange hover:animate-glow-pulse',
   ),
   secondary: cn(
     'bg-neutral-200 text-neutral-900',
@@ -41,9 +41,9 @@ const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
 };
 
 const sizes: Record<NonNullable<ButtonProps['size']>, string> = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-base',
-  lg: 'px-8 py-4 text-lg',
+  sm: 'px-4 py-3 text-sm',
+  md: 'px-8 py-4 text-base',
+  lg: 'px-10 py-5 text-lg',
 };
 
 export const Button = ({

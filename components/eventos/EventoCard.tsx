@@ -22,11 +22,11 @@ const glassCard = {
 };
  
 const glassBtn = {
-  background: 'rgba(249, 115, 22, 0.2)',
+  background: 'rgba(255, 41, 0, 0.2)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(249, 115, 22, 0.45)',
-  boxShadow: '0 4px 16px rgba(249, 115, 22, 0.15)',
+  border: '1px solid rgba(255, 41, 0, 0.45)',
+  boxShadow: '0 4px 16px rgba(255, 41, 0, 0.15)',
 };
  
 const glassBtnSecondary = {
@@ -83,8 +83,8 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
  
         {/* Precio */}
         {evento.precio && (
-          <div className="absolute top-4 right-4 z-10 px-3 py-1 rounded-full text-xs font-bold text-white"
-            style={{ background: 'rgba(249,115,22,0.75)', backdropFilter: 'blur(8px)' }}>
+          <div className="absolute top-4 right-4 z-10 px-5 py-1 rounded-full text-xs font-bold text-white"
+            style={{ background: 'rgba(255, 41, 0,0.75)', backdropFilter: 'blur(8px)' }}>
             {evento.precio}
           </div>
         )}
@@ -134,13 +134,13 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
           <div className="mb-4">
             <div className="flex justify-between text-xs text-white/50 mb-1">
               <span>Cupos disponibles</span>
-              <span className="text-orange-400 font-semibold">{evento.cuposDisponibles.toLocaleString()}</span>
+              <span className="text-red-500 font-semibold">{evento.cuposDisponibles.toLocaleString()}</span>
             </div>
             <div className="h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.08)' }}>
               <div
                 className="h-full rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, #f97316, #fbbf24)',
+                  background: 'linear-gradient(90deg, #FF2900, #fbbf24)',
                   width: `${Math.min((evento.cuposDisponibles / 10000) * 100, 100)}%`,
                 }}
               />
@@ -203,7 +203,7 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
         {/* Botón ver más */}
         <button
           onClick={() => setExpandido(!expandido)}
-          className="text-xs text-orange-400 hover:text-orange-300 transition-colors flex items-center gap-1 mb-4"
+          className="text-xs text-red-500 hover:text-red-400 transition-colors flex items-center gap-1 mb-4"
         >
           {expandido ? 'Ver menos' : 'Más información'}
           <svg className={`w-3 h-3 transition-transform ${expandido ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -46,9 +46,9 @@ const pilarConfig = {
 };
 
 const sizeConfig = {
-  sm: 'px-2 py-1 text-xs',
-  md: 'px-3 py-1.5 text-sm',
-  lg: 'px-4 py-2 text-base',
+  sm: 'px-4 py-1 text-xs',
+  md: 'px-5 py-1.5 text-sm',
+  lg: 'px-6 py-2 text-base',
 };
 
 export const PilarBadge: React.FC<PilarBadgeProps> = ({

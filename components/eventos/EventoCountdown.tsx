@@ -38,8 +38,8 @@ function Unidad({ valor, label }: { valor: number; label: string }) {
       <div
         className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center overflow-hidden"
         style={{
-          background: 'rgba(249, 115, 22, 0.15)',
-          border: '1px solid rgba(249, 115, 22, 0.3)',
+          background: 'rgba(255, 41, 0, 0.15)',
+          border: '1px solid rgba(255, 41, 0, 0.3)',
         }}
       >
         <AnimatePresence mode="wait">
@@ -107,7 +107,7 @@ export const EventosCountdown: React.FC<EventosCountdownProps> = ({ fechaInicio,
   if (tiempo.dias === 0) {
     return (
       <div>
-        <p className="text-xs text-orange-400 font-semibold uppercase tracking-wider mb-2">
+        <p className="text-xs text-red-500 font-semibold uppercase tracking-wider mb-2">
           ¡Comienza hoy!
         </p>
         <div className="flex items-end gap-2">

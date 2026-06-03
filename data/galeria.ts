@@ -510,7 +510,7 @@ export const temasVisualizacion = [
     nombre: 'Claro',
     fondo: '#FFFFFF',
     texto: '#000000',
-    acento: '#F97316'
+    acento: '#FF2900'
   },
   {
     id: 'oscuro',

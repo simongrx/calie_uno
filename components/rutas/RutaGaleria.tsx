@@ -63,7 +63,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileHover={{ opacity: 1, scale: 1 }}
                   className="w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-                  style={{ background: 'rgba(249,115,22,0.8)', backdropFilter: 'blur(8px)' }}
+                  style={{ background: 'rgba(255, 41, 0,0.8)', backdropFilter: 'blur(8px)' }}
                 >
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
@@ -109,7 +109,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
 
               {/* Controles */}
               <div className="absolute top-4 right-4 flex gap-2">
-                <span className="text-white/60 text-sm px-3 py-1 rounded-full"
+                <span className="text-white/60 text-sm px-5 py-1 rounded-full"
                   style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)' }}>
                   {imagenAmpliada + 1} / {imagenes.length}
                 </span>
@@ -133,7 +133,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setImagenAmpliada(imagenAmpliada - 1)}
                   className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ background: 'rgba(249,115,22,0.4)', backdropFilter: 'blur(8px)', border: '1px solid rgba(249,115,22,0.5)' }}
+                  style={{ background: 'rgba(255, 41, 0,0.4)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255, 41, 0,0.5)' }}
                 >
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -146,7 +146,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setImagenAmpliada(imagenAmpliada + 1)}
                   className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ background: 'rgba(249,115,22,0.4)', backdropFilter: 'blur(8px)', border: '1px solid rgba(249,115,22,0.5)' }}
+                  style={{ background: 'rgba(255, 41, 0,0.4)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255, 41, 0,0.5)' }}
                 >
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

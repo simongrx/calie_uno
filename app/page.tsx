@@ -9,7 +9,6 @@ import { RutasSection } from '@/components/sections/RutasSection';
 import { MapaSection } from '@/components/sections/MapaSection';
 import { EventosSection } from '@/components/sections/EventosSection';
 import { RestaurantesSection } from '@/components/sections/RestaurantesSection';
-import { GaleriaSection } from '@/components/sections/GaleriaSection';
 import { TestimoniosSection } from '@/components/sections/TestimoniosSection';
 import { AliadosSection } from '@/components/sections/AliadosSection';
 import { InversoresSection } from '@/components/sections/InversoresSection';
@@ -43,9 +42,6 @@ export default function Home() {
 
       {/* Restaurantes y Planes */}
       <RestaurantesSection />
-
-      {/* Galería */}
-      <GaleriaSection />
 
       {/* Testimonios */}
       <TestimoniosSection />

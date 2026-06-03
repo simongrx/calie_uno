@@ -29,8 +29,8 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
       {/* Header */}
       <div className="flex items-center gap-3 mb-8 p-4 rounded-2xl" style={glassCard}>
         <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-          style={{ background: 'rgba(249,115,22,0.2)', border: '1px solid rgba(249,115,22,0.4)' }}>
-          <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          style={{ background: 'rgba(255, 41, 0,0.2)', border: '1px solid rgba(255, 41, 0,0.4)' }}>
+          <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
@@ -47,7 +47,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
       <div className="relative">
         {/* Línea vertical */}
         <div className="absolute left-6 top-0 bottom-0 w-px"
-          style={{ background: 'linear-gradient(to bottom, rgba(249,115,22,0.6), rgba(249,115,22,0.1))' }} />
+          style={{ background: 'linear-gradient(to bottom, rgba(255, 41, 0,0.6), rgba(255, 41, 0,0.1))' }} />
 
         <div className="space-y-6">
           {puntos.map((punto, index) => (
@@ -65,25 +65,25 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
                   whileHover={{ scale: 1.2 }}
                   className="w-12 h-12 rounded-full flex items-center justify-center"
                   style={{
-                    background: 'rgba(249,115,22,0.2)',
-                    border: '2px solid rgba(249,115,22,0.6)',
+                    background: 'rgba(255, 41, 0,0.2)',
+                    border: '2px solid rgba(255, 41, 0,0.6)',
                     backdropFilter: 'blur(8px)',
                   }}
                 >
-                  <svg className="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={tipoIcon[punto.tipo] ?? tipoIcon.parada} />
                   </svg>
                 </motion.div>
                 {/* Número */}
                 <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                  style={{ background: 'rgba(249,115,22,0.9)' }}>
+                  style={{ background: 'rgba(255, 41, 0,0.9)' }}>
                   {index + 1}
                 </div>
               </div>
 
               {/* Contenido */}
               <div className="flex-1 pb-2">
-                <div className="grid sm:grid-cols-3 gap-4 p-5 rounded-2xl group hover:border-orange-500/30 transition-all duration-300"
+                <div className="grid sm:grid-cols-3 gap-4 p-5 rounded-2xl group hover:border-red-600/30 transition-all duration-300"
                   style={glassCard}>
                   {/* Imagen */}
                   <div className="relative h-28 sm:h-full rounded-xl overflow-hidden">
@@ -96,7 +96,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
                     <div className="flex items-start justify-between mb-2">
                       <h4 className="font-bold text-white">{punto.nombre}</h4>
                       {punto.duracion && (
-                        <span className="text-xs text-orange-400 font-semibold ml-2 flex-shrink-0">{punto.duracion}</span>
+                        <span className="text-xs text-red-500 font-semibold ml-2 flex-shrink-0">{punto.duracion}</span>
                       )}
                     </div>
                     <p className="text-sm text-white/60 mb-3 leading-relaxed">{punto.descripcion}</p>
@@ -104,7 +104,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
                       <p className="text-xs text-white/40 leading-relaxed">{punto.detalles}</p>
                     )}
                     <span className="inline-block mt-3 text-xs px-2.5 py-1 rounded-full capitalize"
-                      style={{ background: 'rgba(249,115,22,0.15)', border: '1px solid rgba(249,115,22,0.3)', color: 'rgba(249,115,22,0.9)' }}>
+                      style={{ background: 'rgba(255, 41, 0,0.15)', border: '1px solid rgba(255, 41, 0,0.3)', color: 'rgba(255, 41, 0,0.9)' }}>
                       {punto.tipo}
                     </span>
                   </div>

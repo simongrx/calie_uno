@@ -93,7 +93,7 @@ export const ContactoSection: React.FC = () => {
       className="section bg-[#0A1636] relative overflow-hidden"
     >
       {/* EFECTOS */}
-      <div className="absolute top-20 right-10 w-40 h-40 bg-orange-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-10 w-40 h-40 bg-red-600/5 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-40 h-40 bg-yellow-400/5 rounded-full blur-3xl" />
 
       <div className="container-custom relative z-10">
@@ -138,13 +138,13 @@ export const ContactoSection: React.FC = () => {
                     whileHover={{ y: -4 }}
                     className="block mb-5"
                   >
-                    <div className="rounded-2xl bg-slate-800 border border-slate-700 hover:border-orange-500 transition-all p-5 sm:p-6">
+                    <div className="rounded-2xl bg-slate-800 border border-slate-700 hover:border-red-600 transition-all p-5 sm:p-6">
 
                       <h4 className="font-bold text-white text-base sm:text-lg mb-2">
                         {item.titulo}
                       </h4>
 
-                      <p className="text-gray-300 text-sm sm:text-base break-words hover:text-orange-400 transition-colors">
+                      <p className="text-gray-300 text-sm sm:text-base break-words hover:text-red-500 transition-colors">
                         {item.contenido}
                       </p>
 
@@ -160,7 +160,7 @@ export const ContactoSection: React.FC = () => {
               {/* REDES */}
               <motion.div
                 variants={itemVariants}
-                className="rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 text-white p-6 sm:p-7"
+                className="rounded-2xl bg-gradient-to-br from-red-600 to-red-700 text-white p-6 sm:p-7"
               >
                 <h4 className="font-bold mb-5 text-base sm:text-lg text-center">
                   Síguenos en Redes Sociales
@@ -247,7 +247,7 @@ export const ContactoSection: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="Tu nombre"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-orange-500 focus:outline-none transition-all text-sm sm:text-base"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-red-600 focus:outline-none transition-all text-sm sm:text-base"
                     />
                   </motion.div>
 
@@ -264,7 +264,7 @@ export const ContactoSection: React.FC = () => {
                       onChange={handleChange}
                       required
                       placeholder="tu@email.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-orange-500 focus:outline-none transition-all text-sm sm:text-base"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-red-600 focus:outline-none transition-all text-sm sm:text-base"
                     />
                   </motion.div>
 
@@ -280,7 +280,7 @@ export const ContactoSection: React.FC = () => {
                       value={formData.telefono}
                       onChange={handleChange}
                       placeholder="+57 (2) 123-4567"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-orange-500 focus:outline-none transition-all text-sm sm:text-base"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-red-600 focus:outline-none transition-all text-sm sm:text-base"
                     />
                   </motion.div>
 
@@ -294,7 +294,7 @@ export const ContactoSection: React.FC = () => {
                       name="asunto"
                       value={formData.asunto}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-orange-500 focus:outline-none transition-all text-sm sm:text-base"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-red-600 focus:outline-none transition-all text-sm sm:text-base"
                     >
                       <option value="contacto">Contacto General</option>
                       <option value="rutas">Información sobre Rutas</option>
@@ -318,7 +318,7 @@ export const ContactoSection: React.FC = () => {
                       required
                       placeholder="Cuéntanos tu consulta o idea..."
                       rows={5}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-orange-500 focus:outline-none transition-all text-sm sm:text-base resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 focus:border-red-600 focus:outline-none transition-all text-sm sm:text-base resize-none"
                     />
                   </motion.div>
 
@@ -332,7 +332,7 @@ export const ContactoSection: React.FC = () => {
                     className={`w-full py-4 rounded-xl font-bold text-sm sm:text-base transition-all ${
                       enviado
                         ? 'bg-green-500 text-white'
-                        : 'bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-xl'
+                        : 'bg-gradient-to-r from-red-600 to-red-700 text-white hover:shadow-xl'
                     }`}
                   >
                     {enviado ? '¡Mensaje Enviado!' : 'Enviar Mensaje'}

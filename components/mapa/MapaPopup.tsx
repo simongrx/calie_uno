@@ -25,7 +25,7 @@ interface MapaPopupProps {
 // COMPONENTE
 // ============================================
 export function MapaPopup({ punto, ruta, indice }: MapaPopupProps) {
-  const color = pilarColores[ruta.pilar] ?? "#f97316";
+  const color = pilarColores[ruta.pilar] ?? "#FF2900";
   const numero = indice + 1;
 
   return (

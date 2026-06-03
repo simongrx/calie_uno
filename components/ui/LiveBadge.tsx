@@ -17,7 +17,7 @@ const badgeConfig = {
   },
   trending: {
     label: '🔥 TRENDING',
-    bgColor: 'bg-orange-500',
+    bgColor: 'bg-red-600',
     textColor: 'text-white',
     icon: '🔥',
   },
@@ -45,7 +45,7 @@ export const LiveBadge: React.FC<LiveBadgeProps> = ({
   return (
     <div
       className={`
-        inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full
+        inline-flex items-center gap-1.5 px-5 py-1 rounded-full
         text-xs sm:text-sm font-bold ${config.bgColor} ${config.textColor}
         ${pulsante ? 'animate-pulse' : ''}
         ${className}

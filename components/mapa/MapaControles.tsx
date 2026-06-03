@@ -43,8 +43,8 @@ function BotonControl({
         fontSize: "16px", fontWeight: "600",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.background = "rgba(249,115,22,0.25)";
-        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(249,115,22,0.5)";
+        (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 41, 0,0.25)";
+        (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255, 41, 0,0.5)";
         (e.currentTarget as HTMLButtonElement).style.color = "white";
       }}
       onMouseLeave={(e) => {

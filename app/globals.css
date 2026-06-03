@@ -11,7 +11,7 @@
    ============================================ */
 @theme {
   /* Marca */
-  --color-brand-orange: #FF8C42;
+  --color-brand-orange: #FF2900;
   --color-brand-yellow: #FBBF24;
   --color-brand-light: #FEF3C7;
   --color-brand-dark: #B45309;
@@ -53,8 +53,8 @@
   --color-neutral-900: #0A1636;
 
   /* Sombras glow → shadow-glow-* */
-  --shadow-glow-orange: 0 0 20px rgb(255 140 66 / 0.4);
-  --shadow-glow-orange-lg: 0 0 40px rgb(255 140 66 / 0.6);
+  --shadow-glow-orange: 0 0 20px rgb(255 41 0 / 0.4);
+  --shadow-glow-orange-lg: 0 0 40px rgb(255 41 0 / 0.6);
   --shadow-glow-purple: 0 0 20px rgb(139 92 246 / 0.4);
   --shadow-glow-green: 0 0 20px rgb(16 185 129 / 0.4);
   --shadow-glow-red: 0 0 20px rgb(239 68 68 / 0.4);
@@ -70,37 +70,43 @@
 
 /* Keyframes referenciados por @theme --animate-* */
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 20px rgb(255 140 66 / 0.4); }
-  50%      { box-shadow: 0 0 40px rgb(255 140 66 / 0.8); }
+  0%, 100% { box-shadow: 0 0 20px rgb(255 41 0 / 0.4); }
+  50%      { box-shadow: 0 0 40px rgb(255 41 0 / 0.8); }
 }
 
 /* ============================================
    RESET BASE
+   En @layer base para que las utilidades de Tailwind
+   (px-*, p-*, m-*, gap-*) tengan prioridad sobre el
+   reset universal. Sin esto, `* { padding: 0 }` (sin capa)
+   anula TODAS las utilidades de padding/margin de Tailwind.
    ============================================ */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer base {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #0A1636;
-}
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #0A1636;
+  }
 
-html, body {
-  width: 100%;
-  min-height: 100%;
-  background-color: #0A1636 !important;
-  color: #e2e8f0;
-}
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    background-color: #0A1636 !important;
+    color: #e2e8f0;
+  }
 
-#__next {
-  background-color: #0A1636 !important;
-  width: 100%;
-  min-height: 100vh;
+  #__next {
+    background-color: #0A1636 !important;
+    width: 100%;
+    min-height: 100vh;
+  }
 }
 
 /* ============================================
@@ -128,7 +134,7 @@ html, body {
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
-  --shadow-glow: 0 0 20px rgb(249 115 22 / 0.4);
+  --shadow-glow: 0 0 20px rgb(255 41 0 / 0.4);
 
   /* Transiciones */
   --transition-fast: 150ms ease-out;
@@ -147,57 +153,62 @@ html, body {
 
 /* ============================================
    TIPOGRAFÍA
+   En @layer base para que las utilidades de Tailwind
+   (text-white, text-neutral-*, text-*xl, etc.) tengan
+   prioridad sobre estos defaults de elemento.
    ============================================ */
-body {
-  font-family: 'Outfit', system-ui, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #e2e8f0;
-  background-color: #0A1636 !important;
-}
+@layer base {
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    background-color: #0A1636 !important;
+  }
 
-/* Títulos importantes — Molle (italic display) */
-h1, h2 {
-  font-family: 'Molle', cursive;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-  color: #f1f5f9;
-  letter-spacing: -0.01em;
-}
+  /* Títulos importantes — Molle (italic display) */
+  h1, h2 {
+    font-family: 'Molle', cursive;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    color: #f1f5f9;
+    letter-spacing: -0.01em;
+  }
 
-/* Subtítulos — Outfit bold */
-h3, h4, h5, h6 {
-  font-family: 'Outfit', system-ui, sans-serif;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 1rem;
-  color: #f1f5f9;
-}
+  /* Subtítulos — Outfit bold */
+  h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: #f1f5f9;
+  }
 
-h1 { font-size: clamp(2.25rem, 5vw, 4rem); }
-h2 { font-size: clamp(1.875rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); font-weight: 700; }
-h4 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); font-weight: 600; }
-h5 { font-size: 1.125rem; font-weight: 600; }
-h6 { font-size: 1rem; font-weight: 600; }
+  h1 { font-size: clamp(2.25rem, 5vw, 4rem); }
+  h2 { font-size: clamp(1.875rem, 4vw, 3rem); }
+  h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); font-weight: 700; }
+  h4 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); font-weight: 600; }
+  h5 { font-size: 1.125rem; font-weight: 600; }
+  h6 { font-size: 1rem; font-weight: 600; }
 
-p {
-  margin-bottom: 1rem;
-  color: #94a3b8;
-  line-height: 1.7;
-  font-family: 'Outfit', system-ui, sans-serif;
-}
+  p {
+    margin-bottom: 1rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
 
-a {
-  color: #f97316;
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
+  a {
+    color: #FF2900;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
 
-a:hover {
-  color: #fb923c;
+  a:hover {
+    color: #FF5436;
+  }
 }
 
 /* ============================================
@@ -237,17 +248,17 @@ a:hover {
   color: white;
   cursor: pointer;
   transition: all var(--transition-normal);
-  background: rgba(249, 115, 22, 0.2);
+  background: rgba(255, 41, 0, 0.2);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(249, 115, 22, 0.45);
-  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 41, 0, 0.45);
+  box-shadow: 0 8px 24px rgba(255, 41, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
 .btn-glass-primary:hover {
-  background: rgba(249, 115, 22, 0.32);
-  border-color: rgba(249, 115, 22, 0.7);
-  box-shadow: 0 12px 32px rgba(249, 115, 22, 0.25), inset 0 1px 0 rgba(255,255,255,0.15);
+  background: rgba(255, 41, 0, 0.32);
+  border-color: rgba(255, 41, 0, 0.7);
+  box-shadow: 0 12px 32px rgba(255, 41, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.15);
   transform: translateY(-2px);
 }
 
@@ -327,7 +338,7 @@ a:hover {
    GRADIENTES DE TEXTO
    ============================================ */
 .text-gradient-brand {
-  background: linear-gradient(135deg, #FF8C42 0%, #FBBF24 100%);
+  background: linear-gradient(135deg, #FF2900 0%, #FBBF24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -362,11 +373,11 @@ a:hover {
 }
 
 .bg-gradient-brand {
-  background: linear-gradient(135deg, #FF8C42 0%, #FBBF24 100%);
+  background: linear-gradient(135deg, #FF2900 0%, #FBBF24 100%);
 }
 
 /* Gradientes de fondo del design system (usados por Card, Hero, etc.) */
-.bg-gradient-hero        { background: linear-gradient(135deg, #FF8C42 0%, #FBBF24 100%); }
+.bg-gradient-hero        { background: linear-gradient(135deg, #FF2900 0%, #FBBF24 100%); }
 .bg-gradient-cultura     { background: linear-gradient(135deg, #8B5CF6 0%, #EDE9FE 100%); }
 .bg-gradient-naturaleza  { background: linear-gradient(135deg, #10B981 0%, #ECFDF5 100%); }
 .bg-gradient-gastronomia { background: linear-gradient(135deg, #EF4444 0%, #FEE2E2 100%); }
@@ -390,8 +401,8 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: rgba(249, 115, 22, 0.6);
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+  border-color: rgba(255, 41, 0, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 41, 0, 0.15);
 }
 
 ::placeholder { color: #64748b; opacity: 1; }
@@ -417,14 +428,14 @@ img { max-width: 100%; height: auto; display: block; }
    ============================================ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background-color: #0A1636; }
-::-webkit-scrollbar-thumb { background-color: rgba(249, 115, 22, 0.4); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background-color: rgba(249, 115, 22, 0.7); }
+::-webkit-scrollbar-thumb { background-color: rgba(255, 41, 0, 0.4); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background-color: rgba(255, 41, 0, 0.7); }
 
 /* ============================================
    SELECCIÓN
    ============================================ */
-::selection { background-color: #f97316; color: white; }
-::-moz-selection { background-color: #f97316; color: white; }
+::selection { background-color: #FF2900; color: white; }
+::-moz-selection { background-color: #FF2900; color: white; }
 
 /* ============================================
    ANIMACIONES
@@ -460,13 +471,13 @@ img { max-width: 100%; height: auto; display: block; }
   }
 }
 
-:focus-visible { outline: 2px solid #f97316; outline-offset: 2px; }
+:focus-visible { outline: 2px solid #FF2900; outline-offset: 2px; }
 
 /* ============================================
    HOVER STATES
    ============================================ */
 @media (hover: hover) {
-  a:hover { color: #fb923c; }
+  a:hover { color: #FF5436; }
 }
 
 @media (hover: none) {

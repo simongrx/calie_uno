@@ -1,37 +1,36 @@
 'use client';
- 
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { eventos } from '@/data/eventos';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { PilarBadge } from '@/components/ui/PilarBadge';
 import { LiveBadge } from '@/components/ui/LiveBadge';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { PilarType } from '@/types';
 import Image from 'next/image';
- 
+
 const pilarLabels: Record<PilarType, string> = {
   cultura: 'Cultura',
   naturaleza: 'Naturaleza',
   gastronomia: 'Gastronomía',
   bienestar: 'Bienestar',
 };
- 
+
 const glassActive = {
-  background: 'rgba(249, 115, 22, 0.2)',
+  background: 'rgba(255, 41, 0, 0.2)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(249, 115, 22, 0.5)',
-  boxShadow: '0 8px 24px rgba(249, 115, 22, 0.2)',
+  border: '1px solid rgba(255, 41, 0, 0.5)',
+  boxShadow: '0 8px 24px rgba(255, 41, 0, 0.2)',
 };
- 
+
 const glassInactive = {
   background: 'rgba(255, 255, 255, 0.06)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
   border: '1px solid rgba(255, 255, 255, 0.1)',
 };
- 
+
 const glassCard = {
   background: 'rgba(255, 255, 255, 0.05)',
   backdropFilter: 'blur(16px)',
@@ -39,24 +38,25 @@ const glassCard = {
   border: '1px solid rgba(255, 255, 255, 0.1)',
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
 };
- 
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export const EventosSection: React.FC = () => {
   const [pilarFiltro, setPilarFiltro] = useState<PilarType | null>(null);
- 
+
   const eventosFiltrados = pilarFiltro ? eventos.filter((e) => e.pilar === pilarFiltro) : eventos;
   const pilares: PilarType[] = ['cultura', 'naturaleza', 'gastronomia', 'bienestar'];
   const eventosEnVivo = eventosFiltrados.filter((e) => e.enVivo);
   const proximosEventos = eventosFiltrados.filter((e) => !e.enVivo);
- 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
- 
+  const filtroKey = pilarFiltro ?? 'todos';
+
   return (
     <section id="eventos" className="section bg-[#0A1636]">
       <div className="container-custom">
@@ -67,7 +67,7 @@ export const EventosSection: React.FC = () => {
           conLinea={true}
           className="mb-12 sm:mb-16"
         />
- 
+
         {/* Filtros */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -99,7 +99,7 @@ export const EventosSection: React.FC = () => {
           ))}
         </motion.div>
         <div className="h-8 sm:h-10" />
- 
+
         {/* Eventos en Vivo */}
         {eventosEnVivo.length > 0 && (
           <div className="mb-12 sm:mb-16">
@@ -112,79 +112,88 @@ export const EventosSection: React.FC = () => {
               <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse inline-block" />
               En Vivo Ahora
             </motion.h3>
- 
+
             <motion.div
+              key={`vivo-${filtroKey}`}
               variants={containerVariants}
               initial="hidden"
-              whileInView="visible"
+              animate="visible"
               className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"
             >
               {eventosEnVivo.map((evento) => (
-                <ScrollReveal key={evento.id} direction="up">
-                  <motion.div
-                    variants={itemVariants}
-                    whileHover={{ y: -8 }}
-                    className="rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
-                    style={glassCard}
-                  >
-                    <div className="relative h-48 sm:h-56 overflow-hidden flex-shrink-0">
-                      <Image src={evento.imagen} alt={evento.nombre} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-black/40" />
-                      <div className="absolute top-4 right-4 z-10"><LiveBadge tipo="vivo" pulsante={true} /></div>
-                      <div className="absolute top-4 left-4 z-10"><PilarBadge pilar={evento.pilar} tamaño="sm" showLabel={false} /></div>
-                    </div>
-                    <div className="p-5 sm:p-6 flex flex-col flex-grow">
-                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{evento.nombre}</h3>
-                      <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-grow">{evento.descripcion}</p>
-                      <div className="space-y-2 mb-5 text-sm text-white/50">
-                        <div className="flex items-center gap-2">
-                          <span>{evento.ubicacion}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span>{evento.fechaInicio}</span>
-                        </div>
+                <motion.div
+                  key={evento.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
+                  className="rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
+                  style={glassCard}
+                >
+                  <div className="relative h-48 sm:h-56 overflow-hidden flex-shrink-0">
+                    <Image src={evento.imagen} alt={evento.nombre} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-black/40" />
+                    <div className="absolute top-4 right-4 z-10"><LiveBadge tipo="vivo" pulsante={true} /></div>
+                    <div className="absolute top-4 left-4 z-10"><PilarBadge pilar={evento.pilar} tamaño="sm" showLabel={false} /></div>
+                  </div>
+                  <div className="p-6 sm:p-7 flex flex-col flex-grow text-center">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{evento.nombre}</h3>
+                    <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-grow">{evento.descripcion}</p>
+                    <div className="space-y-2 mb-5 text-sm text-white/50">
+                      <div className="flex items-center justify-center gap-2">
+                        <span>{evento.ubicacion}</span>
                       </div>
-                      <motion.a href={evento.enlace || '#'} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                        className="w-full inline-flex items-center justify-center py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300"
-                        style={glassActive}>
-                        Ver En Vivo
-                      </motion.a>
+                      <div className="flex items-center justify-center gap-2">
+                        <span>{evento.fechaInicio}</span>
+                      </div>
                     </div>
-                  </motion.div>
-                </ScrollReveal>
+                    <motion.a href={evento.enlace || '#'} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                      className="w-full inline-flex items-center justify-center py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300"
+                      style={glassActive}>
+                      Ver En Vivo
+                    </motion.a>
+                  </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>
         )}
- 
+
         {/* Próximos Eventos */}
-        <div>
-          <motion.h3 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-            className="text-2xl sm:text-3xl font-bold text-white mb-8">
-            Próximos Eventos
-          </motion.h3>
- 
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {proximosEventos.map((evento) => (
-              <ScrollReveal key={evento.id} direction="up">
-                <motion.div variants={itemVariants} whileHover={{ y: -8 }}
+        {proximosEventos.length > 0 && (
+          <div>
+            <motion.h3 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+              className="text-2xl sm:text-3xl font-bold text-white mb-8">
+              Próximos Eventos
+            </motion.h3>
+
+            <motion.div
+              key={`prox-${filtroKey}`}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+            >
+              {proximosEventos.map((evento) => (
+                <motion.div
+                  key={evento.id}
+                  variants={itemVariants}
+                  whileHover={{ y: -8 }}
                   className="rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
-                  style={glassCard}>
+                  style={glassCard}
+                >
                   <div className="relative h-44 sm:h-48 overflow-hidden flex-shrink-0">
-                    <Image src={evento.imagen} alt={evento.nombre} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <Image src={evento.imagen} alt={evento.nombre} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-black/40" />
                     <div className="absolute top-4 right-4 z-10">{evento.proximoProximo && <LiveBadge tipo="imperdible" pulsante={false} />}</div>
                     <div className="absolute top-4 left-4 z-10"><PilarBadge pilar={evento.pilar} tamaño="sm" showLabel={false} /></div>
                   </div>
-                  <div className="p-5 sm:p-6 flex flex-col flex-grow">
+                  <div className="p-6 sm:p-7 flex flex-col flex-grow text-center">
                     <h3 className="text-lg sm:text-xl font-bold text-white mb-2 line-clamp-2">{evento.nombre}</h3>
                     <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-grow">{evento.descripcion}</p>
                     <div className="space-y-1.5 mb-5 text-xs sm:text-sm text-white/50">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center justify-center gap-2">
                         <span>{evento.fechaInicio}</span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center justify-center gap-2">
                         <span>{evento.ubicacion}</span>
                       </div>
                     </div>
@@ -195,11 +204,11 @@ export const EventosSection: React.FC = () => {
                     </motion.a>
                   </div>
                 </motion.div>
-              </ScrollReveal>
-            ))}
-          </motion.div>
-        </div>
- 
+              ))}
+            </motion.div>
+          </div>
+        )}
+
         {eventosFiltrados.length === 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
             <p className="text-white/50 text-lg">No hay eventos disponibles para este pilar</p>
@@ -209,5 +218,5 @@ export const EventosSection: React.FC = () => {
     </section>
   );
 };
- 
+
 export default EventosSection;

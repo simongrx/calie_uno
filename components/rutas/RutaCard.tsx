@@ -21,11 +21,11 @@ const glassCard = {
 };
 
 const glassBtn = {
-  background: 'rgba(249, 115, 22, 0.2)',
+  background: 'rgba(255, 41, 0, 0.2)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(249, 115, 22, 0.45)',
-  boxShadow: '0 4px 16px rgba(249, 115, 22, 0.15)',
+  border: '1px solid rgba(255, 41, 0, 0.45)',
+  boxShadow: '0 4px 16px rgba(255, 41, 0, 0.15)',
 };
 
 const dificultadColor = {
@@ -108,7 +108,7 @@ export const RutaCard: React.FC<RutaCardProps> = ({ ruta, onClick, destacada = f
             {ruta.puntos.length} paradas
           </div>
           {ruta.precioAproximado && (
-            <div className="flex items-center gap-1 ml-auto text-orange-400">
+            <div className="flex items-center gap-1 ml-auto text-red-500">
               {ruta.precioAproximado}
             </div>
           )}

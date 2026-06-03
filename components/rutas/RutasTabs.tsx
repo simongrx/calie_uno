@@ -36,9 +36,9 @@ export const RutasTabs: React.FC<RutasTabsProps> = ({ tabs, tabActivo, onChange 
             tabActivo === tab.id
               ? {
                   color: 'white',
-                  background: 'rgba(249, 115, 22, 0.25)',
-                  border: '1px solid rgba(249, 115, 22, 0.4)',
-                  boxShadow: '0 4px 16px rgba(249, 115, 22, 0.15)',
+                  background: 'rgba(255, 41, 0, 0.25)',
+                  border: '1px solid rgba(255, 41, 0, 0.4)',
+                  boxShadow: '0 4px 16px rgba(255, 41, 0, 0.15)',
                 }
               : { color: 'rgba(255,255,255,0.5)' }
           }
@@ -47,7 +47,7 @@ export const RutasTabs: React.FC<RutasTabsProps> = ({ tabs, tabActivo, onChange 
             <motion.div
               layoutId="tabIndicator"
               className="absolute inset-0 rounded-xl"
-              style={{ background: 'rgba(249,115,22,0.1)' }}
+              style={{ background: 'rgba(255, 41, 0,0.1)' }}
               transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
             />
           )}

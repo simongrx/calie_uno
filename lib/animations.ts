@@ -97,7 +97,7 @@ export const hoverLiftVariants: Variants = {
 export const hoverColorVariants: Variants = {
   rest: { color: '#000000' },
   hover: {
-    color: '#F97316',
+    color: '#FF2900',
     transition: { duration: 0.3 }
   }
 };

@@ -206,7 +206,7 @@ export const PilaresSection: React.FC = () => {
                   {pilarActual.caracteristicas.map((caracteristica) => (
                     <span
                       key={caracteristica}
-                      className="inline-flex items-center rounded-full px-3 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm transition-colors"
+                      className="inline-flex items-center rounded-full px-5 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm transition-colors"
                       style={{
                         background: `${colorHex[pilarActual.id]}1F`,
                         border: `1px solid ${colorHex[pilarActual.id]}59`,

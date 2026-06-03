@@ -26,10 +26,10 @@ const glassCard = {
 };
 
 const glassBtn = {
-  background: 'rgba(249, 115, 22, 0.2)',
+  background: 'rgba(255, 41, 0, 0.2)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(249, 115, 22, 0.45)',
+  border: '1px solid rgba(255, 41, 0, 0.45)',
 };
 
 const dificultadColor: Record<string, string> = {
@@ -143,7 +143,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
                     {ruta.recomendaciones.map((rec, i) => (
                       <motion.li key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}
                         className="flex items-start gap-3 text-white/70 text-sm">
-                        <svg className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         {rec}
@@ -167,7 +167,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
                       ...(ruta.precioAproximado ? [{ icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label: 'Precio aprox.', value: ruta.precioAproximado }] : []),
                     ].map((item, i) => (
                       <div key={i} className="flex items-start gap-3">
-                        <svg className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={item.icon} />
                         </svg>
                         <div>

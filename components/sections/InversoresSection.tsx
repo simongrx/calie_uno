@@ -135,7 +135,7 @@ export const InversoresSection: React.FC = () => {
                   border: '1px solid rgba(255,255,255,0.08)',
                 }}
               >
-                <h4 className="text-2xl font-bold text-orange-300 mb-8 text-center">
+                <h4 className="text-2xl font-bold text-red-400 mb-8 text-center">
                   Números que Hablan
                 </h4>
 
@@ -146,7 +146,7 @@ export const InversoresSection: React.FC = () => {
                         Demanda Turística
                       </span>
 
-                      <span className="text-orange-400 font-bold">
+                      <span className="text-red-500 font-bold">
                         85%
                       </span>
                     </div>
@@ -157,7 +157,7 @@ export const InversoresSection: React.FC = () => {
                         whileInView={{ width: '85%' }}
                         transition={{ duration: 1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-orange-400 rounded-full"
+                        className="h-full bg-red-500 rounded-full"
                       />
                     </div>
                   </div>
@@ -168,7 +168,7 @@ export const InversoresSection: React.FC = () => {
                         Potencial de Crecimiento
                       </span>
 
-                      <span className="text-orange-400 font-bold">
+                      <span className="text-red-500 font-bold">
                         +300%
                       </span>
                     </div>
@@ -179,7 +179,7 @@ export const InversoresSection: React.FC = () => {
                         whileInView={{ width: '100%' }}
                         transition={{ duration: 1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-orange-400 rounded-full"
+                        className="h-full bg-red-500 rounded-full"
                       />
                     </div>
                   </div>
@@ -190,7 +190,7 @@ export const InversoresSection: React.FC = () => {
                         Sostenibilidad
                       </span>
 
-                      <span className="text-orange-400 font-bold">
+                      <span className="text-red-500 font-bold">
                         100%
                       </span>
                     </div>
@@ -201,7 +201,7 @@ export const InversoresSection: React.FC = () => {
                         whileInView={{ width: '100%' }}
                         transition={{ duration: 1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-orange-400 rounded-full"
+                        className="h-full bg-red-500 rounded-full"
                       />
                     </div>
                   </div>
@@ -236,7 +236,7 @@ export const InversoresSection: React.FC = () => {
                 style={glassCard}
               >
                 <div className="w-full max-w-sm mx-auto flex flex-col items-center justify-center">
-                  <h4 className="text-2xl font-bold text-orange-300 mb-6 leading-snug">
+                  <h4 className="text-2xl font-bold text-red-400 mb-6 leading-snug">
                     {oportunidad.titulo}
                   </h4>
 
@@ -246,17 +246,17 @@ export const InversoresSection: React.FC = () => {
 
                   <div className="grid grid-cols-2 gap-8 pt-6 border-t border-white/10 w-full">
                     <div className="text-center">
-                      <p className="text-sm text-orange-300 mb-2">
+                      <p className="text-sm text-red-400 mb-2">
                         ROI Estimado
                       </p>
 
-                      <p className="text-2xl font-bold text-orange-400">
+                      <p className="text-2xl font-bold text-red-500">
                         {oportunidad.roi}
                       </p>
                     </div>
 
                     <div className="text-center">
-                      <p className="text-sm text-orange-300 mb-2">
+                      <p className="text-sm text-red-400 mb-2">
                         Plazo
                       </p>
 
@@ -289,7 +289,7 @@ export const InversoresSection: React.FC = () => {
           style={glassCard}
         >
         <div className="w-full flex flex-col items-center justify-center text-center px-4 sm:px-10">            
-            <h4 className="text-2xl sm:text-3xl font-bold text-orange-300 mb-8">
+            <h4 className="text-2xl sm:text-3xl font-bold text-red-400 mb-8">
               Un Proyecto con Impacto Real y Potencial Global
             </h4>
 

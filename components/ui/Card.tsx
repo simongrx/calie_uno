@@ -36,7 +36,7 @@ export const Card = ({
   hover = true,
 }: CardProps) => {
   const baseClass = cn(
-    'rounded-xl overflow-hidden',
+    'rounded-xl overflow-hidden p-6',
     hover && 'transition-all duration-300 ease-out-quart hover:scale-[1.02]',
   );
 

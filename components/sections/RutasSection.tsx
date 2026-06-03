@@ -18,11 +18,11 @@ const pilarLabels: Record<PilarType, string> = {
 };
  
 const glassActive = {
-  background: 'rgba(249, 115, 22, 0.2)',
+  background: 'rgba(255, 41, 0, 0.2)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(249, 115, 22, 0.5)',
-  boxShadow: '0 8px 24px rgba(249, 115, 22, 0.2)',
+  border: '1px solid rgba(255, 41, 0, 0.5)',
+  boxShadow: '0 8px 24px rgba(255, 41, 0, 0.2)',
 };
  
 const glassInactive = {
@@ -112,8 +112,6 @@ export const RutasSection: React.FC = () => {
             </motion.button>
           ))}
         </motion.div>
-        {/* SEPARADOR */}
-        <div className="h-6" />
  
         {/* Grid de Rutas */}
         <AnimatePresence mode="wait">
@@ -194,8 +192,7 @@ export const RutasSection: React.FC = () => {
               exit={{ opacity: 0, y: 30 }}
               transition={{ duration: 0.4 }}
             >
-              {/* SEPARADOR */}
-              <div className="h-6" />
+              
               {/* Botón volver */}
               <motion.button
                 onClick={cerrarRuta}
@@ -207,9 +204,7 @@ export const RutasSection: React.FC = () => {
                 </svg>
                 Volver a todas las rutas
               </motion.button>
-              {/* SEPARADOR */}
-              <div className="h-6" />
- 
+              
               <RutaDetalle ruta={rutaSeleccionada} onClose={cerrarRuta} />
             </motion.div>
           )}

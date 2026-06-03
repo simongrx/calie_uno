@@ -16,11 +16,11 @@ const pilarLabels: Record<PilarType, string> = {
 };
 
 const glassActive = {
-  background: 'rgba(249, 115, 22, 0.2)',
+  background: 'rgba(255, 41, 0, 0.2)',
   backdropFilter: 'blur(12px)',
   WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(249, 115, 22, 0.5)',
-  boxShadow: '0 8px 24px rgba(249, 115, 22, 0.2)',
+  border: '1px solid rgba(255, 41, 0, 0.5)',
+  boxShadow: '0 8px 24px rgba(255, 41, 0, 0.2)',
 };
 
 const glassInactive = {

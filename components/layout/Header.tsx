@@ -20,7 +20,6 @@ export const Header: React.FC = () => {
     { label: 'Inicio', href: '#inicio' },
     { label: 'Rutas', href: '#rutas' },
     { label: 'Eventos', href: '#eventos' },
-    { label: 'Galería', href: '#galeria' },
     { label: 'Testimonios', href: '#testimonios' },
     { label: 'Aliados', href: '#aliados' },
     { label: 'Contacto', href: '#contacto' },
@@ -107,7 +106,7 @@ export const Header: React.FC = () => {
                   duration-300
                   border
                   border-white/10
-                  hover:border-orange-400/40
+                  hover:border-red-500/40
                   overflow-hidden
                   group
                   ${
@@ -134,7 +133,7 @@ export const Header: React.FC = () => {
                     transition-opacity
                     duration-300
                     bg-gradient-to-r
-                    from-orange-400/10
+                    from-red-500/10
                     to-yellow-300/10
                   "
                 />
@@ -147,7 +146,7 @@ export const Header: React.FC = () => {
                     rounded-2xl
                     border
                     border-white/5
-                    group-hover:border-orange-300/20
+                    group-hover:border-red-400/20
                     transition-all
                     duration-300
                   "
@@ -169,7 +168,7 @@ export const Header: React.FC = () => {
                     h-[2px]
                     rounded-full
                     bg-gradient-to-r
-                    from-orange-400
+                    from-red-500
                     to-yellow-300
                     group-hover:w-3/4
                     transition-all
@@ -201,8 +200,8 @@ export const Header: React.FC = () => {
                 transition-all
                 duration-300
                 border
-                border-orange-300/30
-                hover:border-orange-300/50
+                border-red-400/30
+                hover:border-red-400/50
                 ${
                   isScrolled
                     ? 'px-5 py-2 text-xs'
@@ -211,10 +210,10 @@ export const Header: React.FC = () => {
               `}
               style={{
                 background:
-                  'linear-gradient(135deg, rgba(249,115,22,0.9), rgba(234,88,12,0.9))',
+                  'linear-gradient(135deg, rgba(255, 41, 0,0.9), rgba(204, 33, 0,0.9))',
                 backdropFilter: 'blur(18px)',
                 WebkitBackdropFilter: 'blur(18px)',
-                boxShadow: '0 8px 30px rgba(249,115,22,0.25)',
+                boxShadow: '0 8px 30px rgba(255, 41, 0,0.25)',
               }}
             >
               <span>Contáctanos</span>
@@ -361,9 +360,9 @@ export const Header: React.FC = () => {
                   "
                   style={{
                     background:
-                      'linear-gradient(135deg, rgba(249,115,22,0.9), rgba(234,88,12,0.9))',
+                      'linear-gradient(135deg, rgba(255, 41, 0,0.9), rgba(204, 33, 0,0.9))',
                     boxShadow:
-                      '0 8px 30px rgba(249,115,22,0.25)',
+                      '0 8px 30px rgba(255, 41, 0,0.25)',
                   }}
                 >
                   Contáctanos

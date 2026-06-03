@@ -62,8 +62,8 @@ export const TestimoniosSection: React.FC = () => {
                   <div
                     className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl overflow-hidden"
                     style={{
-                      border: '2px solid rgba(249,115,22,0.4)',
-                      boxShadow: '0 0 24px rgba(249,115,22,0.2)',
+                      border: '2px solid rgba(255, 41, 0,0.4)',
+                      boxShadow: '0 0 24px rgba(255, 41, 0,0.2)',
                     }}
                   >
                     <img
@@ -112,8 +112,8 @@ export const TestimoniosSection: React.FC = () => {
                     <div
                       className="mt-5 inline-flex w-fit items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white"
                       style={{
-                        background: 'rgba(249,115,22,0.2)',
-                        border: '1px solid rgba(249,115,22,0.4)',
+                        background: 'rgba(255, 41, 0,0.2)',
+                        border: '1px solid rgba(255, 41, 0,0.4)',
                       }}
                     >
                       Visitó: {testimonio.rutaVisitada.replace(/-/g, ' ')}
@@ -133,8 +133,8 @@ export const TestimoniosSection: React.FC = () => {
             }
             className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center z-10"
             style={{
-              background: 'rgba(249,115,22,0.3)',
-              border: '1px solid rgba(249,115,22,0.5)',
+              background: 'rgba(255, 41, 0,0.3)',
+              border: '1px solid rgba(255, 41, 0,0.5)',
             }}
           >
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,8 +148,8 @@ export const TestimoniosSection: React.FC = () => {
             }
             className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center z-10"
             style={{
-              background: 'rgba(249,115,22,0.3)',
-              border: '1px solid rgba(249,115,22,0.5)',
+              background: 'rgba(255, 41, 0,0.3)',
+              border: '1px solid rgba(255, 41, 0,0.5)',
             }}
           >
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +169,7 @@ export const TestimoniosSection: React.FC = () => {
               onClick={() => setIndiceActual(index)}
               className={`h-1.5 rounded-full transition-all ${
                 index === indiceActual
-                  ? 'w-8 bg-orange-400'
+                  ? 'w-8 bg-red-500'
                   : 'w-2 bg-white/20'
               }`}
             />
