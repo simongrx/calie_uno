@@ -17,6 +17,9 @@ const LOGO_SIZE   = 'h-24 sm:h-28 md:h-32';
 // Posición del texto y botones (en px, sin límite)
 const TEXTO_TOP_PX = 630;
 
+// Video de YouTube usado como fondo del hero.
+const YOUTUBE_VIDEO_ID = '9lG5-BDDQ0Q';
+
 // ============================================
 
 export const HeroSection: React.FC = () => {
@@ -43,17 +46,22 @@ export const HeroSection: React.FC = () => {
       id="inicio"
       className="relative min-h-screen overflow-hidden"
     >
-      {/* VIDEO base — intacto, siempre visible de fondo */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/videos/hero-cali.mp4" type="video/mp4" />
-        </video>
+      {/* VIDEO de YouTube como fondo (cover: centrado y sobredimensionado para
+          no distorsionar ni dejar franjas negras). pointer-events-none: no bloquea clics. */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <iframe
+          title="Cali Enamora Hero Video"
+          src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1&playlist=${YOUTUBE_VIDEO_ID}`}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            width: '100vw',
+            height: '56.25vw', // 16:9 respecto al ancho
+            minHeight: '100vh',
+            minWidth: '177.78vh', // 16:9 respecto al alto
+            border: 'none',
+          }}
+        />
       </div>
 
       {/* Capas de imágenes del Valle con cross-fade por scroll
