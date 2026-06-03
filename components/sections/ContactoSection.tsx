@@ -154,8 +154,7 @@ export const ContactoSection: React.FC = () => {
 
               </div>
 
-              {/* SEPARADOR */}
-              <div className="h-6" />
+        
 
               {/* REDES */}
               <motion.div
@@ -353,8 +352,6 @@ export const ContactoSection: React.FC = () => {
           </div>
         </div>
 
-        {/* SEPARADOR ENTRE FORMULARIO Y MAPA */}
-        <div className="h-14 sm:h-20" />
 
         {/* MAPA */}
         <motion.div

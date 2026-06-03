@@ -64,7 +64,7 @@ export const MapaSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 sm:gap-5 mb-16 sm:mb-20"
+          className="flex flex-wrap justify-center gap-4 sm:gap-5 mb-8 sm:mb-10"
         >
           <motion.button
             onClick={() => setPilarFiltro(null)}
@@ -89,9 +89,6 @@ export const MapaSection: React.FC = () => {
             </motion.button>
           ))}
         </motion.div>
-
-        {/* Separador visual */}
-        <div className="h-4 sm:h-8" />
 
         {/* Mapa */}
         <motion.div

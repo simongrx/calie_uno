@@ -94,7 +94,7 @@ export const RestaurantesSection: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               {/* Filtros estrellas */}
-              <div className="flex flex-wrap justify-center gap-5 sm:gap-6">
+              <div className="flex flex-wrap justify-center gap-5 sm:gap-6 mb-8 sm:mb-10">
                 {[0, 4, 4.5, 5].map((rating) => (
                   <motion.button
                     key={rating}
@@ -117,9 +117,6 @@ export const RestaurantesSection: React.FC = () => {
                   </motion.button>
                 ))}
               </div>
-
-              {/* Separación Filtros -> Grid */}
-              <div className="h-8 sm:h-10" />
 
               {/* Grid restaurantes — remonta al cambiar el filtro para reanimar */}
               {restaurantesFiltrados.length > 0 ? (
@@ -221,9 +218,6 @@ export const RestaurantesSection: React.FC = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Separación Tabs -> Grid */}
-              <div className="h-4 sm:h-8" />
-
               <motion.div
                 variants={containerVariants}
                 initial="hidden"

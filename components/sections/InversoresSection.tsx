@@ -211,8 +211,6 @@ export const InversoresSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* SEPARADOR */}
-        <div className="h-14 sm:h-20" />
 
         {/* TITULO */}
         <h3 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12 sm:mb-16">
@@ -271,8 +269,6 @@ export const InversoresSection: React.FC = () => {
           ))}
         </motion.div>
 
-        {/* SEPARADOR */}
-        <div className="h-16 sm:h-24" />
 
         {/* TITULO */}
         <h3 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12 sm:mb-16">

@@ -74,7 +74,7 @@ export const EventosSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-5 sm:gap-6 mb-20 sm:mb-24"
+          className="flex flex-wrap justify-center gap-5 sm:gap-6 mb-8 sm:mb-10"
         >
           <motion.button
             onClick={() => setPilarFiltro(null)}
@@ -98,7 +98,6 @@ export const EventosSection: React.FC = () => {
             </motion.button>
           ))}
         </motion.div>
-        <div className="h-8 sm:h-10" />
 
         {/* Eventos en Vivo */}
         {eventosEnVivo.length > 0 && (

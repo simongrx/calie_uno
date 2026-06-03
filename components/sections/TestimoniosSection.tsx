@@ -158,9 +158,6 @@ export const TestimoniosSection: React.FC = () => {
           </button>
         </motion.div>
 
-        {/* SEPARADOR */}
-        <div className="h-10 sm:h-12" />
-
         {/* INDICADORES */}
         <div className="flex justify-center gap-2">
           {testimonios.map((_, index) => (

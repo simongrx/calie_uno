@@ -121,7 +121,7 @@ export const PilaresSection: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-20 sm:mb-24 items-stretch"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-10 items-stretch"
         >
           {pilares.map((pilar) => {
             const activo = pilarSeleccionado === pilar.id;
