@@ -67,7 +67,7 @@ export const Header: React.FC = () => {
                 width={60}
                 height={30}
                 className={`w-auto transition-all duration-500 ${
-                  isScrolled ? 'h-8' : 'h-10 sm:h-11'
+                  isScrolled ? 'h-10' : 'h-10 sm:h-14'
                 }`}
                 priority
               />
