@@ -80,7 +80,7 @@ export const HeroSection: React.FC = () => {
       >
         {/* Typewriter */}
         <motion.div variants={itemVariants} className="mb-8">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-lg">
+          <h1 className="text-gradient-brand text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             <Typewriter
               textos={[
                 'Descubre Cali',
@@ -194,12 +194,12 @@ export const HeroSection: React.FC = () => {
 
       {/* Floating Elements */}
       <motion.div
-        className="absolute top-20 left-10 w-20 h-20 rounded-full bg-brand-orange/20 blur-3xl z-10"
+        className="absolute top-20 left-10 w-40 h-40 rounded-full bg-brand-orange/30 blur-3xl z-10"
         animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-brand-yellow/20 blur-3xl z-10"
+        className="absolute bottom-20 right-10 w-56 h-56 rounded-full bg-brand-yellow/25 blur-3xl z-10"
         animate={{ y: [0, -30, 0], x: [0, -20, 0] }}
         transition={{ duration: 10, repeat: Infinity }}
       />

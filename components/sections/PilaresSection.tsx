@@ -86,6 +86,14 @@ export const PilaresSection: React.FC = () => {
   ];
  
   const pilarActual = pilares.find((p) => p.id === pilarSeleccionado)!;
+
+  // Color de cada pilar (design system) para acentos y glow
+  const colorHex: Record<PilarType, string> = {
+    cultura: '#8B5CF6',
+    naturaleza: '#10B981',
+    gastronomia: '#EF4444',
+    bienestar: '#06B6D4',
+  };
  
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -115,37 +123,52 @@ export const PilaresSection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-20 sm:mb-24 items-stretch"
         >
-          {pilares.map((pilar) => (
-            <motion.button
-              key={pilar.id}
-              variants={itemVariants}
-              whileHover={{ y: -6 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => setPilarSeleccionado(pilar.id)}
-              className="relative rounded-2xl transition-all duration-300 overflow-hidden group text-center flex flex-col items-center justify-center min-h-[180px]"
-              style={
-                pilarSeleccionado === pilar.id
-                  ? {
-                      background: 'rgba(249, 115, 22, 0.2)',
-                      backdropFilter: 'blur(16px)',
-                      WebkitBackdropFilter: 'blur(16px)',
-                      border: '1px solid rgba(249, 115, 22, 0.5)',
-                      boxShadow: '0 8px 32px rgba(249, 115, 22, 0.2)',
-                    }
-                  : {
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      backdropFilter: 'blur(16px)',
-                      WebkitBackdropFilter: 'blur(16px)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                    }
-              }
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-white">{pilar.nombre}</h3>
-              <p className={`mt-2 text-sm leading-relaxed max-w-[220px] ${pilarSeleccionado === pilar.id ? 'text-white/80' : 'text-white/50'}`}>
-                {pilar.descripcion}
-              </p>
-            </motion.button>
-          ))}
+          {pilares.map((pilar) => {
+            const activo = pilarSeleccionado === pilar.id;
+            const hex = colorHex[pilar.id];
+            return (
+              <motion.button
+                key={pilar.id}
+                variants={itemVariants}
+                whileHover={{ y: -6 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setPilarSeleccionado(pilar.id)}
+                className="relative rounded-2xl transition-all duration-300 overflow-hidden group text-center flex flex-col items-center justify-center gap-3 px-4 py-6 min-h-[200px]"
+                style={
+                  activo
+                    ? {
+                        background: `linear-gradient(135deg, ${hex}33 0%, ${hex}14 100%)`,
+                        backdropFilter: 'blur(16px)',
+                        WebkitBackdropFilter: 'blur(16px)',
+                        border: `1px solid ${hex}80`,
+                        boxShadow: `0 8px 32px ${hex}3D, 0 0 24px ${hex}40`,
+                      }
+                    : {
+                        background: 'rgba(255, 255, 255, 0.05)',
+                        backdropFilter: 'blur(16px)',
+                        WebkitBackdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                      }
+                }
+              >
+                {/* Acento superior con el color del pilar */}
+                <span
+                  className="absolute top-0 left-0 right-0 h-1 transition-opacity duration-300"
+                  style={{ background: hex, opacity: activo ? 1 : 0 }}
+                />
+                <div
+                  className="transition-transform duration-300 group-hover:scale-110"
+                  style={{ color: hex }}
+                >
+                  {pilar.icono}
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-white">{pilar.nombre}</h3>
+                <p className={`text-sm leading-relaxed max-w-[220px] ${activo ? 'text-white/80' : 'text-white/50'}`}>
+                  {pilar.descripcion}
+                </p>
+              </motion.button>
+            );
+          })}
         </motion.div>
  
         {/* Detalle del pilar */}
@@ -165,7 +188,10 @@ export const PilaresSection: React.FC = () => {
               className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl group"
             >
               <Image src={pilarActual.imagen} alt={pilarActual.nombre} fill className="object-cover group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-black/20" />
+              <div
+                className="absolute inset-0"
+                style={{ background: `linear-gradient(135deg, ${colorHex[pilarActual.id]}40 0%, rgba(0,0,0,0.35) 100%)` }}
+              />
             </motion.div>
  
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
@@ -176,9 +202,20 @@ export const PilaresSection: React.FC = () => {
                   Características:
                 </h3>
 
-                <p className="text-white/70 leading-relaxed">
-                  {pilarActual.caracteristicas.join(', ')}
-                </p>
+                <div className="flex flex-wrap gap-2">
+                  {pilarActual.caracteristicas.map((caracteristica) => (
+                    <span
+                      key={caracteristica}
+                      className="inline-flex items-center rounded-full px-3 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm transition-colors"
+                      style={{
+                        background: `${colorHex[pilarActual.id]}1F`,
+                        border: `1px solid ${colorHex[pilarActual.id]}59`,
+                      }}
+                    >
+                      {caracteristica}
+                    </span>
+                  ))}
+                </div>
               </div>
               <motion.a
                 href="#rutas"

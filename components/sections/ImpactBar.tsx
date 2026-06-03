@@ -8,29 +8,34 @@ interface StatItem {
   valor: number;
   sufijo: string;
   label: string;
+  color: 'orange' | 'purple' | 'green' | 'red' | 'blue';
 }
- 
+
 export const ImpactBar: React.FC = () => {
   const stats: StatItem[] = [
     {
       valor: 50,
       sufijo: '+',
       label: 'Rutas Turísticas',
+      color: 'green',
     },
     {
       valor: 200,
       sufijo: '+',
       label: 'Aliados Estratégicos',
+      color: 'purple',
     },
     {
       valor: 15,
       sufijo: 'K+',
       label: 'Turistas Anuales',
+      color: 'red',
     },
     {
       valor: 4,
       sufijo: '',
       label: 'Pilares Principales',
+      color: 'blue',
     },
   ];
  
@@ -45,8 +50,8 @@ export const ImpactBar: React.FC = () => {
   };
  
   return (
-    <section className="relative py-8 sm:py-10 lg:py-12 bg-gradient-brand">
-      <div className="absolute inset-0 opacity-10">
+    <section className="relative py-8 sm:py-10 lg:py-12 bg-gradient-premium-dark border-y border-white/10">
+      <div className="absolute inset-0 opacity-[0.07]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,white_1px,transparent_1px)] bg-[length:40px_40px]" />
       </div>
       <div className="container-custom relative z-10">
@@ -60,9 +65,9 @@ export const ImpactBar: React.FC = () => {
           {stats.map((stat, index) => (
             <motion.div key={stat.label} variants={itemVariants} whileHover={{ y: -8 }} className="text-center py-4 flex flex-col justify-center h-full">
               <div className="mb-2 sm:mb-3">
-                <AnimatedCounter valor={stat.valor} sufijo={stat.sufijo} duracion={2500} tamaño="xl" color="orange" />
+                <AnimatedCounter valor={stat.valor} sufijo={stat.sufijo} duracion={2500} tamaño="xl" color={stat.color} />
               </div>
-              <p className="text-sm sm:text-base font-semibold text-white/90">{stat.label}</p>
+              <p className="text-sm sm:text-base font-semibold text-white/80">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>

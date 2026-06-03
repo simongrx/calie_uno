@@ -127,7 +127,7 @@ export default function MapaInteractivo({ pilarFiltro }: Props) {
         />
 
         {/* Ref + ajuste de vista */}
-        <MapaRef rutasFiltradas={rutasFiltradas} mapRef={mapRef} />
+        <MapaRef rutasFiltradas={rutasFiltradas} mapRef={mapRef} pilarFiltro={null} />
 
         {/* Rutas */}
         {rutasFiltradas.map((ruta) => {

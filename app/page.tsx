@@ -28,7 +28,7 @@ export default function Home() {
 
       {/* Impact Bar - Estadísticas */}
       <ImpactBar />
-/*
+
       {/* Los 4 Pilares */}
       <PilaresSection />
 

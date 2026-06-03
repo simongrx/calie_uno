@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Evento } from '@/types';
 import { PilarBadge } from '@/components/ui/PilarBadge';
 import { LiveBadge } from '@/components/ui/LiveBadge';
-import { EventosCountdown } from '@/components/eventos/EventosCountdown';
+import { EventosCountdown } from '@/components/eventos/EventoCountdown';
 import Image from 'next/image';
  
 interface EventosCardProps {
