@@ -403,36 +403,42 @@
 /* ============================================
    FORMULARIOS
    ============================================ */
-input, textarea, select {
-  font-family: 'Outfit', inherit;
-  font-size: 1rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 0.75rem;
-  background: rgba(255,255,255,0.05);
-  color: #f1f5f9;
-  backdrop-filter: blur(8px);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
+/* En @layer base para que las utilidades de Tailwind puedan sobreescribir
+   estos defaults de formularios (mismo motivo que el reset de img). */
+@layer base {
+  input, textarea, select {
+    font-family: 'Outfit', inherit;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 0.75rem;
+    background: rgba(255,255,255,0.05);
+    color: #f1f5f9;
+    backdrop-filter: blur(8px);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
 
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: rgba(255, 41, 0, 0.6);
-  box-shadow: 0 0 0 3px rgba(255, 41, 0, 0.15);
-}
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: rgba(255, 41, 0, 0.6);
+    box-shadow: 0 0 0 3px rgba(255, 41, 0, 0.15);
+  }
 
-::placeholder { color: #64748b; opacity: 1; }
+  ::placeholder { color: #64748b; opacity: 1; }
+}
 
 /* ============================================
    BOTONES BASE
    ============================================ */
-button {
-  font-family: 'Outfit', inherit;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
+@layer base {
+  button {
+    font-family: 'Outfit', inherit;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
 
-button:disabled { opacity: 0.4; cursor: not-allowed; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+}
 
 /* ============================================
    IMÁGENES
