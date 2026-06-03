@@ -12,7 +12,7 @@ import Image from 'next/image';
 const LOGO_TOP    = 'top-32';
 const LOGO_LEFT   = 'left-1/2';
 const LOGO_OFFSET = '-translate-x-1/2';
-const LOGO_SIZE   = 'h-24 sm:h-28 md:h-32';
+const LOGO_SIZE   = 'h-32 sm:h-40 md:h-48';
 
 // Posición del texto y botones (en px, sin límite)
 const TEXTO_TOP_PX = 630;

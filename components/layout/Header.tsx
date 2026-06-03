@@ -60,7 +60,7 @@ export const Header: React.FC = () => {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logotipo%20CaliE-OCQi041dgJdYAvK07Eyaa6DieRdlH5.png"
                 alt="Cali Enamora Logo"
@@ -71,20 +71,11 @@ export const Header: React.FC = () => {
                 }`}
                 priority
               />
-
-              <span
-                className={`hidden sm:inline font-semibold text-white tracking-wide transition-all duration-500 ${
-                  isScrolled ? 'text-sm' : 'text-base'
-                }`}
-                style={{ fontFamily: 'Outfit, sans-serif' }}
-              >
-                Cali Enamora
-              </span>
             </Link>
           </motion.div>
 
           {/* DESKTOP NAVIGATION */}
-          <nav className="hidden lg:flex items-center gap-3">
+          <nav className="hidden lg:flex items-center gap-2.5 xl:gap-3">
             {navigationItems.map((item) => (
               <motion.button
                 key={item.label}
@@ -98,9 +89,10 @@ export const Header: React.FC = () => {
                 }}
                 className={`
                   relative
-                  px-7
-                  py-3.5
+                  px-4
+                  py-2.5
                   rounded-2xl
+                  whitespace-nowrap
                   text-white/80
                   hover:text-white
                   transition-all
@@ -113,7 +105,7 @@ export const Header: React.FC = () => {
                   ${
                     isScrolled
                       ? 'text-xs'
-                      : 'text-base'
+                      : 'text-sm'
                   }
                 `}
                 style={{
