@@ -90,7 +90,7 @@ export const ContactoSection: React.FC = () => {
   return (
     <section
       id="contacto"
-      className="section bg-[#0A1636] relative overflow-hidden"
+      className="section bg-transparent relative overflow-hidden"
     >
       {/* EFECTOS */}
       <div className="absolute top-20 right-10 w-40 h-40 bg-red-600/5 rounded-full blur-3xl" />

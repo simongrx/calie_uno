@@ -30,7 +30,7 @@ export const TestimoniosSection: React.FC = () => {
   const testimonio = testimonios[indiceActual];
 
   return (
-    <section id="testimonios" className="section bg-[#0A1636]">
+    <section id="testimonios" className="section bg-transparent">
       <div className="container-custom">
         <SectionTitle
           titulo="Lo Que Dicen Nuestros Visitantes"

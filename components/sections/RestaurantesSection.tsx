@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { restaurantes, planesExperiencia } from '@/data/restaurantes';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { PilarBadge } from '@/components/ui/PilarBadge';
+import { RestauranteCard } from '@/components/restaurantes/RestauranteCard';
 import Image from 'next/image';
 
 type TabType = 'restaurantes' | 'planes';
@@ -54,7 +54,7 @@ export const RestaurantesSection: React.FC = () => {
   );
 
   return (
-    <section className="section bg-[#0A1636]">
+    <section className="section bg-transparent">
       <div className="container-custom">
         <SectionTitle
           titulo="Sabores y Experiencias"
@@ -128,66 +128,7 @@ export const RestaurantesSection: React.FC = () => {
                   className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
                 >
                   {restaurantesFiltrados.map((restaurante) => (
-                    <motion.div
-                      key={restaurante.id}
-                      variants={itemVariants}
-                      whileHover={{ y: -8 }}
-                      className="rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
-                      style={glassCard}
-                    >
-                      <div className="relative h-48 sm:h-56 overflow-hidden flex-shrink-0">
-                        <Image
-                          src={restaurante.imagen}
-                          alt={restaurante.nombre}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-black/40" />
-                        <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                          {restaurante.trending && (
-                            <div
-                              className="text-white px-5 py-1 rounded-full text-xs font-bold animate-pulse"
-                              style={{ background: 'rgba(255, 41, 0,0.8)', backdropFilter: 'blur(8px)' }}
-                            >
-                              Trending
-                            </div>
-                          )}
-                          {restaurante.nuevo && (
-                            <div
-                              className="text-white px-5 py-1 rounded-full text-xs font-bold"
-                              style={{ background: 'rgba(59,130,246,0.8)', backdropFilter: 'blur(8px)' }}
-                            >
-                              Nuevo
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="p-6 sm:p-7 flex flex-col flex-grow text-center">
-                        <div className="mb-3 flex justify-center">
-                          <PilarBadge pilar={restaurante.pilar} tamaño="sm" showLabel={true} />
-                        </div>
-
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-                          {restaurante.nombre}
-                        </h3>
-
-                        <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-grow">
-                          {restaurante.descripcion}
-                        </p>
-
-                        <motion.a
-                          href={restaurante.enlaceReserva || '#'}
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                          className="w-full inline-flex items-center justify-center py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300"
-                          style={glassActive}
-                        >
-                          Reservar
-                        </motion.a>
-                      </div>
-                    </motion.div>
+                    <RestauranteCard key={restaurante.id} restaurante={restaurante} />
                   ))}
                 </motion.div>
               ) : (

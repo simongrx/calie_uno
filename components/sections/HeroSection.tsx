@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Typewriter } from '@/components/ui/Typewriter';
 import Image from 'next/image';
 
@@ -20,6 +20,15 @@ const TEXTO_TOP_PX = 630;
 // ============================================
 
 export const HeroSection: React.FC = () => {
+  const reduce = useReducedMotion();
+  const { scrollY } = useScroll();
+  // Cross-fade progresivo: cada imagen del Valle aparece/desaparece según el scroll
+  // (px absolutos). El video base permanece intacto debajo de las capas.
+  const culturaOpacity = useTransform(scrollY, [0, 300, 600], [0, 1, 0]);
+  const naturalezaOpacity = useTransform(scrollY, [300, 600, 900], [0, 1, 0]);
+  const gastronomiaOpacity = useTransform(scrollY, [600, 900, 1200], [0, 1, 0]);
+  const bienestarOpacity = useTransform(scrollY, [900, 1200, 1500], [0, 1, 1]);
+
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -34,19 +43,40 @@ export const HeroSection: React.FC = () => {
       id="inicio"
       className="relative min-h-screen overflow-hidden"
     >
-      {/* Background Video */}
+      {/* VIDEO base — intacto, siempre visible de fondo */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/hero-cali.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/50" />
       </div>
+
+      {/* Capas de imágenes del Valle con cross-fade por scroll
+          (sobre el video, debajo del overlay). Se omiten con reduced-motion. */}
+      {!reduce && (
+        <>
+          <motion.div style={{ opacity: culturaOpacity }} className="absolute inset-0 z-0">
+            <Image src="/images/hero/hero-cultura.webp" alt="" fill priority sizes="100vw" className="object-cover" />
+          </motion.div>
+          <motion.div style={{ opacity: naturalezaOpacity }} className="absolute inset-0 z-0">
+            <Image src="/images/hero/hero-naturaleza.webp" alt="" fill sizes="100vw" className="object-cover" />
+          </motion.div>
+          <motion.div style={{ opacity: gastronomiaOpacity }} className="absolute inset-0 z-0">
+            <Image src="/images/hero/hero-gastronomia.webp" alt="" fill sizes="100vw" className="object-cover" />
+          </motion.div>
+          <motion.div style={{ opacity: bienestarOpacity }} className="absolute inset-0 z-0">
+            <Image src="/images/hero/hero-bienestar.webp" alt="" fill sizes="100vw" className="object-cover" />
+          </motion.div>
+        </>
+      )}
+
+      {/* Overlay oscuro — sobre video e imágenes, bajo el contenido */}
+      <div className="absolute inset-0 z-[1] bg-black/50" />
 
       {/* Logo */}
       <motion.div
@@ -62,8 +92,8 @@ export const HeroSection: React.FC = () => {
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logotipo%20CaliE-OCQi041dgJdYAvK07Eyaa6DieRdlH5.png"
             alt="Cali Enamora"
-            width={500}
-            height={250}
+            width={600}
+            height={400}
             className={`${LOGO_SIZE} w-auto drop-shadow-2xl`}
             priority
           />

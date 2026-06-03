@@ -55,7 +55,7 @@ export const GaleriaSection: React.FC = () => {
   ];
 
   return (
-    <section id="galeria" className="section bg-[#0A1636]">
+    <section id="galeria" className="section bg-transparent">
       <div className="container-custom">
         <SectionTitle
           titulo="Galería de Momentos"

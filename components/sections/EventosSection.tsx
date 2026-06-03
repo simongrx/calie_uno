@@ -6,6 +6,8 @@ import { eventos } from '@/data/eventos';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { PilarBadge } from '@/components/ui/PilarBadge';
 import { LiveBadge } from '@/components/ui/LiveBadge';
+import { RevealText } from '@/components/ui/RevealText';
+import { EventosTimeline } from '@/components/eventos/EventosTimeline';
 import { PilarType } from '@/types';
 import Image from 'next/image';
 
@@ -58,7 +60,7 @@ export const EventosSection: React.FC = () => {
   const filtroKey = pilarFiltro ?? 'todos';
 
   return (
-    <section id="eventos" className="section bg-[#0A1636]">
+    <section id="eventos" className="section bg-transparent">
       <div className="container-custom">
         <SectionTitle
           titulo="Eventos en Vivo"
@@ -102,15 +104,12 @@ export const EventosSection: React.FC = () => {
         {/* Eventos en Vivo */}
         {eventosEnVivo.length > 0 && (
           <div className="mb-12 sm:mb-16">
-            <motion.h3
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl sm:text-3xl font-bold text-white mb-8 flex items-center gap-3"
-            >
-              <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse inline-block" />
-              En Vivo Ahora
-            </motion.h3>
+            <RevealText type="horizontal">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-8 flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse inline-block" />
+                En Vivo Ahora
+              </h3>
+            </RevealText>
 
             <motion.div
               key={`vivo-${filtroKey}`}
@@ -159,52 +158,13 @@ export const EventosSection: React.FC = () => {
         {/* Próximos Eventos */}
         {proximosEventos.length > 0 && (
           <div>
-            <motion.h3 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-              className="text-2xl sm:text-3xl font-bold text-white mb-8">
-              Próximos Eventos
-            </motion.h3>
+            <RevealText type="fade">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-8">
+                Próximos Eventos
+              </h3>
+            </RevealText>
 
-            <motion.div
-              key={`prox-${filtroKey}`}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-            >
-              {proximosEventos.map((evento) => (
-                <motion.div
-                  key={evento.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -8 }}
-                  className="rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
-                  style={glassCard}
-                >
-                  <div className="relative h-44 sm:h-48 overflow-hidden flex-shrink-0">
-                    <Image src={evento.imagen} alt={evento.nombre} fill sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-black/40" />
-                    <div className="absolute top-4 right-4 z-10">{evento.proximoProximo && <LiveBadge tipo="imperdible" pulsante={false} />}</div>
-                    <div className="absolute top-4 left-4 z-10"><PilarBadge pilar={evento.pilar} tamaño="sm" showLabel={false} /></div>
-                  </div>
-                  <div className="p-6 sm:p-7 flex flex-col flex-grow text-center">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 line-clamp-2">{evento.nombre}</h3>
-                    <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-grow">{evento.descripcion}</p>
-                    <div className="space-y-1.5 mb-5 text-xs sm:text-sm text-white/50">
-                      <div className="flex items-center justify-center gap-2">
-                        <span>{evento.fechaInicio}</span>
-                      </div>
-                      <div className="flex items-center justify-center gap-2">
-                        <span>{evento.ubicacion}</span>
-                      </div>
-                    </div>
-                    <motion.a href={evento.enlace || '#'} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                      className="w-full inline-flex items-center justify-center py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300"
-                      style={glassActive}>
-                      Más Información
-                    </motion.a>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+            <EventosTimeline key={`prox-${filtroKey}`} eventos={proximosEventos} />
           </div>
         )}
 

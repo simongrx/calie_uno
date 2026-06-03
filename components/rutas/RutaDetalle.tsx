@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { Ruta } from '@/types';
 import { PilarBadge } from '@/components/ui/PilarBadge';
 import { RutasTabs } from '@/components/rutas/RutasTabs';
@@ -10,12 +11,20 @@ import { RutaGaleria } from '@/components/rutas/RutaGaleria';
 import { RutaTimeline } from '@/components/rutas/RutaTimeline';
 import Image from 'next/image';
 
+// Mapa interactivo (Leaflet) — solo cliente, centrado en esta ruta.
+const MapaInteractivo = dynamic(() => import('@/components/mapa/MapaInteractivo'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full w-full animate-pulse" style={{ background: 'rgba(255,255,255,0.05)' }} />
+  ),
+});
+
 interface RutaDetalleProps {
   ruta: Ruta;
   onClose?: () => void;
 }
 
-type TabId = 'info' | 'puntos' | 'timeline' | 'galeria';
+type TabId = 'info' | 'puntos' | 'mapa' | 'timeline' | 'galeria';
 
 const glassCard = {
   background: 'rgba(255, 255, 255, 0.05)',
@@ -44,6 +53,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
   const tabs = [
     { id: 'info' as TabId, label: 'Información' },
     { id: 'puntos' as TabId, label: 'Paradas' },
+    { id: 'mapa' as TabId, label: 'Mapa' },
     { id: 'timeline' as TabId, label: 'Itinerario' },
     { id: 'galeria' as TabId, label: 'Galería' },
   ];
@@ -207,6 +217,14 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
           )}
 
           {tabActivo === 'puntos' && <RutaPuntos puntos={ruta.puntos} />}
+          {tabActivo === 'mapa' && (
+            <div
+              className="relative isolate h-[440px] overflow-hidden rounded-2xl sm:h-[540px]"
+              style={glassCard}
+            >
+              <MapaInteractivo key={ruta.id} rutaId={ruta.id} />
+            </div>
+          )}
           {tabActivo === 'timeline' && <RutaTimeline puntos={ruta.puntos} duracionTotal={ruta.duracion} />}
           {tabActivo === 'galeria' && <RutaGaleria imagenes={ruta.galeria} nombreRuta={ruta.nombre} />}
         </motion.div>

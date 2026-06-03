@@ -70,7 +70,7 @@ export const InversoresSection: React.FC = () => {
   ];
 
   return (
-    <section className="section bg-[#0A1636] relative overflow-hidden">
+    <section className="section bg-transparent relative overflow-hidden">
       <div className="container-custom relative z-10">
         {/* TITULO */}
         <SectionTitle

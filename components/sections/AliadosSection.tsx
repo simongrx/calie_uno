@@ -112,6 +112,7 @@ export const AliadosSection: React.FC = () => {
                           src={aliado.logo}
                           alt={aliado.nombre}
                           fill
+                          sizes="56px"
                           className="object-contain filter brightness-90 group-hover:brightness-110 transition-all duration-300"
                         />
                       </div>

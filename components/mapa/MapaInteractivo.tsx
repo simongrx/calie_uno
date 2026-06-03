@@ -86,15 +86,22 @@ function MapaRef({ rutasFiltradas, mapRef, pilarFiltro }: MapaRefProps & { pilar
 // COMPONENTE PRINCIPAL
 // ============================================
 type Props = {
-  pilarFiltro: PilarType | null;
+  pilarFiltro?: PilarType | null;
+  /** Si se pasa, el mapa muestra SOLO esa ruta, centrada. */
+  rutaId?: string;
 };
 
-export default function MapaInteractivo({ pilarFiltro }: Props) {
-  const center: [number, number] = [3.4900, -76.4800];
+export default function MapaInteractivo({ pilarFiltro = null, rutaId }: Props) {
+  const rutaUnica = rutaId ? rutas.find((r) => r.id === rutaId) : undefined;
+  const center: [number, number] =
+    (rutaUnica?.puntos?.[0]?.coordenadas as [number, number]) ?? [3.4900, -76.4800];
+  const initialZoom = rutaId ? 13 : 11;
   const [rutaDestacada, setRutaDestacada] = useState<string | null>(null);
   const mapRef = useRef<L.Map | null>(null);
 
-  const rutasFiltradas = pilarFiltro
+  const rutasFiltradas = rutaId
+    ? rutas.filter((r) => r.id === rutaId)
+    : pilarFiltro
     ? rutas.filter((r) => r.pilar === pilarFiltro)
     : rutas;
 
@@ -115,7 +122,7 @@ export default function MapaInteractivo({ pilarFiltro }: Props) {
     <div className="w-full h-full relative">
       <MapContainer
         center={center}
-        zoom={11}
+        zoom={initialZoom}
         scrollWheelZoom={false}
         zoomControl={false}
         className="w-full h-full"
@@ -127,7 +134,7 @@ export default function MapaInteractivo({ pilarFiltro }: Props) {
         />
 
         {/* Ref + ajuste de vista */}
-        <MapaRef rutasFiltradas={rutasFiltradas} mapRef={mapRef} pilarFiltro={null} />
+        <MapaRef rutasFiltradas={rutasFiltradas} mapRef={mapRef} pilarFiltro={rutaId ?? null} />
 
         {/* Rutas */}
         {rutasFiltradas.map((ruta) => {
