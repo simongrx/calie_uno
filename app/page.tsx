@@ -8,6 +8,7 @@ import { PilaresSection } from '@/components/sections/PilaresSection';
 import { RutasSection } from '@/components/sections/RutasSection';
 import { EventosSection } from '@/components/sections/EventosSection';
 import { RestaurantesSection } from '@/components/sections/RestaurantesSection';
+import { NuestraAcademia } from '@/components/sections/NuestraAcademia';
 import { TestimoniosSection } from '@/components/sections/TestimoniosSection';
 import { AliadosSection } from '@/components/sections/AliadosSection';
 import { InversoresSection } from '@/components/sections/InversoresSection';
@@ -42,6 +43,9 @@ export default function Home() {
 
       {/* Restaurantes y Planes */}
       <RestaurantesSection />
+
+      {/* Nuestra Academia */}
+      <NuestraAcademia />
 
       {/* Testimonios */}
       <TestimoniosSection />
