@@ -44,9 +44,7 @@ export const Header: React.FC = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`sticky top-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'py-2 backdrop-blur-2xl bg-[#071229]/75 border-b border-white/10'
-          : 'py-3 backdrop-blur-xl bg-[#071229]/55 border-b border-white/5'
+        isScrolled ? 'py-2' : 'py-3'
       }`}
     >
       <div className="container-custom">
@@ -91,7 +89,7 @@ export const Header: React.FC = () => {
                   relative
                   px-4
                   py-2.5
-                  rounded-2xl
+                  rounded-full
                   whitespace-nowrap
                   text-white/80
                   hover:text-white
@@ -110,10 +108,10 @@ export const Header: React.FC = () => {
                 `}
                 style={{
                   fontFamily: 'Outfit, sans-serif',
-                  background: 'rgba(255,255,255,0.06)',
+                  background: 'rgba(255,255,255,0.08)',
                   backdropFilter: 'blur(16px)',
                   WebkitBackdropFilter: 'blur(16px)',
-                  boxShadow: '0 4px 18px rgba(0,0,0,0.18)',
+                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 18px rgba(0,0,0,0.18)',
                 }}
               >
                 {/* brillo interno */}
@@ -136,7 +134,7 @@ export const Header: React.FC = () => {
                   className="
                     absolute
                     inset-0
-                    rounded-2xl
+                    rounded-full
                     border
                     border-white/5
                     group-hover:border-red-400/20
@@ -187,7 +185,7 @@ export const Header: React.FC = () => {
                 inline-flex
                 items-center
                 gap-2
-                rounded-2xl
+                rounded-full
                 font-semibold
                 text-white
                 transition-all
@@ -234,7 +232,7 @@ export const Header: React.FC = () => {
             className="
               lg:hidden
               p-3
-              rounded-2xl
+              rounded-full
               text-white
               border
               border-white/10
@@ -311,7 +309,7 @@ export const Header: React.FC = () => {
                       text-left
                       px-5
                       py-3
-                      rounded-2xl
+                      rounded-full
                       text-sm
                       font-medium
                       text-white/80
@@ -345,7 +343,7 @@ export const Header: React.FC = () => {
                     flex
                     items-center
                     justify-center
-                    rounded-2xl
+                    rounded-full
                     py-3
                     text-sm
                     font-semibold

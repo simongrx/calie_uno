@@ -15,11 +15,12 @@ const glassCard: React.CSSProperties = {
 };
 
 const glassActive: React.CSSProperties = {
-  background: 'rgba(255, 41, 0, 0.2)',
-  backdropFilter: 'blur(12px)',
-  WebkitBackdropFilter: 'blur(12px)',
-  border: '1px solid rgba(255, 41, 0, 0.5)',
-  boxShadow: '0 8px 24px rgba(255, 41, 0, 0.2)',
+  background: 'rgba(255, 41, 0, 0.26)',
+  backdropFilter: 'blur(14px)',
+  WebkitBackdropFilter: 'blur(14px)',
+  border: '1px solid rgba(255, 41, 0, 0.55)',
+  borderRadius: '9999px',
+  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.28), 0 8px 24px rgba(255, 41, 0, 0.22)',
 };
 
 const itemVariants: Variants = {
