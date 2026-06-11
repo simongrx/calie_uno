@@ -173,7 +173,7 @@ export const RestaurantesSection: React.FC = () => {
                     key={plan.id}
                     variants={itemVariants}
                     whileHover={{ y: -8 }}
-                    className="rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
+                    className="spotlight-card rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
                     style={glassCard}
                   >
                     <div className="relative h-48 sm:h-56 overflow-hidden">

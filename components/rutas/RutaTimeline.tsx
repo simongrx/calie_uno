@@ -27,8 +27,8 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
   return (
     <div className="max-w-3xl mx-auto">
       {/* Header */}
-      <div className="flex items-center gap-3 mb-8 p-4 rounded-2xl" style={glassCard}>
-        <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+      <div className="spotlight-card flex items-center gap-3 mb-8 p-4 rounded-2xl" style={glassCard}>
+        <div className="spotlight-card w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
           style={{ background: 'rgba(255, 41, 0,0.2)', border: '1px solid rgba(255, 41, 0,0.4)' }}>
           <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -63,7 +63,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
               <div className="relative z-10 flex-shrink-0">
                 <motion.div
                   whileHover={{ scale: 1.2 }}
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
+                  className="spotlight-card w-12 h-12 rounded-full flex items-center justify-center"
                   style={{
                     background: 'rgba(255, 41, 0,0.2)',
                     border: '2px solid rgba(255, 41, 0,0.6)',
@@ -75,7 +75,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
                   </svg>
                 </motion.div>
                 {/* Número */}
-                <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                <div className="spotlight-card absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white"
                   style={{ background: 'rgba(255, 41, 0,0.9)' }}>
                   {index + 1}
                 </div>
@@ -83,7 +83,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
 
               {/* Contenido */}
               <div className="flex-1 pb-2">
-                <div className="grid sm:grid-cols-3 gap-4 p-5 rounded-2xl group hover:border-red-600/30 transition-all duration-300"
+                <div className="spotlight-card grid sm:grid-cols-3 gap-4 p-5 rounded-2xl group hover:border-red-600/30 transition-all duration-300"
                   style={glassCard}>
                   {/* Imagen */}
                   <div className="relative h-28 sm:h-full rounded-xl overflow-hidden">
@@ -103,7 +103,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
                     {punto.detalles && (
                       <p className="text-xs text-white/40 leading-relaxed">{punto.detalles}</p>
                     )}
-                    <span className="inline-block mt-3 text-xs px-2.5 py-1 rounded-full capitalize"
+                    <span className="spotlight-card inline-block mt-3 text-xs px-2.5 py-1 rounded-full capitalize"
                       style={{ background: 'rgba(255, 41, 0,0.15)', border: '1px solid rgba(255, 41, 0,0.3)', color: 'rgba(255, 41, 0,0.9)' }}>
                       {punto.tipo}
                     </span>
@@ -131,7 +131,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
             viewport={{ once: true }}
             className="relative flex gap-6 items-center"
           >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10"
+            <div className="spotlight-card w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10"
               style={{ background: 'rgba(34,197,94,0.2)', border: '2px solid rgba(34,197,94,0.5)' }}>
               <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

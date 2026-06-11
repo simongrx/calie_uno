@@ -134,7 +134,7 @@ export const PilaresSection: React.FC = () => {
               whileTap={{ scale: 0.99 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
               style={{ backgroundImage: pilar.gradient, willChange: 'transform' }}
-              className={`group relative flex flex-col overflow-hidden rounded-2xl p-5 text-center text-white shadow-lg sm:p-6 ${pilar.span}`}
+              className={`spotlight-card group relative flex flex-col overflow-hidden rounded-2xl p-5 text-center text-white shadow-lg sm:p-6 ${pilar.span}`}
             >
               {/* Ícono decorativo de fondo */}
               <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 opacity-10 transition-opacity duration-300 group-hover:opacity-20">
@@ -143,7 +143,7 @@ export const PilaresSection: React.FC = () => {
 
               {/* Contenido centrado */}
               <div className="relative flex min-h-0 flex-1 flex-col items-center justify-center">
-                <div className="mb-3 inline-flex rounded-xl bg-white/15 p-2.5 backdrop-blur-sm [&>svg]:h-7 [&>svg]:w-7">
+                <div className="spotlight-card mb-3 inline-flex rounded-xl bg-white/15 p-2.5 backdrop-blur-sm [&>svg]:h-7 [&>svg]:w-7">
                   {pilar.icono}
                 </div>
                 <h3 className={`mb-2 font-bold ${pilar.large ? 'text-3xl sm:text-4xl' : 'text-xl sm:text-2xl'}`}>
@@ -156,7 +156,7 @@ export const PilaresSection: React.FC = () => {
 
               {/* Footer: stat + explorar */}
               <div className="relative mt-auto flex items-center justify-between gap-2 pt-3">
-                <span className="rounded-full bg-white/15 px-5 py-1.5 text-sm font-semibold backdrop-blur-sm">
+                <span className="spotlight-card rounded-full bg-white/15 px-5 py-1.5 text-sm font-semibold backdrop-blur-sm">
                   {pilar.stat}
                 </span>
                 <span className="inline-flex items-center gap-1 text-sm font-semibold">

@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { SectionTitle } from '@/components/ui/SectionTitle';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { MagnifiedBento } from '@/components/ui/magnified-bento';
 
-const glassCard = {
+const glassCard: React.CSSProperties = {
   background: 'rgba(10, 22, 54, 0.55)',
   backdropFilter: 'blur(18px)',
   WebkitBackdropFilter: 'blur(18px)',
@@ -13,291 +13,148 @@ const glassCard = {
   boxShadow: '0 8px 32px rgba(0,0,0,0.35)',
 };
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20, scale: 0.97 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+};
+
+// Iconos SVG inline (sin dependencias)
+const icoInfra = (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21h18M5 21V8m4 13V8m6 13V8m4 13V8M3 8l9-5 9 5" /></svg>
+);
+const icoExp = (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3l1.5 4L11 8.5 6.5 10 5 14l-1.5-4L-1 8.5 3.5 7 5 3zM17 10l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3z" /></svg>
+);
+const icoPlataforma = (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17.25V21m6-3.75V21M4.5 3h15a1.5 1.5 0 011.5 1.5v10A1.5 1.5 0 0119.5 16h-15A1.5 1.5 0 013 14.5v-10A1.5 1.5 0 014.5 3z" /></svg>
+);
+const icoCapacit = (
+  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5zm0 0v7m-5-9.2v4.2c0 1.1 2.24 2 5 2s5-.9 5-2v-4.2" /></svg>
+);
+
+const lineas = [
+  { titulo: 'Infraestructura', roi: '+400%', plazo: '24-36 meses', icon: icoInfra },
+  { titulo: 'Experiencias', roi: '+300%', plazo: '12-18 meses', icon: icoExp },
+  { titulo: 'Plataforma Digital', roi: '+250%', plazo: '18-24 meses', icon: icoPlataforma },
+  { titulo: 'Capacitación', roi: '+150%', plazo: '6-12 meses', icon: icoCapacit },
+];
+
+const temas = [
+  ['Experiencias Inmersivas', 'Plataforma Digital', 'Infraestructura', 'Capacitación'],
+  ['Eco-hospedajes', 'Bienestar', 'Cultura', 'Gastronomía'],
+  ['Tecnología', 'Sostenibilidad', 'Empleo Local', 'Comunidades'],
+];
+
+function StatBox({ num, label }: { num: string; label: string }) {
+  return (
+    <motion.div
+      variants={itemVariants}
+      whileHover={{ y: -4 }}
+      className="spotlight-card col-span-1 flex flex-col justify-center rounded-3xl p-5 text-center"
+      style={glassCard}
+    >
+      <span className="text-gradient-brand text-3xl font-extrabold sm:text-4xl">{num}</span>
+      <p className="mt-1.5 text-xs leading-snug text-white/60 sm:text-sm">{label}</p>
+    </motion.div>
+  );
+}
+
 export const InversoresSection: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
-  const oportunidades = [
-    {
-      id: 'experiencias',
-      titulo: 'Experiencias Inmersivas',
-      descripcion:
-        'Desarrollo de rutas premium y experiencias personalizadas de alto valor',
-      roi: '+300%',
-      plazo: '12-18 meses',
-    },
-    {
-      id: 'tecnologia',
-      titulo: 'Plataforma Digital',
-      descripcion:
-        'App móvil y web con reservas, pagos y recomendaciones en tiempo real',
-      roi: '+250%',
-      plazo: '18-24 meses',
-    },
-    {
-      id: 'infraestructura',
-      titulo: 'Infraestructura Turística',
-      descripcion:
-        'Eco-hospedajes, centros de bienestar y espacios culturales sostenibles',
-      roi: '+400%',
-      plazo: '24-36 meses',
-    },
-    {
-      id: 'capacitacion',
-      titulo: 'Capacitación y Empleo',
-      descripcion:
-        'Programas de formación turística y generación de empleo local sostenible',
-      roi: '+150%',
-      plazo: '6-12 meses',
-    },
-  ];
-
   return (
     <section className="section bg-transparent relative overflow-hidden">
       <div className="container-custom relative z-10">
-        {/* TITULO */}
         <SectionTitle
           titulo="Oportunidades de Inversión"
-          subtitulo="Sé parte de una iniciativa de impacto con retorno financiero sostenible"
+          subtitulo="Una iniciativa de impacto con retorno financiero sostenible en el turismo experiencial del Valle"
           alineacion="center"
           conLinea={true}
-          className="mb-12 sm:mb-16"
+          className="mb-10 sm:mb-14"
         />
 
-        {/* CONTENEDOR PRINCIPAL */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="rounded-3xl py-10 px-6 sm:px-10 lg:px-14 mb-14 sm:mb-20 max-w-7xl mx-auto"
-          style={glassCard}
-        >
-          <div className="grid lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
-            {/* IZQUIERDA */}
-            <div className="w-full flex justify-center lg:justify-end">
-              <div className="w-full max-w-xl text-right px-4 sm:px-8 py-4">
-                <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
-                  Turismo Experiencial es el Futuro
-                </h3>
-
-                <p className="text-sm sm:text-base text-white/75 mb-8 leading-relaxed ml-auto max-w-lg">
-                  El mercado global de turismo experiencial crece a +12% anual.
-                  Cali y el Valle del Cauca poseen los activos culturales,
-                  gastronómicos y naturales para convertirse en destino de clase mundial.
-                </p>
-
-                <ul className="space-y-4">
-                  {[
-                    'Mercado regional de 2M+ de turistas anuales',
-                    'Infraestructura aeroportuaria de clase mundial',
-                    'Comunidades comprometidas con sostenibilidad',
-                    'Diversidad única de experiencias',
-                  ].map((item, i) => (
-                    <motion.li
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 + i * 0.1 }}
-                      viewport={{ once: true }}
-                      className="text-white/80 leading-relaxed text-sm sm:text-base"
-                    >
-                      {item}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* DERECHA */}
-            <div className="w-full flex justify-center">
-              <div
-                className="rounded-3xl py-10 px-6 sm:px-10 w-full max-w-2xl"
-                style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                }}
-              >
-                <h4 className="text-2xl font-bold text-red-400 mb-8 text-center">
-                  Números que Hablan
-                </h4>
-
-                <div className="space-y-8">
-                  <div>
-                    <div className="flex justify-between mb-3">
-                      <span className="font-semibold text-white/80">
-                        Demanda Turística
-                      </span>
-
-                      <span className="text-red-500 font-bold">
-                        85%
-                      </span>
-                    </div>
-
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '85%' }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: true }}
-                        className="h-full bg-red-500 rounded-full"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between mb-3">
-                      <span className="font-semibold text-white/80">
-                        Potencial de Crecimiento
-                      </span>
-
-                      <span className="text-red-500 font-bold">
-                        +300%
-                      </span>
-                    </div>
-
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '100%' }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: true }}
-                        className="h-full bg-red-500 rounded-full"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between mb-3">
-                      <span className="font-semibold text-white/80">
-                        Sostenibilidad
-                      </span>
-
-                      <span className="text-red-500 font-bold">
-                        100%
-                      </span>
-                    </div>
-
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '100%' }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: true }}
-                        className="h-full bg-red-500 rounded-full"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-
-        {/* TITULO */}
-        <h3 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12 sm:mb-16">
-          Líneas de Inversión Prioritarias
-        </h3>
-
-        {/* GRID */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mb-24 max-w-6xl mx-auto"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mx-auto grid max-w-6xl auto-rows-[164px] grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4"
         >
-          {oportunidades.map((oportunidad) => (
-            <ScrollReveal key={oportunidad.id} direction="up">
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ y: -6 }}
-                className="rounded-3xl min-h-[320px] px-8 sm:px-12 py-12 transition-all duration-300 flex items-center justify-center text-center"
-                style={glassCard}
-              >
-                <div className="w-full max-w-sm mx-auto flex flex-col items-center justify-center">
-                  <h4 className="text-2xl font-bold text-red-400 mb-6 leading-snug">
-                    {oportunidad.titulo}
-                  </h4>
+          {/* Lente interactivo — Focos de inversión (grande) */}
+          <motion.div variants={itemVariants} className="col-span-2 row-span-2">
+            <MagnifiedBento
+              title="Focos de Inversión"
+              description="Arrastra la lupa para explorar las áreas donde construimos valor."
+              rows={temas}
+              className="h-full"
+            />
+          </motion.div>
 
-                  <p className="text-white/70 leading-relaxed text-sm sm:text-base mb-10">
-                    {oportunidad.descripcion}
-                  </p>
+          {/* +12% crecimiento (ancho) */}
+          <motion.div
+            variants={itemVariants}
+            className="spotlight-card col-span-2 flex flex-col justify-center rounded-3xl p-6"
+            style={glassCard}
+          >
+            <span className="text-gradient-brand text-4xl font-extrabold sm:text-5xl">+12%</span>
+            <p className="mt-2 text-sm text-white/70">Crecimiento anual del turismo experiencial global</p>
+          </motion.div>
 
-                  <div className="grid grid-cols-2 gap-8 pt-6 border-t border-white/10 w-full">
-                    <div className="text-center">
-                      <p className="text-sm text-red-400 mb-2">
-                        ROI Estimado
-                      </p>
+          {/* Stats */}
+          <StatBox num="2M+" label="Turistas/año en la región" />
+          <StatBox num="100%" label="Enfoque sostenible" />
 
-                      <p className="text-2xl font-bold text-red-500">
-                        {oportunidad.roi}
-                      </p>
-                    </div>
-
-                    <div className="text-center">
-                      <p className="text-sm text-red-400 mb-2">
-                        Plazo
-                      </p>
-
-                      <p className="text-base font-semibold text-white">
-                        {oportunidad.plazo}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </ScrollReveal>
+          {/* 4 líneas de inversión */}
+          {lineas.map((l) => (
+            <motion.div
+              key={l.titulo}
+              variants={itemVariants}
+              whileHover={{ y: -4 }}
+              className="spotlight-card group col-span-1 flex flex-col justify-between rounded-3xl p-5"
+              style={glassCard}
+            >
+              <div className="flex items-start justify-between">
+                <span
+                  className="inline-flex rounded-xl p-2 text-brand-orange transition-transform duration-300 group-hover:scale-110 [&>svg]:h-5 [&>svg]:w-5"
+                  style={{ background: 'rgba(255,41,0,0.12)' }}
+                >
+                  {l.icon}
+                </span>
+                <span className="text-gradient-brand text-2xl font-extrabold sm:text-3xl">{l.roi}</span>
+              </div>
+              <div>
+                <h4 className="text-sm font-bold leading-snug text-white sm:text-base">{l.titulo}</h4>
+                <p className="mt-1 text-xs text-white/45">ROI estimado · {l.plazo}</p>
+              </div>
+            </motion.div>
           ))}
-        </motion.div>
 
+          {/* 85% demanda */}
+          <StatBox num="85%" label="Demanda turística insatisfecha" />
 
-        {/* TITULO */}
-        <h3 className="text-2xl sm:text-3xl font-bold text-center text-white mb-12 sm:mb-16">
-          Por Qué Invertir en Cali Enamora
-        </h3>
-
-        {/* CAJA UNICA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="rounded-3xl py-12 px-8 sm:px-14 text-center max-w-6xl mx-auto"
-          style={glassCard}
-        >
-        <div className="w-full flex flex-col items-center justify-center text-center px-4 sm:px-10">            
-            <h4 className="text-2xl sm:text-3xl font-bold text-red-400 mb-8">
-              Un Proyecto con Impacto Real y Potencial Global
-            </h4>
-
-              <p className="text-white/75 leading-relaxed text-sm sm:text-lg text-center max-w-5xl">              
-              Cali Enamora representa una oportunidad estratégica para invertir en el
-              crecimiento del turismo experiencial del Valle del Cauca, integrando
-              innovación, cultura, sostenibilidad y desarrollo económico. Nuestro enfoque
-              conecta comunidades locales, experiencias auténticas y tecnología para
-              construir un modelo turístico rentable, escalable y con impacto social
-              positivo a largo plazo.
-            </p>
-          </div>
+          {/* CTA */}
+          <motion.div
+            variants={itemVariants}
+            className="spotlight-card col-span-2 flex flex-col items-start justify-center gap-4 rounded-3xl p-6 sm:flex-row sm:items-center sm:justify-between lg:col-span-3"
+            style={glassCard}
+          >
+            <div>
+              <h4 className="text-lg font-bold text-white sm:text-xl">Impacto real, potencial global</h4>
+              <p className="mt-1 max-w-xl text-sm text-white/60">
+                Un modelo turístico rentable, escalable y con impacto social positivo a largo plazo.
+              </p>
+            </div>
+            <motion.a
+              href="#contacto"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="btn-glass-primary shrink-0"
+            >
+              Conversemos
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

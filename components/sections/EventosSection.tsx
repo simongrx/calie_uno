@@ -109,7 +109,7 @@ export const EventosSection: React.FC = () => {
           <div className="mb-12 sm:mb-16">
             <RevealText type="horizontal">
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-8 flex items-center gap-3">
-                <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse inline-block" />
+                <span className="spotlight-card w-3 h-3 rounded-full bg-red-500 animate-pulse inline-block" />
                 En Vivo Ahora
               </h3>
             </RevealText>
@@ -126,7 +126,7 @@ export const EventosSection: React.FC = () => {
                   key={evento.id}
                   variants={itemVariants}
                   whileHover={{ y: -8 }}
-                  className="rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
+                  className="spotlight-card rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full"
                   style={glassCard}
                 >
                   <div className="relative h-48 sm:h-56 overflow-hidden flex-shrink-0">

@@ -13,14 +13,18 @@ import { TestimoniosSection } from '@/components/sections/TestimoniosSection';
 import { AliadosSection } from '@/components/sections/AliadosSection';
 import { InversoresSection } from '@/components/sections/InversoresSection';
 import { ContactoSection } from '@/components/sections/ContactoSection';
-import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import { SpotlightProvider } from '@/components/ui/SpotlightProvider';
 // import Debug from './debug';
 
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      {/* Fondo global animado en scroll (detrás de todo) */}
-      <AnimatedBackground />
+      {/* Fondo aurora global (detrás de todo) */}
+      <AuroraBackground />
+
+      {/* Listener único para el efecto spotlight de las cards */}
+      <SpotlightProvider />
 
       {/* <Debug /> */}
 

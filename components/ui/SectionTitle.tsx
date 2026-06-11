@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ScrollFloatText } from '@/components/ui/scroll-float-text';
 
 export interface SectionTitleProps {
   titulo: string;
@@ -45,7 +46,7 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className={`h-0.5 bg-gradient-brand rounded-full ${alineacion === 'center' ? 'w-16' : 'w-12'}`}
+          className={`spotlight-card h-0.5 bg-gradient-brand rounded-full ${alineacion === 'center' ? 'w-16' : 'w-12'}`}
           style={{ originX: alineacion === 'right' ? 1 : 0 }}
         />
       )}
@@ -56,10 +57,10 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className={`text-3xl sm:text-4xl lg:text-5xl text-white ${alignmentClass[alineacion]}`}
+        className={`text-3xl sm:text-4xl lg:text-5xl text-brand-orange ${alignmentClass[alineacion]}`}
         style={{ fontFamily: 'Molle, cursive', fontStyle: 'italic', fontWeight: 400 }}
       >
-        {titulo}
+        <ScrollFloatText text={titulo} />
       </motion.h2>
 
       {/* Subtítulo — Outfit */}

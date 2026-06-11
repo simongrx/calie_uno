@@ -137,19 +137,19 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
             <div className="grid lg:grid-cols-3 gap-6">
               {/* Descripción */}
               <div className="lg:col-span-2 space-y-10">
-                <div className="p-8 rounded-2xl" style={glassCard}>
+                <div className="spotlight-card p-8 rounded-2xl" style={glassCard}>
                   <h3 className="text-lg font-bold text-white mb-3">Sobre esta ruta</h3>
                   <p className="text-white/70 leading-relaxed">{ruta.descripcionLarga}</p>
                 </div>
 
                 {/* Objetivo */}
-                <div className="p-8 rounded-2xl" style={glassCard}>
+                <div className="spotlight-card p-8 rounded-2xl" style={glassCard}>
                   <h3 className="text-lg font-bold text-white mb-3">Objetivo</h3>
                   <p className="text-white/70 leading-relaxed">{ruta.objetivo}</p>
                 </div>
 
                 {/* Recomendaciones */}
-                <div className="p-8 rounded-2xl" style={glassCard}>
+                <div className="spotlight-card p-8 rounded-2xl" style={glassCard}>
                   <h3 className="text-lg font-bold text-white mb-4">Recomendaciones</h3>
                   <ul className="space-y-3">
                     {ruta.recomendaciones.map((rec, i) => (
@@ -168,7 +168,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
               {/* Sidebar */}
               <div className="space-y-4">
                 {/* Detalles rápidos */}
-                <div className="p-6 rounded-2xl" style={glassCard}>
+                <div className="spotlight-card p-6 rounded-2xl" style={glassCard}>
                   <h3 className="text-lg font-bold text-white mb-4">Detalles</h3>
                   <div className="space-y-4">
                     {[
@@ -193,7 +193,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
 
                 {/* Incluye */}
                 {ruta.incluye && ruta.incluye.length > 0 && (
-                  <div className="p-6 rounded-2xl" style={glassCard}>
+                  <div className="spotlight-card p-6 rounded-2xl" style={glassCard}>
                     <h3 className="text-lg font-bold text-white mb-4">Incluye</h3>
                     <ul className="space-y-2">
                       {ruta.incluye.map((item, i) => (

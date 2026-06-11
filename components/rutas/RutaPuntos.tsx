@@ -55,7 +55,7 @@ export const RutaPuntos: React.FC<RutaPuntosProps> = ({ puntos }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="rounded-2xl overflow-hidden cursor-pointer group"
+            className="spotlight-card rounded-2xl overflow-hidden cursor-pointer group"
             style={glassCard}
             onClick={() => setPuntoActivo(isOpen ? null : punto.id)}
           >
@@ -70,13 +70,13 @@ export const RutaPuntos: React.FC<RutaPuntosProps> = ({ puntos }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
               {/* Número */}
-              <div className="absolute top-4 left-4 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
+              <div className="spotlight-card absolute top-4 left-4 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
                 style={{ background: 'rgba(255, 41, 0,0.7)', backdropFilter: 'blur(8px)' }}>
                 {index + 1}
               </div>
 
               {/* Tipo badge */}
-              <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold"
+              <div className="spotlight-card absolute top-4 right-4 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold"
                 style={{ background: config.bg, border: `1px solid ${config.border}`, backdropFilter: 'blur(8px)' }}>
                 <svg className={`w-3 h-3 ${config.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={config.icon} />

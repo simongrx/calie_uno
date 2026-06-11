@@ -83,11 +83,11 @@ export const EventosTimeline: React.FC<EventosTimelineProps> = ({ eventos }) => 
               {/* Nodo */}
               <span className="absolute left-[22px] top-6 z-10 flex -translate-x-1/2 items-center justify-center sm:left-7">
                 <span
-                  className="absolute h-5 w-5 animate-ping rounded-full"
+                  className="spotlight-card absolute h-5 w-5 animate-ping rounded-full"
                   style={{ background: hex, opacity: 0.35 }}
                 />
                 <span
-                  className="h-4 w-4 rounded-full border-2 border-white/80"
+                  className="spotlight-card h-4 w-4 rounded-full border-2 border-white/80"
                   style={{ background: hex, boxShadow: `0 0 12px ${hex}` }}
                 />
               </span>
@@ -96,7 +96,7 @@ export const EventosTimeline: React.FC<EventosTimelineProps> = ({ eventos }) => 
               <motion.div
                 whileHover={{ y: -4, scale: 1.01 }}
                 transition={{ duration: 0.3 }}
-                className="group flex flex-col overflow-hidden rounded-2xl sm:flex-row"
+                className="spotlight-card group flex flex-col overflow-hidden rounded-2xl sm:flex-row"
                 style={glassCard}
               >
                 {/* Thumbnail */}

@@ -132,7 +132,7 @@ export const RutasSection: React.FC = () => {
                   <motion.div
                     variants={itemVariants}
                     whileHover={{ y: -8 }}
-                    className="h-full rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col"
+                    className="spotlight-card h-full rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col"
                     style={glassCard}
                   >
                     {/* Imagen */}

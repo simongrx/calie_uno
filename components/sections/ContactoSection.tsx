@@ -93,8 +93,8 @@ export const ContactoSection: React.FC = () => {
       className="section bg-transparent relative overflow-hidden"
     >
       {/* EFECTOS */}
-      <div className="absolute top-20 right-10 w-40 h-40 bg-red-600/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-40 h-40 bg-yellow-400/5 rounded-full blur-3xl" />
+      <div className="spotlight-card absolute top-20 right-10 w-40 h-40 bg-red-600/5 rounded-full blur-3xl" />
+      <div className="spotlight-card absolute bottom-20 left-10 w-40 h-40 bg-yellow-400/5 rounded-full blur-3xl" />
 
       <div className="container-custom relative z-10">
 
@@ -108,7 +108,7 @@ export const ContactoSection: React.FC = () => {
         />
 
         {/* CONTENEDOR PRINCIPAL */}
-        <div className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 sm:p-10 lg:p-14 max-w-7xl mx-auto">
+        <div className="spotlight-card rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-md p-6 sm:p-10 lg:p-14 max-w-7xl mx-auto">
 
           {/* GRID */}
           <div className="grid lg:grid-cols-3 gap-10 lg:gap-14">
@@ -138,7 +138,7 @@ export const ContactoSection: React.FC = () => {
                     whileHover={{ y: -4 }}
                     className="block mb-5"
                   >
-                    <div className="rounded-2xl bg-slate-800 border border-slate-700 hover:border-red-600 transition-all p-5 sm:p-6">
+                    <div className="spotlight-card rounded-2xl bg-slate-800 border border-slate-700 hover:border-red-600 transition-all p-5 sm:p-6">
 
                       <h4 className="font-bold text-white text-base sm:text-lg mb-2">
                         {item.titulo}
@@ -159,7 +159,7 @@ export const ContactoSection: React.FC = () => {
               {/* REDES */}
               <motion.div
                 variants={itemVariants}
-                className="rounded-2xl bg-gradient-to-br from-red-600 to-red-700 text-white p-6 sm:p-7"
+                className="spotlight-card rounded-2xl bg-gradient-to-br from-red-600 to-red-700 text-white p-6 sm:p-7"
               >
                 <h4 className="font-bold mb-5 text-base sm:text-lg text-center">
                   Síguenos en Redes Sociales
@@ -215,7 +215,7 @@ export const ContactoSection: React.FC = () => {
               viewport={{ once: true }}
               className="lg:col-span-2"
             >
-              <div className="rounded-3xl bg-slate-800 border border-slate-700 shadow-2xl p-6 sm:p-8 lg:p-10">
+              <div className="spotlight-card rounded-3xl bg-slate-800 border border-slate-700 shadow-2xl p-6 sm:p-8 lg:p-10">
 
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
                   Envíanos un Mensaje
@@ -359,7 +359,7 @@ export const ContactoSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="rounded-3xl overflow-hidden shadow-2xl h-72 sm:h-96 lg:h-[500px] border border-white/10 max-w-7xl mx-auto"
+          className="spotlight-card rounded-3xl overflow-hidden shadow-2xl h-72 sm:h-96 lg:h-[500px] border border-white/10 max-w-7xl mx-auto"
         >
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.5277090430447!2d-76.53450792346993!3d3.4372160405819957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0cc33e215%3A0xf556f0c321e4c22d!2sCali%2C%20Colombia!5e0!3m2!1ses!2sco!4v1234567890"

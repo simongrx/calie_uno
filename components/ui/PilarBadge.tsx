@@ -65,7 +65,7 @@ export const PilarBadge: React.FC<PilarBadgeProps> = ({
     <div
       onClick={onClick}
       className={`
-        inline-flex items-center gap-1.5 rounded-full font-semibold
+        spotlight-card inline-flex items-center gap-1.5 rounded-full font-semibold
         border-2 transition-all duration-300 cursor-pointer
         ${config.bgColor} ${config.textColor} ${config.borderColor}
         ${config.hoverColor} ${size} ${className}

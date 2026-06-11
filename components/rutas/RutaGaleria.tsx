@@ -50,7 +50,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
               transition={{ delay: index * 0.08, duration: 0.4 }}
               whileHover={{ scale: 1.02 }}
               onClick={() => setImagenAmpliada(index)}
-              className="relative rounded-xl overflow-hidden cursor-pointer group"
+              className="spotlight-card relative rounded-xl overflow-hidden cursor-pointer group"
               style={{
                 gridColumn: `span ${colSpan}`,
                 gridRow: `span ${rowSpan}`,
@@ -109,7 +109,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
 
               {/* Controles */}
               <div className="absolute top-4 right-4 flex gap-2">
-                <span className="text-white/60 text-sm px-5 py-1 rounded-full"
+                <span className="spotlight-card text-white/60 text-sm px-5 py-1 rounded-full"
                   style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)' }}>
                   {imagenAmpliada + 1} / {imagenes.length}
                 </span>

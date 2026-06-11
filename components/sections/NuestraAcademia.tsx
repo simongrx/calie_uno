@@ -193,10 +193,10 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
               key={card.titulo}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              className="flex flex-col items-center rounded-2xl p-6 text-center transition-colors duration-300 sm:p-7"
+              className="spotlight-card flex flex-col items-center rounded-2xl p-6 text-center transition-colors duration-300 sm:p-7"
               style={glassCard}
             >
-              <div className="mb-4 inline-flex rounded-xl p-3 text-brand-orange [&>svg]:h-8 [&>svg]:w-8" style={{ background: 'rgba(255, 41, 0, 0.12)' }}>
+              <div className="spotlight-card mb-4 inline-flex rounded-xl p-3 text-brand-orange [&>svg]:h-8 [&>svg]:w-8" style={{ background: 'rgba(255, 41, 0, 0.12)' }}>
                 {card.icono}
               </div>
               <h3 className="mb-2 text-lg font-bold text-white">{card.titulo}</h3>
@@ -237,10 +237,10 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                     key={pilar.titulo}
                     variants={itemVariants}
                     whileHover={{ y: -6 }}
-                    className="group flex h-full flex-col items-center rounded-2xl border border-transparent p-6 text-center transition-all duration-300 hover:border-[rgba(255,41,0,0.4)] hover:shadow-[0_0_40px_rgba(255,41,0,0.18)]"
+                    className="spotlight-card group flex h-full flex-col items-center rounded-2xl border border-transparent p-6 text-center transition-all duration-300 hover:border-[rgba(255,41,0,0.4)] hover:shadow-[0_0_40px_rgba(255,41,0,0.18)]"
                     style={glassCard}
                   >
-                    <div className="mb-4 inline-flex rounded-xl p-3 text-brand-orange transition-transform duration-300 group-hover:scale-110 [&>svg]:h-7 [&>svg]:w-7" style={{ background: 'rgba(255, 41, 0, 0.12)' }}>
+                    <div className="spotlight-card mb-4 inline-flex rounded-xl p-3 text-brand-orange transition-transform duration-300 group-hover:scale-110 [&>svg]:h-7 [&>svg]:w-7" style={{ background: 'rgba(255, 41, 0, 0.12)' }}>
                       {pilar.icono}
                     </div>
                     <h4 className="mb-2 text-base font-bold leading-snug text-white">{pilar.titulo}</h4>
@@ -265,11 +265,11 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                 <React.Fragment key={fase.titulo}>
                   <motion.div
                     whileHover={{ y: -6 }}
-                    className="flex flex-1 flex-col items-center rounded-2xl p-7 text-center transition-all duration-300"
+                    className="spotlight-card flex flex-1 flex-col items-center rounded-2xl p-7 text-center transition-all duration-300"
                     style={fase.activa ? glassFaseActiva : glassCard}
                   >
                     <span
-                      className="mb-4 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white"
+                      className="spotlight-card mb-4 flex h-12 w-12 items-center justify-center rounded-full text-lg font-bold text-white"
                       style={fase.activa ? { background: '#FF2900' } : { background: 'rgba(255,255,255,0.1)' }}
                     >
                       {fase.numero}
@@ -277,7 +277,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                     <h4 className="mb-2 text-xl font-bold text-white">{fase.titulo}</h4>
                     <p className="text-sm text-white/60">{fase.descripcion}</p>
                     {fase.activa && (
-                      <span className="mt-4 rounded-full px-4 py-1 text-xs font-semibold text-brand-orange" style={{ background: 'rgba(255,41,0,0.18)' }}>
+                      <span className="spotlight-card mt-4 rounded-full px-4 py-1 text-xs font-semibold text-brand-orange" style={{ background: 'rgba(255,41,0,0.18)' }}>
                         Fase activa
                       </span>
                     )}
@@ -308,7 +308,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                     key={m.label}
                     variants={itemVariants}
                     whileHover={{ scale: 1.04, y: -4 }}
-                    className="flex flex-col items-center justify-center rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,41,0,0.18)]"
+                    className="spotlight-card flex flex-col items-center justify-center rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,41,0,0.18)]"
                     style={glassCard}
                   >
                     <span className="text-gradient-brand mb-2 text-4xl font-extrabold sm:text-5xl">{m.valor}</span>
@@ -326,7 +326,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="mt-16 flex flex-col items-center rounded-2xl p-8 text-center sm:mt-20 sm:p-12"
+          className="spotlight-card mt-16 flex flex-col items-center rounded-2xl p-8 text-center sm:mt-20 sm:p-12"
           style={glassCard}
         >
           <h3 className="mb-3 text-2xl font-bold text-white sm:text-3xl">

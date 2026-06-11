@@ -50,7 +50,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
       whileHover={{ y: -8 }}
       onHoverStart={() => setPreview(true)}
       onHoverEnd={() => setPreview(false)}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300"
+      className="spotlight-card group relative flex h-full flex-col overflow-hidden rounded-2xl transition-all duration-300"
       style={glassCard}
     >
       {/* ---------- Card base ---------- */}
@@ -66,7 +66,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
         <div className="absolute right-4 top-4 z-10 flex flex-col gap-2">
           {restaurante.trending && (
             <div
-              className="animate-pulse rounded-full px-5 py-1 text-xs font-bold text-white"
+              className="spotlight-card animate-pulse rounded-full px-5 py-1 text-xs font-bold text-white"
               style={{ background: 'rgba(255, 41, 0,0.8)', backdropFilter: 'blur(8px)' }}
             >
               Trending
@@ -74,7 +74,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
           )}
           {restaurante.nuevo && (
             <div
-              className="rounded-full px-5 py-1 text-xs font-bold text-white"
+              className="spotlight-card rounded-full px-5 py-1 text-xs font-bold text-white"
               style={{ background: 'rgba(59,130,246,0.8)', backdropFilter: 'blur(8px)' }}
             >
               Nuevo
@@ -141,7 +141,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
               {restaurante.especialidad.slice(0, 4).map((esp) => (
                 <span
                   key={esp}
-                  className="rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white/80"
+                  className="spotlight-card rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white/80"
                 >
                   {esp}
                 </span>

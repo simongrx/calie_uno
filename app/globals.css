@@ -359,6 +359,42 @@
   border-color: rgba(255, 255, 255, 0.20);
 }
 
+/* ============================================
+   SPOTLIGHT CARD — borde-glow que sigue el cursor (no destructivo)
+   Lee --x/--y de :root (escritos por SpotlightProvider, un solo listener).
+   Se puede añadir a cualquier card/caja/badge sin tocar su fondo ni su tamaño.
+   ============================================ */
+:root { --x: 0; --y: 0; --xp: 0; --yp: 0; }
+
+.spotlight-card { position: relative; }
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  /* Posición RELATIVA a la card (--mx/--my): no usa background-attachment:fixed,
+     por eso funciona aunque la card tenga backdrop-filter o transform. */
+  background: radial-gradient(
+    300px 300px at var(--mx, -300px) var(--my, -300px),
+    hsl(calc(8 + var(--xp, 0) * 26) 100% 62% / 1),
+    transparent 72%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.spotlight-card:hover::before { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-card::before { transition: none; }
+}
+
 /* Navbar glass */
 .glass-nav {
   background: rgba(10, 22, 54, 0.6);
@@ -529,6 +565,62 @@
 @keyframes shimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
+}
+
+/* Marquee vertical (sección Aliados) */
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 30s) linear infinite;
+}
+
+/* Marquee horizontal (barra de impacto entre hero y Pilares) */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes marquee2 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+.animate-marquee { animation: marquee 38s linear infinite; }
+.animate-marquee2 { animation: marquee2 38s linear infinite; }
+.marquee-band:hover .animate-marquee,
+.marquee-band:hover .animate-marquee2 { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-marquee2 { animation: none; }
+}
+
+/* ============================================
+   AURORA — fondo animado global (colores de marca)
+   ============================================ */
+@keyframes aurora {
+  from { background-position: 50% 50%, 50% 50%; }
+  to   { background-position: 350% 50%, 350% 50%; }
+}
+.aurora-layer {
+  --aurora: repeating-linear-gradient(
+    100deg,
+    #FF2900 8%,
+    #FF5436 14%,
+    #FBBF24 20%,
+    #FF2900 28%,
+    #8B5CF6 34%,
+    #FF2900 42%
+  );
+  background-image: var(--aurora);
+  background-size: 240% 200%;
+  background-position: 50% 50%;
+  filter: blur(48px) saturate(1.05);
+  -webkit-mask-image: radial-gradient(ellipse 95% 75% at 80% 0%, #000 5%, transparent 65%);
+          mask-image: radial-gradient(ellipse 95% 75% at 80% 0%, #000 5%, transparent 65%);
+  animation: aurora 60s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora-layer { animation: none; }
 }
 
 /* ============================================
