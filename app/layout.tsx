@@ -26,6 +26,7 @@ const inter = Inter({
 
 // METADATA
 export const metadata: Metadata = {
+  metadataBase: new URL('https://calienamora.com'),
   title: 'Cali Enamora - Turismo Sostenible en el Valle del Cauca',
   description:
     'Descubre rutas turísticas sostenibles en Cali y el Valle del Cauca. Cultura, naturaleza, gastronomía y bienestar en un solo lugar.',
