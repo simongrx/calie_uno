@@ -3,11 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 60);
@@ -16,9 +19,11 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // hrefs que empiezan con '/' navegan a una página real; los '#' hacen scroll
+  // a una sección del home (se irán convirtiendo a páginas conforme se construyan).
   const navigationItems = [
-    { label: 'Inicio', href: '#inicio' },
-    { label: 'Rutas', href: '#rutas' },
+    { label: 'Inicio', href: '/' },
+    { label: 'Rutas', href: '/rutas' },
     { label: 'Eventos', href: '#eventos' },
     { label: 'Academia', href: '#academia' },
     { label: 'Testimonios', href: '#testimonios' },
@@ -29,12 +34,16 @@ export const Header: React.FC = () => {
   const handleNavClick = (href: string) => {
     setIsOpen(false);
 
-    const element = document.querySelector(href);
-
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-      });
+    if (href.startsWith('#')) {
+      // Ancla: si estamos en el home hacemos scroll; si no, vamos al home + ancla.
+      if (pathname === '/') {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        router.push('/' + href);
+      }
+    } else {
+      // Página real
+      router.push(href);
     }
   };
 
