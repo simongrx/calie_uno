@@ -128,7 +128,7 @@ export const RestaurantesSection: React.FC = () => {
                   variants={containerVariants}
                   initial="hidden"
                   animate="visible"
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+                  className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8"
                 >
                   {restaurantesFiltrados.map((restaurante) => (
                     <RestauranteCard key={restaurante.id} restaurante={restaurante} />
@@ -166,7 +166,7 @@ export const RestaurantesSection: React.FC = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8"
               >
                 {planesExperiencia.map((plan) => (
                   <motion.div

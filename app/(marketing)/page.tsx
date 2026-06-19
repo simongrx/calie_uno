@@ -1,7 +1,3 @@
-'use client';
-
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ImpactBar } from '@/components/sections/ImpactBar';
 import { PilaresSection } from '@/components/sections/PilaresSection';
@@ -13,42 +9,29 @@ import { TestimoniosSection } from '@/components/sections/TestimoniosSection';
 import { AliadosSection } from '@/components/sections/AliadosSection';
 import { InversoresSection } from '@/components/sections/InversoresSection';
 import { ContactoSection } from '@/components/sections/ContactoSection';
-import { AuroraBackground } from '@/components/ui/aurora-background';
-import { SpotlightProvider } from '@/components/ui/SpotlightProvider';
-// import Debug from './debug';
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
-      {/* Fondo aurora global (detrás de todo) */}
-      <AuroraBackground />
-
-      {/* Listener único para el efecto spotlight de las cards */}
-      <SpotlightProvider />
-
-      {/* <Debug /> */}
-
-      <Header />
-
-      {/* Hero Section */}
+    <>
+      {/* Hero */}
       <HeroSection />
 
-      {/* Impact Bar - Estadísticas */}
+      {/* Barra de impacto (marquee) */}
       <ImpactBar />
 
       {/* Los 4 Pilares */}
       <PilaresSection />
 
-      {/* Rutas Turísticas (incluye mapa interactivo por ruta en su detalle) */}
+      {/* Rutas Turísticas */}
       <RutasSection />
 
       {/* Eventos */}
       <EventosSection />
 
-      {/* Restaurantes y Planes */}
+      {/* Sabores (restaurantes y planes) */}
       <RestaurantesSection />
 
-      {/* Nuestra Academia */}
+      {/* Academia */}
       <NuestraAcademia />
 
       {/* Testimonios */}
@@ -62,9 +45,6 @@ export default function Home() {
 
       {/* Contacto */}
       <ContactoSection />
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    </>
   );
 }

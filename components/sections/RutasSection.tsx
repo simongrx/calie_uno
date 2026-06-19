@@ -125,7 +125,7 @@ export const RutasSection: React.FC = () => {
               initial="hidden"
               animate="visible"
               exit={{ opacity: 0, y: -20 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
             >
               {rutasFiltradas.map((ruta) => (
                 <ScrollReveal key={ruta.id} direction="up" delay={0.1} className="h-full">

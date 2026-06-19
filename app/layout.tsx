@@ -309,10 +309,8 @@ export default function RootLayout({
           Ir al contenido principal
         </a>
 
-        {/* Main content */}
-        <main id="main-content" className="relative z-0">
-          {children}
-        </main>
+        {/* Cada grupo de rutas (marketing/app/auth) aporta su propio <main> y chrome */}
+        {children}
 
         {/* Scripts no críticos */}
         {process.env.NODE_ENV === 'production' && (

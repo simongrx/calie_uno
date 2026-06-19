@@ -119,7 +119,7 @@ export const EventosSection: React.FC = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"
+              className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8"
             >
               {eventosEnVivo.map((evento) => (
                 <motion.div

@@ -80,7 +80,7 @@ export const InversoresSection: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          className="mx-auto grid max-w-6xl auto-rows-[164px] grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4"
+          className="grid auto-rows-[164px] grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4"
         >
           {/* Lente interactivo — Focos de inversión (grande) */}
           <motion.div variants={itemVariants} className="col-span-2 row-span-2">
