@@ -26,10 +26,10 @@ export const Header: React.FC = () => {
     { label: 'Rutas', href: '/rutas' },
     { label: 'Eventos', href: '/eventos' },
     { label: 'Sabores', href: '/sabores' },
-    { label: 'Academia', href: '#academia' },
-    { label: 'Testimonios', href: '#testimonios' },
-    { label: 'Aliados', href: '#aliados' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Academia', href: '/academia' },
+    { label: 'Aliados', href: '/aliados' },
+    { label: 'Invertir', href: '/invertir' },
+    { label: 'Contacto', href: '/contacto' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -183,7 +183,7 @@ export const Header: React.FC = () => {
           {/* CTA DESKTOP */}
           <div className="hidden md:flex items-center">
             <motion.a
-              href="#contacto"
+              href="/contacto"
               whileHover={{
                 scale: 1.04,
                 y: -2,
@@ -346,7 +346,7 @@ export const Header: React.FC = () => {
                   transition={{
                     delay: navigationItems.length * 0.05,
                   }}
-                  href="#contacto"
+                  href="/contacto"
                   onClick={() => setIsOpen(false)}
                   className="
                     mt-2
