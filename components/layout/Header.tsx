@@ -24,7 +24,8 @@ export const Header: React.FC = () => {
   const navigationItems = [
     { label: 'Inicio', href: '/' },
     { label: 'Rutas', href: '/rutas' },
-    { label: 'Eventos', href: '#eventos' },
+    { label: 'Eventos', href: '/eventos' },
+    { label: 'Sabores', href: '/sabores' },
     { label: 'Academia', href: '#academia' },
     { label: 'Testimonios', href: '#testimonios' },
     { label: 'Aliados', href: '#aliados' },

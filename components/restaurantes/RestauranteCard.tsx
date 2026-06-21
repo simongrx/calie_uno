@@ -90,13 +90,13 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
         <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">{restaurante.nombre}</h3>
         <p className="mb-4 line-clamp-2 flex-grow text-sm text-white/60">{restaurante.descripcion}</p>
         <motion.a
-          href={restaurante.enlaceReserva || '#'}
+          href={`/sabores/${restaurante.id}`}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className="inline-flex w-full items-center justify-center rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300"
           style={glassActive}
         >
-          Reservar
+          Ver más
         </motion.a>
       </div>
 
@@ -169,13 +169,13 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
             </div>
 
             <motion.a
-              href={restaurante.enlaceReserva || '#'}
+              href={`/sabores/${restaurante.id}`}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300"
               style={glassActive}
             >
-              Reservar
+              Ver más
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

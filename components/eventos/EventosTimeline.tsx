@@ -152,7 +152,7 @@ export const EventosTimeline: React.FC<EventosTimelineProps> = ({ eventos }) => 
                   </div>
 
                   <motion.a
-                    href={evento.enlace || '#'}
+                    href={`/eventos/${evento.id}`}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all duration-300 sm:w-auto sm:self-start"
