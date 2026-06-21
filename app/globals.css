@@ -106,8 +106,17 @@
   html, body {
     width: 100%;
     min-height: 100%;
-    background-color: #0A1636 !important;
     color: #e2e8f0;
+    /* clip (no hidden) elimina el scroll horizontal por sangrados decorativos
+       sin crear un contenedor de scroll, así el sticky del navbar sigue funcionando. */
+    overflow-x: clip;
+  }
+
+  /* El navy de marca vive solo en <html> (evita el flash de carga). El <body>
+     queda transparente para que la aurora (fixed, -z-10) sea visible a través
+     de las secciones bg-transparent. */
+  body {
+    background-color: transparent;
   }
 
   #__next {
@@ -171,7 +180,6 @@
     font-size: 1rem;
     line-height: 1.6;
     color: #e2e8f0;
-    background-color: #0A1636 !important;
   }
 
   /* Títulos importantes — Molle (italic display) */
