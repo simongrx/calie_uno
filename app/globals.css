@@ -622,9 +622,9 @@
   background-image: var(--aurora);
   background-size: 240% 200%;
   background-position: 50% 50%;
-  filter: blur(48px) saturate(1.05);
-  -webkit-mask-image: radial-gradient(ellipse 95% 75% at 80% 0%, #000 5%, transparent 65%);
-          mask-image: radial-gradient(ellipse 95% 75% at 80% 0%, #000 5%, transparent 65%);
+  filter: blur(44px) saturate(1.1);
+  -webkit-mask-image: radial-gradient(ellipse 110% 90% at 75% 0%, #000 12%, transparent 78%);
+          mask-image: radial-gradient(ellipse 110% 90% at 75% 0%, #000 12%, transparent 78%);
   animation: aurora 60s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {

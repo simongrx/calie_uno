@@ -12,8 +12,8 @@ export function AuroraBackground() {
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {/* Base navy de marca */}
       <div className="absolute inset-0 bg-[#0A1636]" />
-      {/* Aurora animada (sutil) */}
-      <div className="aurora-layer absolute -inset-[20px] opacity-35 will-change-transform" />
+      {/* Aurora animada */}
+      <div className="aurora-layer absolute -inset-[20px] opacity-60 will-change-transform" />
     </div>
   );
 }

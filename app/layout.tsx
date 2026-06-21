@@ -299,7 +299,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className="min-h-screen bg-[#0A1636] text-gray-100 transition-colors duration-300"
+        className="min-h-screen text-gray-100 transition-colors duration-300"
         suppressHydrationWarning
       >
         {/* Skip to main content */}
