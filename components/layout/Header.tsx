@@ -6,9 +6,56 @@ import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
+type NavLeaf = { label: string; href: string };
+type NavNode = NavLeaf | { label: string; children: NavLeaf[] };
+
+const isLeaf = (node: NavNode): node is NavLeaf => 'href' in node;
+
+// Estructura agrupada: enlaces sueltos + grupos con dropdown.
+const navTree: NavNode[] = [
+  { label: 'Inicio', href: '/' },
+  {
+    label: 'Explora',
+    children: [
+      { label: 'Rutas', href: '/rutas' },
+      { label: 'Mapa', href: '/mapa' },
+      { label: 'Eventos', href: '/eventos' },
+      { label: 'Sabores', href: '/sabores' },
+    ],
+  },
+  {
+    label: 'Comunidad',
+    children: [
+      { label: 'Pilares', href: '/pilares' },
+      { label: 'Academia', href: '/academia' },
+      { label: 'Aliados', href: '/aliados' },
+      { label: 'Invertir', href: '/invertir' },
+    ],
+  },
+  { label: 'Nosotros', href: '/nosotros' },
+];
+
+const leafBtnStyle: React.CSSProperties = {
+  fontFamily: 'Outfit, sans-serif',
+  background: 'rgba(255,255,255,0.08)',
+  backdropFilter: 'blur(16px)',
+  WebkitBackdropFilter: 'blur(16px)',
+  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 18px rgba(0,0,0,0.18)',
+};
+
+const dropdownPanelStyle: React.CSSProperties = {
+  background: 'rgba(10, 22, 54, 0.72)',
+  backdropFilter: 'blur(20px)',
+  WebkitBackdropFilter: 'blur(20px)',
+  border: '1px solid rgba(255,255,255,0.14)',
+  boxShadow: '0 16px 40px rgba(0,0,0,0.4)',
+};
+
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null); // dropdown desktop (hover)
+  const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -19,21 +66,10 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // hrefs que empiezan con '/' navegan a una página real; los '#' hacen scroll
-  // a una sección del home (se irán convirtiendo a páginas conforme se construyan).
-  const navigationItems = [
-    { label: 'Inicio', href: '/' },
-    { label: 'Rutas', href: '/rutas' },
-    { label: 'Eventos', href: '/eventos' },
-    { label: 'Sabores', href: '/sabores' },
-    { label: 'Academia', href: '/academia' },
-    { label: 'Aliados', href: '/aliados' },
-    { label: 'Invertir', href: '/invertir' },
-    { label: 'Contacto', href: '/contacto' },
-  ];
-
   const handleNavClick = (href: string) => {
     setIsOpen(false);
+    setOpenGroup(null);
+    setOpenMobileGroup(null);
 
     if (href.startsWith('#')) {
       // Ancla: si estamos en el home hacemos scroll; si no, vamos al home + ancla.
@@ -43,10 +79,12 @@ export const Header: React.FC = () => {
         router.push('/' + href);
       }
     } else {
-      // Página real
       router.push(href);
     }
   };
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
     <motion.header
@@ -64,10 +102,7 @@ export const Header: React.FC = () => {
           }`}
         >
           {/* LOGO */}
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-          >
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link href="/" className="flex items-center">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logotipo%20CaliE-OCQi041dgJdYAvK07Eyaa6DieRdlH5.png"
@@ -84,153 +119,118 @@ export const Header: React.FC = () => {
 
           {/* DESKTOP NAVIGATION */}
           <nav className="hidden lg:flex items-center gap-2.5 xl:gap-3">
-            {navigationItems.map((item) => (
-              <motion.button
-                key={item.label}
-                onClick={() => handleNavClick(item.href)}
-                whileHover={{
-                  y: -2,
-                  scale: 1.03,
-                }}
-                whileTap={{
-                  scale: 0.97,
-                }}
-                className={`
-                  relative
-                  px-4
-                  py-2.5
-                  rounded-full
-                  whitespace-nowrap
-                  text-white/80
-                  hover:text-white
-                  transition-all
-                  duration-300
-                  border
-                  border-white/10
-                  hover:border-red-500/40
-                  overflow-hidden
-                  group
-                  ${
-                    isScrolled
-                      ? 'text-xs'
-                      : 'text-sm'
-                  }
-                `}
-                style={{
-                  fontFamily: 'Outfit, sans-serif',
-                  background: 'rgba(255,255,255,0.08)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 18px rgba(0,0,0,0.18)',
-                }}
-              >
-                {/* brillo interno */}
-                <span
-                  className="
-                    absolute
-                    inset-0
-                    opacity-0
-                    group-hover:opacity-100
-                    transition-opacity
-                    duration-300
-                    bg-gradient-to-r
-                    from-red-500/10
-                    to-yellow-300/10
-                  "
-                />
+            {navTree.map((node) => {
+              if (isLeaf(node)) {
+                return (
+                  <motion.button
+                    key={node.label}
+                    onClick={() => handleNavClick(node.href)}
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`relative px-4 py-2.5 rounded-full whitespace-nowrap transition-all duration-300 border overflow-hidden group ${
+                      isScrolled ? 'text-xs' : 'text-sm'
+                    } ${
+                      isActive(node.href)
+                        ? 'text-white border-red-500/40'
+                        : 'text-white/80 hover:text-white border-white/10 hover:border-red-500/40'
+                    }`}
+                    style={leafBtnStyle}
+                  >
+                    <span className="relative z-10">{node.label}</span>
+                  </motion.button>
+                );
+              }
 
-                {/* borde glow */}
-                <span
-                  className="
-                    absolute
-                    inset-0
-                    rounded-full
-                    border
-                    border-white/5
-                    group-hover:border-red-400/20
-                    transition-all
-                    duration-300
-                  "
-                />
+              const groupActive = node.children.some((c) => isActive(c.href));
+              return (
+                <div
+                  key={node.label}
+                  className="relative"
+                  onMouseEnter={() => setOpenGroup(node.label)}
+                  onMouseLeave={() => setOpenGroup((g) => (g === node.label ? null : g))}
+                >
+                  <motion.button
+                    whileHover={{ y: -2, scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className={`relative flex items-center gap-1.5 px-4 py-2.5 rounded-full whitespace-nowrap transition-all duration-300 border ${
+                      isScrolled ? 'text-xs' : 'text-sm'
+                    } ${
+                      groupActive || openGroup === node.label
+                        ? 'text-white border-red-500/40'
+                        : 'text-white/80 hover:text-white border-white/10 hover:border-red-500/40'
+                    }`}
+                    style={leafBtnStyle}
+                  >
+                    <span>{node.label}</span>
+                    <svg
+                      className={`h-3.5 w-3.5 transition-transform duration-300 ${
+                        openGroup === node.label ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </motion.button>
 
-                {/* texto */}
-                <span className="relative z-10">
-                  {item.label}
-                </span>
-
-                {/* línea inferior */}
-                <span
-                  className="
-                    absolute
-                    bottom-1.5
-                    left-1/2
-                    -translate-x-1/2
-                    w-0
-                    h-[2px]
-                    rounded-full
-                    bg-gradient-to-r
-                    from-red-500
-                    to-yellow-300
-                    group-hover:w-3/4
-                    transition-all
-                    duration-300
-                  "
-                />
-              </motion.button>
-            ))}
+                  <AnimatePresence>
+                    {openGroup === node.label && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 rounded-2xl p-2"
+                        style={dropdownPanelStyle}
+                      >
+                        <div className="flex min-w-[180px] flex-col gap-1">
+                          {node.children.map((child) => (
+                            <button
+                              key={child.label}
+                              onClick={() => handleNavClick(child.href)}
+                              className={`w-full whitespace-nowrap rounded-xl px-4 py-2.5 text-left text-sm transition-all duration-200 ${
+                                isActive(child.href)
+                                  ? 'bg-red-500/20 text-white'
+                                  : 'text-white/75 hover:bg-white/10 hover:text-white'
+                              }`}
+                              style={{ fontFamily: 'Outfit, sans-serif' }}
+                            >
+                              {child.label}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </nav>
 
           {/* CTA DESKTOP */}
           <div className="hidden md:flex items-center">
             <motion.a
               href="/contacto"
-              whileHover={{
-                scale: 1.04,
-                y: -2,
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('/contacto');
               }}
-              whileTap={{
-                scale: 0.97,
-              }}
-              className={`
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                font-semibold
-                text-white
-                transition-all
-                duration-300
-                border
-                border-red-400/30
-                hover:border-red-400/50
-                ${
-                  isScrolled
-                    ? 'px-5 py-2 text-xs'
-                    : 'px-6 py-3 text-sm'
-                }
-              `}
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className={`inline-flex items-center gap-2 rounded-full font-semibold text-white transition-all duration-300 border border-red-400/30 hover:border-red-400/50 ${
+                isScrolled ? 'px-5 py-2 text-xs' : 'px-6 py-3 text-sm'
+              }`}
               style={{
-                background:
-                  'linear-gradient(135deg, rgba(255, 41, 0,0.9), rgba(204, 33, 0,0.9))',
+                background: 'linear-gradient(135deg, rgba(255, 41, 0,0.9), rgba(204, 33, 0,0.9))',
                 backdropFilter: 'blur(18px)',
                 WebkitBackdropFilter: 'blur(18px)',
                 boxShadow: '0 8px 30px rgba(255, 41, 0,0.25)',
               }}
             >
               <span>Contáctanos</span>
-
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </motion.a>
           </div>
@@ -239,14 +239,7 @@ export const Header: React.FC = () => {
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.92 }}
-            className="
-              lg:hidden
-              p-3
-              rounded-full
-              text-white
-              border
-              border-white/10
-            "
+            className="lg:hidden p-3 rounded-full text-white border border-white/10"
             style={{
               background: 'rgba(255,255,255,0.06)',
               backdropFilter: 'blur(16px)',
@@ -266,12 +259,7 @@ export const Header: React.FC = () => {
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </motion.svg>
               ) : (
                 <motion.svg
@@ -284,12 +272,7 @@ export const Header: React.FC = () => {
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </motion.svg>
               )}
             </AnimatePresence>
@@ -307,63 +290,102 @@ export const Header: React.FC = () => {
               className="lg:hidden overflow-hidden pt-4"
             >
               <div className="flex flex-col gap-3 pb-4">
-                {navigationItems.map((item, index) => (
-                  <motion.button
-                    key={item.label}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                    onClick={() => handleNavClick(item.href)}
-                    className="
-                      w-full
-                      text-left
-                      px-5
-                      py-3
-                      rounded-full
-                      text-sm
-                      font-medium
-                      text-white/80
-                      hover:text-white
-                      border
-                      border-white/10
-                      transition-all
-                      duration-300
-                    "
-                    style={{
-                      fontFamily: 'Outfit, sans-serif',
-                      background: 'rgba(255,255,255,0.06)',
-                      backdropFilter: 'blur(16px)',
-                      WebkitBackdropFilter: 'blur(16px)',
-                    }}
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
+                {navTree.map((node, index) => {
+                  if (isLeaf(node)) {
+                    return (
+                      <motion.button
+                        key={node.label}
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.05 }}
+                        onClick={() => handleNavClick(node.href)}
+                        className={`w-full text-left px-5 py-3 rounded-full text-sm font-medium border border-white/10 transition-all duration-300 ${
+                          isActive(node.href) ? 'text-white' : 'text-white/80 hover:text-white'
+                        }`}
+                        style={{
+                          fontFamily: 'Outfit, sans-serif',
+                          background: 'rgba(255,255,255,0.06)',
+                          backdropFilter: 'blur(16px)',
+                          WebkitBackdropFilter: 'blur(16px)',
+                        }}
+                      >
+                        {node.label}
+                      </motion.button>
+                    );
+                  }
+
+                  const expanded = openMobileGroup === node.label;
+                  return (
+                    <motion.div
+                      key={node.label}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <button
+                        onClick={() => setOpenMobileGroup(expanded ? null : node.label)}
+                        className="flex w-full items-center justify-between rounded-full border border-white/10 px-5 py-3 text-left text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
+                        style={{
+                          fontFamily: 'Outfit, sans-serif',
+                          background: 'rgba(255,255,255,0.06)',
+                          backdropFilter: 'blur(16px)',
+                          WebkitBackdropFilter: 'blur(16px)',
+                        }}
+                      >
+                        <span>{node.label}</span>
+                        <svg
+                          className={`h-4 w-4 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+
+                      <AnimatePresence>
+                        {expanded && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden pl-4"
+                          >
+                            <div className="flex flex-col gap-2 pt-2">
+                              {node.children.map((child) => (
+                                <button
+                                  key={child.label}
+                                  onClick={() => handleNavClick(child.href)}
+                                  className={`w-full rounded-full px-5 py-2.5 text-left text-sm transition-all duration-200 ${
+                                    isActive(child.href) ? 'bg-red-500/20 text-white' : 'text-white/70 hover:text-white'
+                                  }`}
+                                  style={{ fontFamily: 'Outfit, sans-serif', background: 'rgba(255,255,255,0.04)' }}
+                                >
+                                  {child.label}
+                                </button>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
 
                 <motion.a
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{
-                    delay: navigationItems.length * 0.05,
-                  }}
+                  transition={{ delay: navTree.length * 0.05 }}
                   href="/contacto"
-                  onClick={() => setIsOpen(false)}
-                  className="
-                    mt-2
-                    flex
-                    items-center
-                    justify-center
-                    rounded-full
-                    py-3
-                    text-sm
-                    font-semibold
-                    text-white
-                  "
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick('/contacto');
+                  }}
+                  className="mt-2 flex items-center justify-center rounded-full py-3 text-sm font-semibold text-white"
                   style={{
-                    background:
-                      'linear-gradient(135deg, rgba(255, 41, 0,0.9), rgba(204, 33, 0,0.9))',
-                    boxShadow:
-                      '0 8px 30px rgba(255, 41, 0,0.25)',
+                    background: 'linear-gradient(135deg, rgba(255, 41, 0,0.9), rgba(204, 33, 0,0.9))',
+                    boxShadow: '0 8px 30px rgba(255, 41, 0,0.25)',
                   }}
                 >
                   Contáctanos
