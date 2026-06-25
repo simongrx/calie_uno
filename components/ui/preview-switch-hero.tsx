@@ -58,6 +58,8 @@ export interface PreviewSwitchHeroProps {
   /** Submits the form when no `href`; otherwise renders as a link. */
   primaryCta?: Cta;
   secondaryCta?: Cta;
+  /** Nodo de acciones personalizado; si se pasa, reemplaza email/CTAs por completo. */
+  actions?: React.ReactNode;
   avatars?: HeroAvatar[];
   socialProof?: React.ReactNode;
   /** Text tabs that switch the preview. */
@@ -197,6 +199,7 @@ export function PreviewSwitchHero({
   onSubmit,
   primaryCta,
   secondaryCta,
+  actions,
   avatars,
   socialProof,
   tabs,
@@ -274,18 +277,18 @@ export function PreviewSwitchHero({
       >
         <div
           className={cn(
-            "mx-auto flex w-full max-w-7xl flex-col justify-center px-6 py-10 lg:py-14",
+            "mx-auto flex w-full max-w-[1480px] flex-col justify-center px-6 py-10 sm:px-10 lg:py-16",
             // Grow to fill the space above the docked logo strip and center the
             // split within it; min-h-0 lets it shrink so overflow is clipped
             // rather than pushing the logos off-screen.
             scrollDriven && "min-h-0 flex-1",
           )}
         >
-          <div className="flex flex-col-reverse justify-center gap-8 md:flex-row md:items-start md:gap-6 lg:gap-10 xl:gap-[72px]">
+          <div className="flex flex-col-reverse justify-center gap-10 md:flex-row md:items-start md:gap-8 lg:gap-14 xl:gap-[88px]">
             {/* ── left: text-tab rail + switchable preview ─────── */}
             <div
               className={cn(
-                "flex min-w-0 flex-col gap-5 md:w-[400px] md:shrink-0 md:flex-row md:gap-4 lg:w-[480px] lg:gap-6",
+                "flex min-w-0 flex-col gap-5 md:w-[460px] md:shrink-0 md:flex-row md:gap-4 lg:w-[600px] lg:gap-7",
                 // When a badge sits above the title, drop the rail + preview by
                 // the badge's footprint (md+) so their tops line up with the
                 // title rather than the badge.
@@ -297,7 +300,7 @@ export function PreviewSwitchHero({
             </div>
 
             {/* ── right: content (centered on mobile, left on md+) ── */}
-            <div className="flex min-w-0 flex-col items-center text-center md:max-w-[496px] md:flex-1 md:items-start md:text-left">
+            <div className="flex min-w-0 flex-col items-center text-center md:max-w-[560px] md:flex-1 md:items-start md:text-left">
               {badge && (
                 <div className="mb-4 flex w-fit items-center gap-2 rounded-lg bg-muted py-1 pl-1.5 pr-2.5">
                   {badge.tag && (
@@ -311,15 +314,13 @@ export function PreviewSwitchHero({
                 </div>
               )}
 
-              <h2
-                className="mb-4 text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:mb-5 lg:text-5xl xl:text-[56px] xl:leading-[1.05]"
-                style={{ fontFamily: 'Outfit, sans-serif', fontStyle: 'normal' }}
-              >
+              {/* Hereda la tipografía de títulos del sitio (Molle italic, ver globals h2). */}
+              <h2 className="mb-4 text-balance text-4xl text-foreground sm:text-5xl lg:mb-6 lg:text-6xl xl:text-[68px] xl:leading-[1.05]">
                 {title}
               </h2>
 
               {description && (
-                <p className="text-balance text-base text-muted-foreground lg:text-lg">
+                <p className="text-balance text-base text-muted-foreground sm:text-lg lg:text-xl">
                   {description}
                 </p>
               )}
@@ -345,7 +346,11 @@ export function PreviewSwitchHero({
                 </div>
               )}
 
-              {showEmail ? (
+              {actions ? (
+                <div className="mt-7 flex flex-wrap justify-center gap-3 md:justify-start lg:mt-9">
+                  {actions}
+                </div>
+              ) : showEmail ? (
                 <form onSubmit={handleSubmit} className="mt-6 lg:mt-8">
                   <div className="mx-auto flex w-full max-w-[420px] flex-col gap-2 md:mx-0">
                     <label

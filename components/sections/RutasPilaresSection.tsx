@@ -10,6 +10,7 @@ import {
   Route as RouteIcon,
 } from 'lucide-react';
 import { PreviewSwitchHero } from '@/components/ui/preview-switch-hero';
+import { StardustButton } from '@/components/ui/stardust-button';
 import { getRutasByPilar } from '@/lib/data';
 import type { PilarType } from '@/types';
 
@@ -65,7 +66,7 @@ function PilarPhone({ pilar }: { pilar: PilarInfo }) {
   return (
     <Link
       href={pilar.href}
-      className="group/phone relative mx-auto block w-full max-w-[340px]"
+      className="group/phone relative mx-auto block w-full max-w-[380px]"
       aria-label={`Ver ${pilar.nombre}`}
     >
       {/* Marco del teléfono */}
@@ -79,7 +80,7 @@ function PilarPhone({ pilar }: { pilar: PilarInfo }) {
         }}
       >
         {/* Pantalla — alto fijo para que cambiar de pilar no redimensione */}
-        <div className="relative h-[400px] overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-[440px]">
+        <div className="relative h-[460px] overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-[540px]">
           {/* Imagen del pilar */}
           <Image
             src={pilar.img}
@@ -152,8 +153,7 @@ export function RutasPilaresSection() {
       }
       description="Desliza o toca cada pilar para descubrir una ruta distinta: cultura, naturaleza, gastronomía y bienestar, cada una con su propia experiencia en Cali y la región."
       showEmail={false}
-      primaryCta={{ label: 'Ver todas las rutas', href: '/rutas' }}
-      secondaryCta={{ label: 'Abrir el mapa', href: '/mapa' }}
+      actions={<StardustButton href="/rutas">Ver todas las rutas</StardustButton>}
       tabs={tabs}
       scrollLength="320vh"
     />

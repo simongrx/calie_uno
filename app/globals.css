@@ -415,6 +415,83 @@
   .spotlight-card::before { transition: none; }
 }
 
+/* ============================================
+   STARDUST BUTTON — pill de marca con destellos y brillo
+   ============================================ */
+.stardust-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 1.05rem 2.4rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: #fff;
+  background: linear-gradient(135deg, #FF2900 0%, #FF6A00 55%, #FBBF24 120%);
+  box-shadow: 0 10px 34px rgba(255, 41, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  isolation: isolate;
+  cursor: pointer;
+  transition: transform .3s ease, filter .3s ease;
+  animation: stardust-pulse 3.2s ease-in-out infinite;
+}
+.stardust-btn:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.06); }
+.stardust-btn:active { transform: translateY(0) scale(0.99); }
+
+/* Barrido de luz (clip al pill) */
+.stardust-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+.stardust-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 38%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-200%);
+  animation: stardust-shimmer 3.4s ease-in-out infinite;
+}
+
+/* Destellos */
+.stardust-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #fff 0%, #FBBF24 55%, transparent 72%);
+  box-shadow: 0 0 6px 1px rgba(251, 191, 36, 0.85);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: stardust-twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes stardust-pulse {
+  0%, 100% { box-shadow: 0 10px 34px rgba(255, 41, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+  50%      { box-shadow: 0 14px 46px rgba(255, 41, 0, 0.5), 0 0 26px rgba(251, 191, 36, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+}
+@keyframes stardust-shimmer {
+  0%        { transform: translateX(-200%); }
+  60%, 100% { transform: translateX(360%); }
+}
+@keyframes stardust-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4); }
+  50%      { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stardust-btn,
+  .stardust-shine::after,
+  .stardust-spark { animation: none; }
+}
+
 /* Navbar glass */
 .glass-nav {
   background: rgba(10, 22, 54, 0.6);
