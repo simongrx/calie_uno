@@ -1,5 +1,7 @@
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ImpactBar } from '@/components/sections/ImpactBar';
+import { HeroParallax } from '@/components/ui/hero-parallax';
+import { getParallaxImagenes } from '@/lib/galeria-parallax';
 import { PilaresSection } from '@/components/sections/PilaresSection';
 import { RutasSection } from '@/components/sections/RutasSection';
 import { EventosSection } from '@/components/sections/EventosSection';
@@ -11,6 +13,9 @@ import { InversoresSection } from '@/components/sections/InversoresSection';
 import { ContactoSection } from '@/components/sections/ContactoSection';
 
 export default function Home() {
+  // Selección aleatoria (por build) de imágenes reales del proyecto.
+  const parallaxImagenes = getParallaxImagenes(15);
+
   return (
     <>
       {/* Hero */}
@@ -18,6 +23,9 @@ export default function Home() {
 
       {/* Barra de impacto (marquee) */}
       <ImpactBar />
+
+      {/* Galería parallax — recorrido visual que desemboca en los Pilares */}
+      <HeroParallax products={parallaxImagenes} />
 
       {/* Los 4 Pilares */}
       <PilaresSection />
