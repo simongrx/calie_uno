@@ -3,7 +3,7 @@ import { ImpactBar } from '@/components/sections/ImpactBar';
 import { HeroParallax } from '@/components/ui/hero-parallax';
 import { getParallaxImagenes } from '@/lib/galeria-parallax';
 import { PilaresSection } from '@/components/sections/PilaresSection';
-import { RutasSection } from '@/components/sections/RutasSection';
+import { RutasPilaresSection } from '@/components/sections/RutasPilaresSection';
 import { EventosSection } from '@/components/sections/EventosSection';
 import { RestaurantesSection } from '@/components/sections/RestaurantesSection';
 import { NuestraAcademia } from '@/components/sections/NuestraAcademia';
@@ -30,8 +30,8 @@ export default function Home() {
       {/* Los 4 Pilares */}
       <PilaresSection />
 
-      {/* Rutas Turísticas */}
-      <RutasSection />
+      {/* Rutas por pilar (preview switch con teléfono) */}
+      <RutasPilaresSection />
 
       {/* Eventos */}
       <EventosSection />

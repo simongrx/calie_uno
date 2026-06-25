@@ -56,14 +56,14 @@ export const HeroParallax = ({ products }: { products: ParallaxProduct[] }) => {
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 300]),
+    useTransform(scrollYProgress, [0, 0.2], [-500, 150]),
     springConfig
   );
 
   return (
     <div
       ref={ref}
-      className="relative flex h-[300vh] flex-col self-auto overflow-hidden py-24 antialiased [perspective:1000px] [transform-style:preserve-3d] sm:py-40"
+      className="relative flex h-[210vh] flex-col self-auto overflow-hidden pb-0 pt-20 antialiased [perspective:1000px] [transform-style:preserve-3d] sm:pt-28"
     >
       <Header />
       <motion.div
@@ -142,10 +142,6 @@ export const ProductCard = ({
           alt={product.title}
         />
       </Link>
-      <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/product:bg-black/60" />
-      <h3 className="absolute bottom-4 left-5 z-10 translate-y-2 text-lg font-bold text-white opacity-0 transition-all duration-300 group-hover/product:translate-y-0 group-hover/product:opacity-100">
-        {product.title}
-      </h3>
     </motion.div>
   );
 };
