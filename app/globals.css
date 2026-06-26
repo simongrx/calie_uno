@@ -723,6 +723,20 @@
   animation: marquee-vertical var(--duration, 30s) linear infinite;
 }
 
+/* Marquee vertical en columnas (Hero animado de Eventos).
+   El track contiene la lista duplicada; -50% hace el loop sin costuras
+   (y funciona igual en reverse porque ambos extremos son idénticos). */
+@keyframes marquee-vcol {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+.animate-marquee-vcol {
+  animation: marquee-vcol var(--duration, 32s) linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-vcol { animation: none; }
+}
+
 /* Marquee horizontal (barra de impacto entre hero y Pilares) */
 @keyframes marquee {
   0% { transform: translateX(0%); }

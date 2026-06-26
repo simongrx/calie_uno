@@ -4,7 +4,7 @@ import { HeroParallax } from '@/components/ui/hero-parallax';
 import { getParallaxImagenes } from '@/lib/galeria-parallax';
 import { PilaresSection } from '@/components/sections/PilaresSection';
 import { RutasPilaresSection } from '@/components/sections/RutasPilaresSection';
-import { EventosSection } from '@/components/sections/EventosSection';
+import { EventosMarqueeSection } from '@/components/sections/EventosMarqueeSection';
 import { RestaurantesSection } from '@/components/sections/RestaurantesSection';
 import { NuestraAcademia } from '@/components/sections/NuestraAcademia';
 import { TestimoniosSection } from '@/components/sections/TestimoniosSection';
@@ -33,8 +33,8 @@ export default function Home() {
       {/* Rutas por pilar (preview switch con teléfono) */}
       <RutasPilaresSection />
 
-      {/* Eventos */}
-      <EventosSection />
+      {/* Eventos (hero animado con marquee de imágenes) */}
+      <EventosMarqueeSection />
 
       {/* Sabores (restaurantes y planes) */}
       <RestaurantesSection />
