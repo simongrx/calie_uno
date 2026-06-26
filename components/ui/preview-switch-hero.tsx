@@ -288,7 +288,7 @@ export function PreviewSwitchHero({
             {/* ── left: text-tab rail + switchable preview ─────── */}
             <div
               className={cn(
-                "flex min-w-0 flex-col gap-5 md:w-[460px] md:shrink-0 md:flex-row md:gap-4 lg:w-[600px] lg:gap-7",
+                "flex min-w-0 flex-col gap-5 md:flex-1 md:flex-row md:gap-5 lg:gap-7",
                 // When a badge sits above the title, drop the rail + preview by
                 // the badge's footprint (md+) so their tops line up with the
                 // title rather than the badge.
@@ -300,7 +300,7 @@ export function PreviewSwitchHero({
             </div>
 
             {/* ── right: content (centered on mobile, left on md+) ── */}
-            <div className="flex min-w-0 flex-col items-center text-center md:max-w-[560px] md:flex-1 md:items-start md:text-left">
+            <div className="flex min-w-0 flex-col items-center text-center md:w-[360px] md:shrink-0 md:items-start md:text-left lg:w-[420px]">
               {badge && (
                 <div className="mb-4 flex w-fit items-center gap-2 rounded-lg bg-muted py-1 pl-1.5 pr-2.5">
                   {badge.tag && (
@@ -315,7 +315,7 @@ export function PreviewSwitchHero({
               )}
 
               {/* Hereda la tipografía de títulos del sitio (Molle italic, ver globals h2). */}
-              <h2 className="mb-4 text-balance text-4xl text-foreground sm:text-5xl lg:mb-6 lg:text-6xl xl:text-[68px] xl:leading-[1.05]">
+              <h2 className="mb-4 text-balance text-4xl text-foreground sm:text-5xl lg:mb-6 lg:text-5xl xl:text-[56px] xl:leading-[1.05]">
                 {title}
               </h2>
 

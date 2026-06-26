@@ -492,6 +492,56 @@
   .stardust-spark { animation: none; }
 }
 
+/* ============================================
+   SWEEP BUTTON — ghost discreto con barrido de color al hover
+   ============================================ */
+.sweep-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 9999px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  isolation: isolate;
+  transition: border-color .4s ease, transform .3s ease, box-shadow .4s ease;
+}
+.sweep-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, #FF2900 0%, #FF6A00 45%, #FBBF24 100%);
+  background-size: 220% 100%;
+  transform: translateX(-101%);
+  transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+}
+.sweep-btn:hover {
+  border-color: rgba(255, 106, 0, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 41, 0, 0.28);
+}
+.sweep-btn:hover::before {
+  transform: translateX(0);
+  animation: sweep-shift 2.4s linear infinite;
+}
+.sweep-btn:active { transform: translateY(0); }
+@keyframes sweep-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sweep-btn::before { transition: none; }
+  .sweep-btn:hover::before { animation: none; }
+}
+
 /* Navbar glass */
 .glass-nav {
   background: rgba(10, 22, 54, 0.6);

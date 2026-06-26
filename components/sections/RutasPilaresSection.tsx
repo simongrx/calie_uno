@@ -1,15 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import {
-  Signal,
-  Wifi,
-  BatteryFull,
-  Clock,
-  MapPin,
-  Route as RouteIcon,
-} from 'lucide-react';
+import { Clock, MapPin, Route as RouteIcon } from 'lucide-react';
 import { PreviewSwitchHero } from '@/components/ui/preview-switch-hero';
-import { LiquidButton } from '@/components/ui/liquid-button';
+import { SweepButton } from '@/components/ui/sweep-button';
 import { getRutasByPilar } from '@/lib/data';
 import type { PilarType } from '@/types';
 
@@ -61,69 +54,59 @@ function buildPilar(p: (typeof PILARES)[number]): PilarInfo {
 
 const META_ICON = [Clock, MapPin, RouteIcon];
 
-function PilarPhone({ pilar }: { pilar: PilarInfo }) {
+function PilarFrame({ pilar }: { pilar: PilarInfo }) {
   return (
-    <div className="group/phone relative mx-auto w-full max-w-[300px]">
-      {/* Marco del teléfono (solo visual, sin enlace) */}
-      <div
-        className="overflow-hidden rounded-[2.5rem] p-2 ring-1 ring-white/15"
-        style={{
-          background: 'rgba(255,255,255,0.06)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
-        }}
-      >
-        {/* Pantalla — alto fijo para que cambiar de pilar no redimensione */}
-        <div className="relative h-[520px] overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-[620px]">
-          {/* Imagen del pilar */}
-          <Image
-            src={pilar.img}
-            fill
-            sizes="300px"
-            className="object-cover transition-transform duration-700 group-hover/phone:scale-105"
-            alt={pilar.nombre}
-          />
-          {/* Degradado para legibilidad de la info inferior */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1636] via-[#0A1636]/35 to-black/25" />
+    <div
+      className="group/frame relative w-full overflow-hidden rounded-2xl ring-1 ring-white/12"
+      style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 30px 60px rgba(0,0,0,0.45)' }}
+    >
+      {/* Barra superior del marco (estilo ventana) */}
+      <div className="flex items-center gap-3 border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
+        <span className="flex items-center gap-1.5">
+          <i className="size-2.5 rounded-full" style={{ background: `${pilar.color}` }} />
+          <i className="size-2.5 rounded-full bg-white/25" />
+          <i className="size-2.5 rounded-full bg-white/15" />
+        </span>
+        <span className="text-xs font-medium uppercase tracking-wider text-white/45">
+          rutas · {pilar.label}
+        </span>
+      </div>
 
-          {/* ── Overlay del teléfono POR ENCIMA ── */}
-          {/* notch */}
-          <div className="absolute left-1/2 top-3 z-20 h-6 w-28 -translate-x-1/2 rounded-full bg-black/70" />
-          {/* status bar */}
-          <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-3 text-xs font-semibold text-white">
-            <span>9:41</span>
-            <div className="flex items-center gap-1.5">
-              <Signal aria-hidden className="size-3.5" />
-              <Wifi aria-hidden className="size-4" />
-              <BatteryFull aria-hidden className="size-5" />
-            </div>
-          </div>
+      {/* Imagen panorámica del pilar */}
+      <div className="relative aspect-[16/10] w-full overflow-hidden sm:aspect-[16/9]">
+        <Image
+          src={pilar.img}
+          fill
+          sizes="(max-width: 768px) 100vw, 60vw"
+          className="object-cover transition-transform duration-700 group-hover/frame:scale-[1.03]"
+          alt={pilar.nombre}
+        />
+        {/* Degradado para legibilidad */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1636] via-[#0A1636]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
 
-          {/* Info de ruta — cambia por pilar */}
-          <div className="absolute inset-x-0 bottom-0 z-20 p-5">
-            <span
-              className="mb-2 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white"
-              style={{
-                background: `${pilar.color}33`,
-                border: `1px solid ${pilar.color}88`,
-              }}
-            >
-              {pilar.label}
-            </span>
-            <h3 className="text-xl font-bold leading-tight text-white">{pilar.nombre}</h3>
-            <p className="mt-1.5 line-clamp-2 text-sm text-white/70">{pilar.descripcion}</p>
-            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-white/60">
-              {pilar.meta.map((m, i) => {
-                const Icon = META_ICON[i % META_ICON.length];
-                return (
-                  <span key={m} className="inline-flex items-center gap-1.5">
-                    <Icon aria-hidden className="size-3.5" style={{ color: pilar.color }} />
-                    {m}
-                  </span>
-                );
-              })}
-            </div>
+        {/* Info de ruta — cambia por pilar */}
+        <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
+          <span
+            className="mb-3 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white"
+            style={{ background: `${pilar.color}33`, border: `1px solid ${pilar.color}88` }}
+          >
+            {pilar.label}
+          </span>
+          <h3 className="text-2xl font-bold leading-tight text-white sm:text-3xl">
+            {pilar.nombre}
+          </h3>
+          <p className="mt-2 max-w-xl text-sm text-white/75 sm:text-base">{pilar.descripcion}</p>
+          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-white/65">
+            {pilar.meta.map((m, i) => {
+              const Icon = META_ICON[i % META_ICON.length];
+              return (
+                <span key={m} className="inline-flex items-center gap-1.5">
+                  <Icon aria-hidden className="size-4" style={{ color: pilar.color }} />
+                  {m}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -135,7 +118,7 @@ export function RutasPilaresSection() {
   const tabs = PILARES.map((p) => ({
     id: p.id,
     label: p.label,
-    media: <PilarPhone pilar={buildPilar(p)} />,
+    media: <PilarFrame pilar={buildPilar(p)} />,
   }));
 
   return (
@@ -150,7 +133,7 @@ export function RutasPilaresSection() {
       }
       description="Desliza o toca cada pilar para descubrir una ruta distinta: cultura, naturaleza, gastronomía y bienestar, cada una con su propia experiencia en Cali y la región."
       showEmail={false}
-      actions={<LiquidButton href="/rutas">Ver todas las rutas</LiquidButton>}
+      actions={<SweepButton href="/rutas">Ver todas las rutas</SweepButton>}
       tabs={tabs}
       scrollLength="320vh"
     />
