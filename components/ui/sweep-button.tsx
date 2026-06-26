@@ -18,7 +18,7 @@ export function SweepButton({ children, href, onClick, className }: SweepButtonP
   const inner = (
     <span className="relative z-10 inline-flex items-center gap-2">
       {children}
-      <ArrowRight className="size-4 shrink-0 transition-transform duration-300 group-hover/sweep:translate-x-1" />
+      <ArrowRight className="size-5 shrink-0 transition-transform duration-300 group-hover/sweep:translate-x-1" />
     </span>
   );
   const cls = cn('sweep-btn group/sweep', className);

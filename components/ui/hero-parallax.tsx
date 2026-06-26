@@ -106,7 +106,7 @@ export const Header = () => {
       </span>
       <h2
         className="text-4xl text-brand-orange sm:text-6xl lg:text-7xl"
-        style={{ fontFamily: 'Molle, cursive', fontStyle: 'italic', fontWeight: 400 }}
+        style={{ fontFamily: "'CaliEnamora', cursive", fontWeight: 400 }}
       >
         El Valle del Cauca, <br /> en imágenes
       </h2>

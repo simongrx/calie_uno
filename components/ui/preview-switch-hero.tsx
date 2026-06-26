@@ -106,7 +106,7 @@ function TabRail({
             aria-selected={isActive}
             onClick={() => onSelect(i)}
             className={cn(
-              "whitespace-nowrap rounded-xl px-4 py-2.5 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+              "whitespace-nowrap rounded-xl px-5 py-3 text-left text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
               isActive
                 ? "bg-muted font-semibold text-foreground shadow-sm ring-1 ring-border"
                 : "font-medium text-muted-foreground hover:bg-muted/50 hover:text-foreground",
@@ -277,14 +277,14 @@ export function PreviewSwitchHero({
       >
         <div
           className={cn(
-            "mx-auto flex w-full max-w-[1480px] flex-col justify-center px-6 py-10 sm:px-10 lg:py-16",
+            "mx-auto flex w-full max-w-[1680px] flex-col justify-center px-6 py-10 sm:px-12 lg:py-20",
             // Grow to fill the space above the docked logo strip and center the
             // split within it; min-h-0 lets it shrink so overflow is clipped
             // rather than pushing the logos off-screen.
             scrollDriven && "min-h-0 flex-1",
           )}
         >
-          <div className="flex flex-col-reverse justify-center gap-10 md:flex-row md:items-start md:gap-8 lg:gap-14 xl:gap-[88px]">
+          <div className="flex flex-col-reverse justify-center gap-12 md:flex-row md:items-start md:gap-10 lg:gap-16 xl:gap-[104px]">
             {/* ── left: text-tab rail + switchable preview ─────── */}
             <div
               className={cn(
@@ -300,7 +300,7 @@ export function PreviewSwitchHero({
             </div>
 
             {/* ── right: content (centered on mobile, left on md+) ── */}
-            <div className="flex min-w-0 flex-col items-center text-center md:w-[360px] md:shrink-0 md:items-start md:text-left lg:w-[420px]">
+            <div className="flex min-w-0 flex-col items-center text-center md:w-[420px] md:shrink-0 md:items-start md:text-left lg:w-[500px]">
               {badge && (
                 <div className="mb-4 flex w-fit items-center gap-2 rounded-lg bg-muted py-1 pl-1.5 pr-2.5">
                   {badge.tag && (
@@ -315,12 +315,12 @@ export function PreviewSwitchHero({
               )}
 
               {/* Hereda la tipografía de títulos del sitio (Molle italic, ver globals h2). */}
-              <h2 className="mb-4 text-balance text-4xl text-foreground sm:text-5xl lg:mb-6 lg:text-5xl xl:text-[56px] xl:leading-[1.05]">
+              <h2 className="mb-4 text-balance text-5xl text-foreground sm:text-6xl lg:mb-6 lg:text-6xl xl:text-[68px] xl:leading-[1.05]">
                 {title}
               </h2>
 
               {description && (
-                <p className="text-balance text-base text-muted-foreground sm:text-lg lg:text-xl">
+                <p className="text-balance text-lg text-muted-foreground sm:text-xl lg:text-2xl">
                   {description}
                 </p>
               )}
@@ -347,7 +347,7 @@ export function PreviewSwitchHero({
               )}
 
               {actions ? (
-                <div className="mt-7 flex flex-wrap justify-center gap-3 md:justify-start lg:mt-9">
+                <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start lg:mt-10">
                   {actions}
                 </div>
               ) : showEmail ? (

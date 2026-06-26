@@ -61,13 +61,13 @@ function PilarFrame({ pilar }: { pilar: PilarInfo }) {
       style={{ background: 'rgba(255,255,255,0.04)', boxShadow: '0 30px 60px rgba(0,0,0,0.45)' }}
     >
       {/* Barra superior del marco (estilo ventana) */}
-      <div className="flex items-center gap-3 border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
-        <span className="flex items-center gap-1.5">
-          <i className="size-2.5 rounded-full" style={{ background: `${pilar.color}` }} />
-          <i className="size-2.5 rounded-full bg-white/25" />
-          <i className="size-2.5 rounded-full bg-white/15" />
+      <div className="flex items-center gap-3.5 border-b border-white/10 bg-white/[0.03] px-5 py-3">
+        <span className="flex items-center gap-2">
+          <i className="size-3 rounded-full" style={{ background: `${pilar.color}` }} />
+          <i className="size-3 rounded-full bg-white/25" />
+          <i className="size-3 rounded-full bg-white/15" />
         </span>
-        <span className="text-xs font-medium uppercase tracking-wider text-white/45">
+        <span className="text-sm font-medium uppercase tracking-wider text-white/45">
           rutas · {pilar.label}
         </span>
       </div>
@@ -86,23 +86,23 @@ function PilarFrame({ pilar }: { pilar: PilarInfo }) {
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
 
         {/* Info de ruta — cambia por pilar */}
-        <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
+        <div className="absolute inset-x-0 bottom-0 z-10 p-7 sm:p-10">
           <span
-            className="mb-3 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white"
+            className="mb-3.5 inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-semibold text-white"
             style={{ background: `${pilar.color}33`, border: `1px solid ${pilar.color}88` }}
           >
             {pilar.label}
           </span>
-          <h3 className="text-2xl font-bold leading-tight text-white sm:text-3xl">
+          <h3 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
             {pilar.nombre}
           </h3>
-          <p className="mt-2 max-w-xl text-sm text-white/75 sm:text-base">{pilar.descripcion}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-sm text-white/65">
+          <p className="mt-2.5 max-w-2xl text-base text-white/75 sm:text-lg">{pilar.descripcion}</p>
+          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-base text-white/65">
             {pilar.meta.map((m, i) => {
               const Icon = META_ICON[i % META_ICON.length];
               return (
                 <span key={m} className="inline-flex items-center gap-1.5">
-                  <Icon aria-hidden className="size-4" style={{ color: pilar.color }} />
+                  <Icon aria-hidden className="size-5" style={{ color: pilar.color }} />
                   {m}
                 </span>
               );
@@ -124,7 +124,6 @@ export function RutasPilaresSection() {
   return (
     <PreviewSwitchHero
       className="-mt-16 sm:-mt-24"
-      badge={{ tag: 'Rutas', label: 'Una experiencia por cada pilar' }}
       title={
         <>
           Explora Cali y el Valle con sus{' '}
