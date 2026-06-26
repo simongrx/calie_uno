@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   Signal,
   Wifi,
@@ -10,7 +9,7 @@ import {
   Route as RouteIcon,
 } from 'lucide-react';
 import { PreviewSwitchHero } from '@/components/ui/preview-switch-hero';
-import { StardustButton } from '@/components/ui/stardust-button';
+import { LiquidButton } from '@/components/ui/liquid-button';
 import { getRutasByPilar } from '@/lib/data';
 import type { PilarType } from '@/types';
 
@@ -64,12 +63,8 @@ const META_ICON = [Clock, MapPin, RouteIcon];
 
 function PilarPhone({ pilar }: { pilar: PilarInfo }) {
   return (
-    <Link
-      href={pilar.href}
-      className="group/phone relative mx-auto block w-full max-w-[380px]"
-      aria-label={`Ver ${pilar.nombre}`}
-    >
-      {/* Marco del teléfono */}
+    <div className="group/phone relative mx-auto w-full max-w-[300px]">
+      {/* Marco del teléfono (solo visual, sin enlace) */}
       <div
         className="overflow-hidden rounded-[2.5rem] p-2 ring-1 ring-white/15"
         style={{
@@ -80,12 +75,12 @@ function PilarPhone({ pilar }: { pilar: PilarInfo }) {
         }}
       >
         {/* Pantalla — alto fijo para que cambiar de pilar no redimensione */}
-        <div className="relative h-[460px] overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-[540px]">
+        <div className="relative h-[520px] overflow-hidden rounded-[2rem] ring-1 ring-white/10 sm:h-[620px]">
           {/* Imagen del pilar */}
           <Image
             src={pilar.img}
             fill
-            sizes="340px"
+            sizes="300px"
             className="object-cover transition-transform duration-700 group-hover/phone:scale-105"
             alt={pilar.nombre}
           />
@@ -132,7 +127,7 @@ function PilarPhone({ pilar }: { pilar: PilarInfo }) {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 
@@ -145,15 +140,17 @@ export function RutasPilaresSection() {
 
   return (
     <PreviewSwitchHero
+      className="-mt-16 sm:-mt-24"
       badge={{ tag: 'Rutas', label: 'Una experiencia por cada pilar' }}
       title={
         <>
-          Explora el Valle por sus <span className="text-brand-orange">4 pilares</span>
+          Explora Cali y el Valle con sus{' '}
+          <span className="text-brand-orange">rutas</span>
         </>
       }
       description="Desliza o toca cada pilar para descubrir una ruta distinta: cultura, naturaleza, gastronomía y bienestar, cada una con su propia experiencia en Cali y la región."
       showEmail={false}
-      actions={<StardustButton href="/rutas">Ver todas las rutas</StardustButton>}
+      actions={<LiquidButton href="/rutas">Ver todas las rutas</LiquidButton>}
       tabs={tabs}
       scrollLength="320vh"
     />
