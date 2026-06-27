@@ -27,6 +27,10 @@ export interface PilarInfo {
 
 const META_ICON = [Clock, MapPin, RouteIcon];
 
+// Los rangos de scroll deben quedar dentro de [0,1]: framer usa la API nativa de
+// scroll (WAAPI) y un offset negativo o >1 rompe el orden monótono de keyframes.
+const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
+
 /* Capa de imagen full-bleed con crossfade + Ken Burns (zoom/parallax) por scroll. */
 function ImageLayer({
   index,
@@ -43,11 +47,11 @@ function ImageLayer({
   const s = index * seg;
   const opacity = useTransform(
     progress,
-    [s - 0.07, s + 0.03, s + seg - 0.03, s + seg + 0.07],
+    [clamp01(s - 0.07), clamp01(s + 0.03), clamp01(s + seg - 0.03), clamp01(s + seg + 0.07)],
     [0, 1, 1, 0]
   );
-  const scale = useTransform(progress, [s - 0.07, s + seg + 0.07], [1.2, 1.02]);
-  const y = useTransform(progress, [s - 0.07, s + seg + 0.07], ['-3%', '3%']);
+  const scale = useTransform(progress, [clamp01(s - 0.07), clamp01(s + seg + 0.07)], [1.2, 1.02]);
+  const y = useTransform(progress, [clamp01(s - 0.07), clamp01(s + seg + 0.07)], ['-3%', '3%']);
 
   return (
     <motion.div style={{ opacity }} className="absolute inset-0">
