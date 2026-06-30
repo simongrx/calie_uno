@@ -1,47 +1,49 @@
 import { getRutasByPilar } from '@/lib/data';
 import type { PilarType } from '@/types';
-import { RutasScrollHero, type PilarInfo } from '@/components/sections/RutasScrollHero';
+import { HeroScrollAnimation, type HeroScrollItem } from '@/components/ui/hero-scroll-animation';
 
-// Configuración por pilar (imagen full-bleed + color de acento).
-const PILARES: { id: PilarType; label: string; img: string; color: string }[] = [
-  { id: 'cultura', label: 'Cultura', img: '/images/pilares/cultura.jpg', color: '#8B5CF6' },
-  { id: 'naturaleza', label: 'Naturaleza', img: '/images/pilares/naturaleza.jpg', color: '#10B981' },
-  { id: 'gastronomia', label: 'Gastronomía', img: '/images/pilares/gastronomia.jpg', color: '#EF4444' },
-  { id: 'bienestar', label: 'Bienestar', img: '/images/pilares/bienestar.jpg', color: '#06B6D4' },
+// Configuración por pilar (imagen + etiqueta).
+const PILARES: { id: PilarType; label: string; img: string }[] = [
+  { id: 'cultura', label: 'Cultura', img: '/images/pilares/cultura.jpg' },
+  { id: 'naturaleza', label: 'Naturaleza', img: '/images/pilares/naturaleza.jpg' },
+  { id: 'gastronomia', label: 'Gastronomía', img: '/images/pilares/gastronomia.jpg' },
+  { id: 'bienestar', label: 'Bienestar', img: '/images/pilares/bienestar.jpg' },
 ];
 
-// Respaldo para pilares sin ruta cargada (p. ej. gastronomía).
-const FALLBACK: Record<PilarType, { nombre: string; descripcion: string; meta: string[]; href: string }> = {
-  cultura: { nombre: 'Patrimonio caleño', descripcion: 'Monumentos, plazas y memoria viva del centro.', meta: ['Experiencia cultural'], href: '/rutas' },
-  naturaleza: { nombre: 'Naturaleza del Valle', descripcion: 'Reservas, cascadas y miradores cerca de la ciudad.', meta: ['Aire libre'], href: '/rutas' },
-  gastronomia: { nombre: 'Sabores del Valle', descripcion: 'Cocina del Pacífico y tradición vallecaucana en cada parada.', meta: ['Pacífico & Valle'], href: '/sabores' },
-  bienestar: { nombre: 'Bienestar y vida nocturna', descripcion: 'Ritmos, descanso y planes para reconectar.', meta: ['Para relajarse'], href: '/rutas' },
-};
-
-function buildPilar(p: (typeof PILARES)[number]): PilarInfo {
-  const ruta = getRutasByPilar(p.id)[0];
-  if (ruta) {
-    const meta = [ruta.duracion, `${ruta.puntos.length} paradas`, ruta.distancia].filter(
-      Boolean
-    ) as string[];
-    return {
-      id: p.id,
-      label: p.label,
-      img: p.img,
-      color: p.color,
-      nombre: ruta.nombre,
-      descripcion: ruta.descripcion,
-      meta,
-      href: `/rutas/${ruta.id}`,
-    };
-  }
-  const fb = FALLBACK[p.id];
-  return { id: p.id, label: p.label, img: p.img, color: p.color, ...fb };
+function pilarHref(id: PilarType): string {
+  const ruta = getRutasByPilar(id)[0];
+  if (ruta) return `/rutas/${ruta.id}`;
+  return id === 'gastronomia' ? '/sabores' : '/rutas';
 }
 
 export function RutasPilaresSection() {
-  const pilares = PILARES.map(buildPilar);
-  return <RutasScrollHero pilares={pilares} />;
+  const items: HeroScrollItem[] = PILARES.map((p) => ({
+    img: p.img,
+    label: p.label,
+    href: pilarHref(p.id),
+  }));
+
+  return (
+    <HeroScrollAnimation
+      className="-mt-16 sm:-mt-24"
+      intro={
+        <>
+          Aquí cada calle tiene historia, cada barrio tiene sabor y cada atardecer recuerda por qué{' '}
+          <span className="text-brand-orange">Cali</span> se queda en el corazón.
+        </>
+      }
+      eyebrow="Rutas por pilar"
+      title={
+        <>
+          Explora Cali y el Valle con sus <span className="text-brand-orange">rutas</span>
+        </>
+      }
+      description="Cuatro pilares —cultura, naturaleza, gastronomía y bienestar— y una ruta distinta para cada forma de vivir el Valle del Cauca."
+      items={items}
+      ctaText="Ver todas las rutas"
+      ctaHref="/rutas"
+    />
+  );
 }
 
 export default RutasPilaresSection;
