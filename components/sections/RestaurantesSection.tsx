@@ -136,7 +136,7 @@ export const RestaurantesSection: React.FC = () => {
                 </motion.div>
               ) : (
                 <div className="text-center py-12">
-                  <p className="text-white/50 text-lg">
+                  <p className="text-white text-lg">
                     No hay restaurantes con esa calificación.
                   </p>
                   <motion.button
@@ -191,12 +191,12 @@ export const RestaurantesSection: React.FC = () => {
                         {plan.nombre}
                       </h3>
 
-                      <p className="text-sm text-white/60 mb-4 flex-grow">
+                      <p className="text-sm text-white mb-4 flex-grow">
                         {plan.descripcion}
                       </p>
 
                       <motion.a
-                        href="#contacto"
+                        href="/contacto"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                         className="w-full inline-flex items-center justify-center py-3 px-6 rounded-xl font-semibold text-white transition-all duration-300"

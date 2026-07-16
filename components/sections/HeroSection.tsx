@@ -275,13 +275,13 @@ export const HeroSection: React.FC = () => {
 
             {/* CTA */}
             <div className="cta" ref={ctaRef}>
-              <a className="btn btn-primary" href="#rutas">
+              <a className="btn btn-primary" href="/turista">
                 Explora nuestras rutas
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
-              <a className="btn btn-secondary" href="#eventos">
+              <a className="btn btn-secondary" href="/eventos">
                 Ver eventos
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -315,6 +315,10 @@ const CSS = `
 .cristo-hero{
   --navy:#0A1636; --orange:#FF2900; --yellow:#FBBF24;
   --scrub:165vh;            /* largo del scrub ≈ 1.5 pantallas */
+  /* Sube el hero bajo el header (sticky, transparente) para que la imagen
+     llene desde el borde superior y no quede una franja navy arriba.
+     ≈ altura del header sin scroll: h-18 (4.5rem) + py-3 (1.5rem). */
+  margin-top:-6rem;
 }
 .cristo-hero .scroll-track{
   position:relative; height:calc(100vh + var(--scrub)); background:var(--navy);
@@ -362,7 +366,7 @@ const CSS = `
   opacity:0; will-change:opacity,transform;
 }
 .cristo-hero .hl .word{
-  font-family:'CaliEnamora','Outfit',cursive; font-weight:400; line-height:.88;
+  font-family:'CaliEnamora','DM Sans',cursive; font-weight:400; line-height:.88;
   font-size:clamp(28px,5vw,64px);
   background:linear-gradient(135deg,#FF2900 0%,#FBBF24 100%);
   -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
@@ -374,11 +378,11 @@ const CSS = `
 }
 @keyframes ceh-logofloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-12px); } }
 .cristo-hero .wordmark .l1{
-  font-family:'CaliEnamora','Outfit',cursive; font-size:clamp(50px,9.5vw,138px); letter-spacing:.005em;
+  font-family:'CaliEnamora','DM Sans',cursive; font-size:clamp(50px,9.5vw,138px); letter-spacing:.005em;
   filter:drop-shadow(0 8px 30px rgba(0,0,0,.55)) drop-shadow(0 2px 6px rgba(0,0,0,.4));
 }
 .cristo-hero .wordmark .l2{
-  font-family:'CaliEnamora','Outfit',cursive; font-size:clamp(25px,4.7vw,66px);
+  font-family:'CaliEnamora','DM Sans',cursive; font-size:clamp(25px,4.7vw,66px);
   margin-top:.02em; letter-spacing:.02em;
   filter:drop-shadow(0 6px 22px rgba(0,0,0,.55)) drop-shadow(0 2px 6px rgba(0,0,0,.4));
 }
@@ -391,7 +395,7 @@ const CSS = `
 .cristo-hero .btn{
   pointer-events:auto; display:inline-flex; align-items:center; gap:.55em;
   padding:13px 26px; border-radius:9999px;
-  font-family:'Outfit',sans-serif; font-weight:600; font-size:clamp(14px,1.15vw,16.5px);
+  font-family:'DM Sans',sans-serif; font-weight:600; font-size:clamp(14px,1.15vw,16.5px);
   color:#fff; text-decoration:none; cursor:pointer;
   backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
   transition:transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;

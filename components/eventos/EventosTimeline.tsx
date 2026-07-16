@@ -125,13 +125,13 @@ export const EventosTimeline: React.FC<EventosTimelineProps> = ({ eventos }) => 
                       >
                         <span className="text-lg leading-none">{fecha.dia}</span>
                         <span className="uppercase">{fecha.mes}</span>
-                        <span className="text-white/60">{fecha.anio}</span>
+                        <span className="text-white">{fecha.anio}</span>
                       </span>
                     ) : (
-                      <span className="text-sm font-semibold text-white/80">{evento.fechaInicio}</span>
+                      <span className="text-sm font-semibold text-white">{evento.fechaInicio}</span>
                     )}
                     {evento.hora && (
-                      <span className="inline-flex items-center gap-1 text-xs text-white/50">
+                      <span className="inline-flex items-center gap-1 text-xs text-white">
                         <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -141,9 +141,9 @@ export const EventosTimeline: React.FC<EventosTimelineProps> = ({ eventos }) => 
                   </div>
 
                   <h4 className="mb-1.5 text-lg font-bold text-white sm:text-xl">{evento.nombre}</h4>
-                  <p className="mb-3 line-clamp-2 flex-grow text-sm text-white/60">{evento.descripcion}</p>
+                  <p className="mb-3 line-clamp-2 flex-grow text-sm text-white">{evento.descripcion}</p>
 
-                  <div className="mb-4 flex items-center gap-2 text-sm text-white/50">
+                  <div className="mb-4 flex items-center gap-2 text-sm text-white">
                     <svg className="h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />

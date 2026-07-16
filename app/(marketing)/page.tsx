@@ -1,58 +1,43 @@
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ImpactBar } from '@/components/sections/ImpactBar';
-import { HeroParallax } from '@/components/ui/hero-parallax';
-import { getParallaxImagenes } from '@/lib/galeria-parallax';
+import { IntroCaliE } from '@/components/sections/IntroCaliE';
 import { PilaresSection } from '@/components/sections/PilaresSection';
-import { RutasPilaresSection } from '@/components/sections/RutasPilaresSection';
-import { EventosMarqueeSection } from '@/components/sections/EventosMarqueeSection';
-import { RestaurantesSection } from '@/components/sections/RestaurantesSection';
-import { NuestraAcademia } from '@/components/sections/NuestraAcademia';
-import { TestimoniosSection } from '@/components/sections/TestimoniosSection';
-import { AliadosSection } from '@/components/sections/AliadosSection';
-import { InversoresSection } from '@/components/sections/InversoresSection';
-import { ContactoSection } from '@/components/sections/ContactoSection';
+import { SegmentCTA } from '@/components/ui/SegmentCTA';
 
 export default function Home() {
-  // Selección aleatoria (por build) de imágenes reales del proyecto.
-  const parallaxImagenes = getParallaxImagenes(15);
-
   return (
     <>
-      {/* Hero */}
+      {/* Hero — intro de marca (scroll Cristo Rey) */}
       <HeroSection />
 
       {/* Barra de impacto (marquee) */}
       <ImpactBar />
 
-      {/* Galería parallax — recorrido visual que desemboca en los Pilares */}
-      <HeroParallax products={parallaxImagenes} />
+      {/* ¿Qué es Cali-e? — info general */}
+      <IntroCaliE />
 
       {/* Los 4 Pilares */}
       <PilaresSection />
 
-      {/* Rutas por pilar (preview switch con teléfono) */}
-      <RutasPilaresSection />
-
-      {/* Eventos (hero animado con marquee de imágenes) */}
-      <EventosMarqueeSection />
-
-      {/* Sabores (restaurantes y planes) */}
-      <RestaurantesSection />
-
-      {/* Academia */}
-      <NuestraAcademia />
-
-      {/* Testimonios */}
-      <TestimoniosSection />
-
-      {/* Aliados */}
-      <AliadosSection />
-
-      {/* Inversores */}
-      <InversoresSection />
-
-      {/* Contacto */}
-      <ContactoSection />
+      {/* Segmentación: turista vs. hacer parte */}
+      <SegmentCTA
+        titulo="¿Cómo quieres vivir Cali Enamora?"
+        subtitulo="Elige tu camino: descubre el Valle como viajero o súmate al movimiento que lo hace posible."
+        acciones={[
+          {
+            label: 'Quiero ser turista',
+            href: '/turista',
+            variante: 'primary',
+            descripcion: 'Rutas, sabores, eventos y más',
+          },
+          {
+            label: 'Quiero hacer parte',
+            href: '/corporativa',
+            variante: 'ghost',
+            descripcion: 'Asóciate, alíate o dona',
+          },
+        ]}
+      />
     </>
   );
 }

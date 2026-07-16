@@ -1,5 +1,6 @@
 import React from 'react';
 import { AnimatedMarqueeHero } from '@/components/ui/hero-3';
+import { ScrollFloatText } from '@/components/ui/scroll-float-text';
 import { getEventos } from '@/lib/data';
 
 // Imágenes de eventos reales + algunas de la galería para enriquecer el marquee.
@@ -22,9 +23,9 @@ export function EventosMarqueeSection() {
       tagline="Agenda cultural del Valle"
       title={
         <>
-          Vive los eventos
+          <ScrollFloatText text="Vive los eventos" className="ce-title-playful" />
           <br />
-          que laten en Cali
+          <ScrollFloatText text="que laten en Cali" className="ce-title-playful" />
         </>
       }
       description="Del Petronio Álvarez a la Feria de Cali: festivales, música, sabor y cultura viva durante todo el año en el Valle del Cauca."

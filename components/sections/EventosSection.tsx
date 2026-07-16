@@ -137,8 +137,8 @@ export const EventosSection: React.FC = () => {
                   </div>
                   <div className="p-6 sm:p-7 flex flex-col flex-grow text-center">
                     <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{evento.nombre}</h3>
-                    <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-grow">{evento.descripcion}</p>
-                    <div className="space-y-2 mb-5 text-sm text-white/50">
+                    <p className="text-sm text-white mb-4 line-clamp-2 flex-grow">{evento.descripcion}</p>
+                    <div className="space-y-2 mb-5 text-sm text-white">
                       <div className="flex items-center justify-center gap-2">
                         <span>{evento.ubicacion}</span>
                       </div>
@@ -173,7 +173,7 @@ export const EventosSection: React.FC = () => {
 
         {eventosFiltrados.length === 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
-            <p className="text-white/50 text-lg">No hay eventos disponibles para este pilar</p>
+            <p className="text-white text-lg">No hay eventos disponibles para este pilar</p>
           </motion.div>
         )}
       </div>

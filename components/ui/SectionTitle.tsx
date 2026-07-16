@@ -51,27 +51,33 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
         />
       )}
 
-      {/* Título — CaliEnamora (TTF de marca), MAYÚSCULAS heredadas del global */}
+      {/* Título — CaliEnamora (TTF de marca), 3× y con tamaños variables por letra (playful).
+          El tamaño va inline (clamp) para ganar al override de h2 sin capa en globals.css. */}
       <motion.h2
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-        className={`text-3xl sm:text-4xl lg:text-5xl text-brand-orange ${alignmentClass[alineacion]}`}
-        style={{ fontFamily: "'CaliEnamora', cursive", fontWeight: 400 }}
+        className={`text-brand-orange ${alignmentClass[alineacion]}`}
+        style={{
+          fontFamily: "'CaliEnamora', cursive",
+          fontWeight: 400,
+          fontSize: 'clamp(1.75rem, 5.5vw, 4.5rem)',
+          lineHeight: 0.9,
+        }}
       >
-        <ScrollFloatText text={titulo} />
+        <ScrollFloatText text={titulo} className="ce-title-playful" />
       </motion.h2>
 
-      {/* Subtítulo — Outfit */}
+      {/* Subtítulo — Stack Sans Text, blanco */}
       {subtitulo && (
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className={`text-base sm:text-lg text-slate-400 max-w-2xl px-4 sm:px-0 ${alignmentClass[alineacion]}`}
-          style={{ fontFamily: 'Outfit, sans-serif' }}
+          className={`text-base sm:text-lg text-white max-w-2xl px-4 sm:px-0 ${alignmentClass[alineacion]}`}
+          style={{ fontFamily: "'Stack Sans Text', sans-serif" }}
         >
           {subtitulo}
         </motion.p>

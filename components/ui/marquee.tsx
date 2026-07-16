@@ -15,7 +15,7 @@ export function Marquee({ items }: { items: MarqueeStat[] }) {
   const content = items.map((it, i) => (
     <span key={i} className="mx-5 inline-flex items-baseline gap-2 sm:mx-8">
       <strong className="text-gradient-brand text-2xl font-extrabold sm:text-3xl">{it.num}</strong>
-      <span className="text-base text-white/65 sm:text-xl">{it.label}</span>
+      <span className="text-base text-white sm:text-xl">{it.label}</span>
       <span className="ml-5 text-brand-orange sm:ml-8" aria-hidden>
         ✦
       </span>

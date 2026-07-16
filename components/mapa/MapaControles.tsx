@@ -39,7 +39,7 @@ function BotonControl({
         borderRadius: "8px", cursor: "pointer",
         color: "rgba(255,255,255,0.7)",
         transition: "all 0.2s ease",
-        fontFamily: "Outfit, sans-serif",
+        fontFamily: "DM Sans, sans-serif",
         fontSize: "16px", fontWeight: "600",
       }}
       onMouseEnter={(e) => {
@@ -144,7 +144,7 @@ export function MapaControles({
           backdropFilter: "blur(12px)",
           border: "1px solid rgba(255,255,255,0.1)",
           borderRadius: "12px", padding: "12px 14px",
-          fontFamily: "Outfit, sans-serif",
+          fontFamily: "DM Sans, sans-serif",
           maxWidth: "210px",
         }}
       >
@@ -187,7 +187,7 @@ export function MapaControles({
           backdropFilter: "blur(8px)",
           border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: "8px", padding: "6px 10px",
-          fontFamily: "Outfit, sans-serif",
+          fontFamily: "DM Sans, sans-serif",
           fontSize: "11px", color: "rgba(255,255,255,0.4)",
         }}
       >

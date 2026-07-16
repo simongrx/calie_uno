@@ -1,28 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display, Montserrat, Inter } from 'next/font/google';
 import './globals.css';
 
 // FUENTES
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  weight: ['400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-});
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-  weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-});
+// Títulos: 'CaliEnamora' (TTF de marca, @font-face en globals.css).
+// Cuerpo: 'DM Sans' · Subtítulos: 'Stack Sans Text' (Google Fonts, <link> en <head>).
 
 // METADATA
 export const metadata: Metadata = {
@@ -129,7 +110,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${playfair.variable} ${montserrat.variable} ${inter.variable} scroll-smooth`}
+      className="scroll-smooth"
       suppressHydrationWarning
     >
       <head>
@@ -156,6 +137,12 @@ export default function RootLayout({
         {/* Preconnect a recursos externos */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Fuentes: DM Sans (cuerpo) + Stack Sans Text (subtítulos) */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Stack+Sans+Text:wght@200..700&display=swap"
+          rel="stylesheet"
+        />
 
         {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
@@ -299,7 +286,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className="min-h-screen text-gray-100 transition-colors duration-300"
+        className="min-h-screen text-white transition-colors duration-300"
         suppressHydrationWarning
       >
         {/* Skip to main content */}

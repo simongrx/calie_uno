@@ -108,7 +108,7 @@ function InfoLayer({
         <p className="mt-4 max-w-xl text-base text-white/85 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] sm:text-lg">
           {pilar.descripcion}
         </p>
-        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-base text-white/75">
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-base text-white">
           {pilar.meta.map((m, i) => {
             const Icon = META_ICON[i % META_ICON.length];
             return (
@@ -178,7 +178,7 @@ export function RutasScrollHero({ pilares }: { pilares: PilarInfo[] }) {
         {/* Nav superior: eyebrow + pestañas + barra de progreso */}
         <div className="absolute inset-x-0 top-0 z-30">
           <div className="container-custom flex flex-col gap-4 pt-24 sm:pt-28">
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white">
               Rutas por pilar
             </span>
             <div className="flex flex-wrap gap-2">
@@ -190,7 +190,7 @@ export function RutasScrollHero({ pilares }: { pilares: PilarInfo[] }) {
                     'rounded-full border px-4 py-2 text-sm font-semibold backdrop-blur transition-colors',
                     active === i
                       ? 'text-white'
-                      : 'border-white/15 bg-white/5 text-white/70 hover:text-white'
+                      : 'border-white/15 bg-white/5 text-white hover:text-white'
                   )}
                   style={
                     active === i
@@ -219,7 +219,7 @@ export function RutasScrollHero({ pilares }: { pilares: PilarInfo[] }) {
         {/* CTA persistente */}
         <div className="absolute inset-x-0 bottom-0 z-30">
           <div className="container-custom flex items-center justify-between pb-9 sm:pb-12">
-            <span className="hidden text-sm text-white/55 sm:block">
+            <span className="hidden text-sm text-white sm:block">
               {active + 1} / {total} · {pilares[active]?.label}
             </span>
             <SweepButton href="/rutas">Ver todas las rutas</SweepButton>

@@ -200,7 +200,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                 {card.icono}
               </div>
               <h3 className="mb-2 text-lg font-bold text-white">{card.titulo}</h3>
-              <p className="text-sm text-white/60">{card.descripcion}</p>
+              <p className="text-sm text-white">{card.descripcion}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -244,7 +244,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                       {pilar.icono}
                     </div>
                     <h4 className="mb-2 text-base font-bold leading-snug text-white">{pilar.titulo}</h4>
-                    <p className="text-sm text-white/60">{pilar.descripcion}</p>
+                    <p className="text-sm text-white">{pilar.descripcion}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -275,7 +275,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                       {fase.numero}
                     </span>
                     <h4 className="mb-2 text-xl font-bold text-white">{fase.titulo}</h4>
-                    <p className="text-sm text-white/60">{fase.descripcion}</p>
+                    <p className="text-sm text-white">{fase.descripcion}</p>
                     {fase.activa && (
                       <span className="spotlight-card mt-4 rounded-full px-4 py-1 text-xs font-semibold text-brand-orange" style={{ background: 'rgba(255,41,0,0.18)' }}>
                         Fase activa
@@ -312,7 +312,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
                     style={glassCard}
                   >
                     <span className="text-gradient-brand mb-2 text-4xl font-extrabold sm:text-5xl">{m.valor}</span>
-                    <p className="text-sm text-white/70">{m.label}</p>
+                    <p className="text-sm text-white">{m.label}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -332,11 +332,11 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
           <h3 className="mb-3 text-2xl font-bold text-white sm:text-3xl">
             ¿Listo para transformar tu negocio?
           </h3>
-          <p className="mb-7 max-w-2xl text-base text-white/60">
+          <p className="mb-7 max-w-2xl text-base text-white">
             Únete a más de 100 actores que ya fortalecen sus capacidades con la Academia Cali Enamora
           </p>
           <motion.a
-            href="#contacto"
+            href="/contacto"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.97 }}
             className="btn-glass-primary"

@@ -88,7 +88,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
           <PilarBadge pilar={restaurante.pilar} tamaño="sm" showLabel={true} />
         </div>
         <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">{restaurante.nombre}</h3>
-        <p className="mb-4 line-clamp-2 flex-grow text-sm text-white/60">{restaurante.descripcion}</p>
+        <p className="mb-4 line-clamp-2 flex-grow text-sm text-white">{restaurante.descripcion}</p>
         <motion.a
           href={`/sabores/${restaurante.id}`}
           whileHover={{ scale: 1.03 }}
@@ -118,7 +118,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
             <h3 className="text-xl font-bold text-white">{restaurante.nombre}</h3>
 
             {/* Meta: rating · precio · barrio */}
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-white/70">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-sm text-white">
               <Estrellas rating={restaurante.rating} />
               <span className="font-semibold text-white/90">{restaurante.precioPromedio}</span>
               <span className="inline-flex items-center gap-1">
@@ -141,7 +141,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
               {restaurante.especialidad.slice(0, 4).map((esp) => (
                 <span
                   key={esp}
-                  className="spotlight-card rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white/80"
+                  className="spotlight-card rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white"
                 >
                   {esp}
                 </span>
@@ -149,7 +149,7 @@ export const RestauranteCard: React.FC<RestauranteCardProps> = ({ restaurante })
             </div>
 
             {/* Horario y teléfono */}
-            <div className="flex flex-col items-center gap-1 text-xs text-white/50">
+            <div className="flex flex-col items-center gap-1 text-xs text-white">
               {restaurante.horario && (
                 <span className="inline-flex items-center gap-1.5">
                   <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

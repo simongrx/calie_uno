@@ -124,7 +124,7 @@ export function RutasCatalogo({ rutas }: { rutas: Ruta[] }) {
                 {/* Contenido */}
                 <div className="flex flex-grow flex-col p-5 sm:p-6">
                   <h3 className="mb-2 line-clamp-2 text-lg font-bold text-white sm:text-xl">{ruta.nombre}</h3>
-                  <p className="mb-4 line-clamp-3 flex-grow text-sm text-white/60">{ruta.descripcion}</p>
+                  <p className="mb-4 line-clamp-3 flex-grow text-sm text-white">{ruta.descripcion}</p>
                   <div className="mb-5 flex gap-4 text-xs text-white/40">
                     <span>{ruta.puntos.length} paradas</span>
                     <span className="capitalize">{ruta.dificultad}</span>
@@ -148,7 +148,7 @@ export function RutasCatalogo({ rutas }: { rutas: Ruta[] }) {
 
       {rutasFiltradas.length === 0 && (
         <div className="py-12 text-center">
-          <p className="text-lg text-white/50">No hay rutas disponibles para este pilar</p>
+          <p className="text-lg text-white">No hay rutas disponibles para este pilar</p>
         </div>
       )}
     </>

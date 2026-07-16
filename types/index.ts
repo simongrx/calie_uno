@@ -138,6 +138,20 @@ export interface Aliado {
   contacto?: string;
   enlace?: string;
 }
+// MERCHANDISING (vitrina — datos placeholder)
+export type CategoriaProducto = 'ropa' | 'accesorios' | 'souvenirs' | 'hogar';
+
+export interface Producto {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  precio: number; // COP
+  categoria: CategoriaProducto;
+  imagen: string;
+  destacado?: boolean;
+  agotado?: boolean;
+}
+
 // IMPACTO Y ESTADÍSTICAS
 export interface Estadistica {
   id: string;

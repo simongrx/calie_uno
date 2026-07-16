@@ -97,7 +97,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-2 drop-shadow-lg">
             {ruta.nombre}
           </h1>
-          <div className="flex flex-wrap gap-4 text-sm text-white/80">
+          <div className="flex flex-wrap gap-4 text-sm text-white">
             <span className="flex items-center gap-1.5">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -139,13 +139,13 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
               <div className="lg:col-span-2 space-y-10">
                 <div className="spotlight-card p-8 rounded-2xl" style={glassCard}>
                   <h3 className="text-lg font-bold text-white mb-3">Sobre esta ruta</h3>
-                  <p className="text-white/70 leading-relaxed">{ruta.descripcionLarga}</p>
+                  <p className="text-white leading-relaxed">{ruta.descripcionLarga}</p>
                 </div>
 
                 {/* Objetivo */}
                 <div className="spotlight-card p-8 rounded-2xl" style={glassCard}>
                   <h3 className="text-lg font-bold text-white mb-3">Objetivo</h3>
-                  <p className="text-white/70 leading-relaxed">{ruta.objetivo}</p>
+                  <p className="text-white leading-relaxed">{ruta.objetivo}</p>
                 </div>
 
                 {/* Recomendaciones */}
@@ -154,7 +154,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
                   <ul className="space-y-3">
                     {ruta.recomendaciones.map((rec, i) => (
                       <motion.li key={i} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}
-                        className="flex items-start gap-3 text-white/70 text-sm">
+                        className="flex items-start gap-3 text-white text-sm">
                         <svg className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -184,7 +184,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
                         </svg>
                         <div>
                           <p className="text-xs text-white/40">{item.label}</p>
-                          <p className="text-sm font-semibold text-white/80 capitalize">{item.value}</p>
+                          <p className="text-sm font-semibold text-white capitalize">{item.value}</p>
                         </div>
                       </div>
                     ))}
@@ -197,7 +197,7 @@ export const RutaDetalle: React.FC<RutaDetalleProps> = ({ ruta, onClose }) => {
                     <h3 className="text-lg font-bold text-white mb-4">Incluye</h3>
                     <ul className="space-y-2">
                       {ruta.incluye.map((item, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-white/70">
+                        <li key={i} className="flex items-center gap-2 text-sm text-white">
                           <svg className="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>

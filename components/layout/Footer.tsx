@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
                 className="h-12 w-auto"
               />
             </Link>
-            <p className="text-sm text-gray-400 leading-relaxed mb-4">
+            <p className="text-sm text-white leading-relaxed mb-4">
               Corporación ciudadana para promover turismo sostenible en Cali y
               el Valle del Cauca.
             </p>
@@ -101,33 +101,38 @@ export const Footer: React.FC = () => {
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-4 text-white">Navegación</h3>
             <ul className="space-y-2">
-              {['Inicio', 'Rutas', 'Eventos', 'Galería'].map((item) => (
-                <li key={item}>
+              {[
+                { label: 'Inicio', href: '/' },
+                { label: 'Turista', href: '/turista' },
+                { label: 'Hacer parte', href: '/corporativa' },
+                { label: 'Contacto', href: '/contacto' },
+              ].map((item) => (
+                <li key={item.label}>
                   <Link
-                    href={`#${item.toLowerCase()}`}
-                    className="text-sm text-gray-400 hover:text-brand-orange transition-colors duration-300"
+                    href={item.href}
+                    className="text-sm text-white hover:text-brand-orange transition-colors duration-300"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Pilares */}
+          {/* Turista */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4 text-white">Pilares</h3>
+            <h3 className="text-lg font-bold mb-4 text-white">Para el viajero</h3>
             <ul className="space-y-2">
               {[
-                { label: '🎭 Cultura', href: '#rutas' },
-                { label: '🌿 Naturaleza', href: '#rutas' },
-                { label: '🍽️ Gastronomía', href: '#rutas' },
-                { label: '💆 Bienestar', href: '#rutas' },
+                { label: '🗺️ Rutas', href: '/rutas' },
+                { label: '🍽️ Sabores', href: '/sabores' },
+                { label: '🎉 Eventos', href: '/eventos' },
+                { label: '🛍️ Merchandising', href: '/turista#merchandising' },
               ].map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-400 hover:text-brand-orange transition-colors duration-300"
+                    className="text-sm text-white hover:text-brand-orange transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -139,7 +144,7 @@ export const Footer: React.FC = () => {
           {/* Contact */}
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-4 text-white">Contacto</h3>
-            <div className="space-y-3 text-sm text-gray-400">
+            <div className="space-y-3 text-sm text-white">
               <p>
                 <span className="font-semibold text-white">Email:</span>
                 <br />
@@ -182,7 +187,7 @@ export const Footer: React.FC = () => {
               <h3 className="text-lg font-bold text-white mb-2">
                 ¡Suscríbete a nuestro boletín!
               </h3>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-white">
                 Recibe las últimas noticias y promociones
               </p>
             </div>
@@ -214,7 +219,7 @@ export const Footer: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="border-t border-gray-800 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-400 gap-4"
+          className="border-t border-gray-800 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between text-sm text-white gap-4"
         >
           <p>
             © {currentYear} Cali Enamora. Todos los derechos reservados.

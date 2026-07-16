@@ -11,32 +11,34 @@ type NavNode = NavLeaf | { label: string; children: NavLeaf[] };
 
 const isLeaf = (node: NavNode): node is NavLeaf => 'href' in node;
 
-// Estructura agrupada: enlaces sueltos + grupos con dropdown.
+// Estructura agrupada por audiencia: Turista vs. Corporativa.
 const navTree: NavNode[] = [
   { label: 'Inicio', href: '/' },
   {
-    label: 'Explora',
+    label: 'Turista',
     children: [
+      { label: 'Ver todo', href: '/turista' },
       { label: 'Rutas', href: '/rutas' },
       { label: 'Mapa', href: '/mapa' },
-      { label: 'Eventos', href: '/eventos' },
       { label: 'Sabores', href: '/sabores' },
+      { label: 'Eventos', href: '/eventos' },
+      { label: 'Merchandising', href: '/turista#merchandising' },
     ],
   },
   {
-    label: 'Comunidad',
+    label: 'Hacer parte',
     children: [
-      { label: 'Pilares', href: '/pilares' },
+      { label: 'Ver todo', href: '/corporativa' },
+      { label: 'Nosotros', href: '/nosotros' },
       { label: 'Academia', href: '/academia' },
       { label: 'Aliados', href: '/aliados' },
-      { label: 'Invertir', href: '/invertir' },
+      { label: 'Donar', href: '/corporativa#donar' },
     ],
   },
-  { label: 'Nosotros', href: '/nosotros' },
 ];
 
 const leafBtnStyle: React.CSSProperties = {
-  fontFamily: 'Outfit, sans-serif',
+  fontFamily: 'DM Sans, sans-serif',
   background: 'rgba(255,255,255,0.08)',
   backdropFilter: 'blur(16px)',
   WebkitBackdropFilter: 'blur(16px)',
@@ -132,7 +134,7 @@ export const Header: React.FC = () => {
                     } ${
                       isActive(node.href)
                         ? 'text-white border-red-500/40'
-                        : 'text-white/80 hover:text-white border-white/10 hover:border-red-500/40'
+                        : 'text-white hover:text-white border-white/10 hover:border-red-500/40'
                     }`}
                     style={leafBtnStyle}
                   >
@@ -157,7 +159,7 @@ export const Header: React.FC = () => {
                     } ${
                       groupActive || openGroup === node.label
                         ? 'text-white border-red-500/40'
-                        : 'text-white/80 hover:text-white border-white/10 hover:border-red-500/40'
+                        : 'text-white hover:text-white border-white/10 hover:border-red-500/40'
                     }`}
                     style={leafBtnStyle}
                   >
@@ -192,9 +194,9 @@ export const Header: React.FC = () => {
                               className={`w-full whitespace-nowrap rounded-xl px-4 py-2.5 text-left text-sm transition-all duration-200 ${
                                 isActive(child.href)
                                   ? 'bg-red-500/20 text-white'
-                                  : 'text-white/75 hover:bg-white/10 hover:text-white'
+                                  : 'text-white hover:bg-white/10 hover:text-white'
                               }`}
-                              style={{ fontFamily: 'Outfit, sans-serif' }}
+                              style={{ fontFamily: 'DM Sans, sans-serif' }}
                             >
                               {child.label}
                             </button>
@@ -300,10 +302,10 @@ export const Header: React.FC = () => {
                         transition={{ delay: index * 0.05 }}
                         onClick={() => handleNavClick(node.href)}
                         className={`w-full text-left px-5 py-3 rounded-full text-sm font-medium border border-white/10 transition-all duration-300 ${
-                          isActive(node.href) ? 'text-white' : 'text-white/80 hover:text-white'
+                          isActive(node.href) ? 'text-white' : 'text-white hover:text-white'
                         }`}
                         style={{
-                          fontFamily: 'Outfit, sans-serif',
+                          fontFamily: 'DM Sans, sans-serif',
                           background: 'rgba(255,255,255,0.06)',
                           backdropFilter: 'blur(16px)',
                           WebkitBackdropFilter: 'blur(16px)',
@@ -324,9 +326,9 @@ export const Header: React.FC = () => {
                     >
                       <button
                         onClick={() => setOpenMobileGroup(expanded ? null : node.label)}
-                        className="flex w-full items-center justify-between rounded-full border border-white/10 px-5 py-3 text-left text-sm font-medium text-white/80 transition-all duration-300 hover:text-white"
+                        className="flex w-full items-center justify-between rounded-full border border-white/10 px-5 py-3 text-left text-sm font-medium text-white transition-all duration-300 hover:text-white"
                         style={{
-                          fontFamily: 'Outfit, sans-serif',
+                          fontFamily: 'DM Sans, sans-serif',
                           background: 'rgba(255,255,255,0.06)',
                           backdropFilter: 'blur(16px)',
                           WebkitBackdropFilter: 'blur(16px)',
@@ -358,9 +360,9 @@ export const Header: React.FC = () => {
                                   key={child.label}
                                   onClick={() => handleNavClick(child.href)}
                                   className={`w-full rounded-full px-5 py-2.5 text-left text-sm transition-all duration-200 ${
-                                    isActive(child.href) ? 'bg-red-500/20 text-white' : 'text-white/70 hover:text-white'
+                                    isActive(child.href) ? 'bg-red-500/20 text-white' : 'text-white hover:text-white'
                                   }`}
-                                  style={{ fontFamily: 'Outfit, sans-serif', background: 'rgba(255,255,255,0.04)' }}
+                                  style={{ fontFamily: 'DM Sans, sans-serif', background: 'rgba(255,255,255,0.04)' }}
                                 >
                                   {child.label}
                                 </button>

@@ -38,7 +38,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
           <p className="text-xs text-white/40 uppercase tracking-wider">Duración total</p>
           <p className="text-white font-bold">{duracionTotal}</p>
         </div>
-        <div className="ml-auto text-sm text-white/50">
+        <div className="ml-auto text-sm text-white">
           {puntos.length} paradas
         </div>
       </div>
@@ -99,7 +99,7 @@ export const RutaTimeline: React.FC<RutaTimelineProps> = ({ puntos, duracionTota
                         <span className="text-xs text-red-500 font-semibold ml-2 flex-shrink-0">{punto.duracion}</span>
                       )}
                     </div>
-                    <p className="text-sm text-white/60 mb-3 leading-relaxed">{punto.descripcion}</p>
+                    <p className="text-sm text-white mb-3 leading-relaxed">{punto.descripcion}</p>
                     {punto.detalles && (
                       <p className="text-xs text-white/40 leading-relaxed">{punto.detalles}</p>
                     )}

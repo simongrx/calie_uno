@@ -94,12 +94,20 @@ export function AnimatedMarqueeHero({
           </span>
         )}
 
-        <h2 className="max-w-4xl text-balance text-5xl text-white sm:text-6xl xl:text-[68px] xl:leading-[1.05]">
+        <h2
+          className="max-w-5xl text-balance text-brand-orange"
+          style={{
+            fontFamily: "'CaliEnamora', cursive",
+            fontWeight: 400,
+            fontSize: 'clamp(1.75rem, 5.5vw, 4.5rem)',
+            lineHeight: 0.9,
+          }}
+        >
           {title}
         </h2>
 
         {description && (
-          <p className="mt-6 max-w-2xl text-balance text-lg text-white/70 sm:text-xl">
+          <p className="mt-6 max-w-2xl text-balance text-lg text-white sm:text-xl">
             {description}
           </p>
         )}

@@ -75,7 +75,7 @@ export const NosotrosSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <p className="text-lg leading-relaxed text-white/70 sm:text-xl">
+          <p className="text-lg leading-relaxed text-white sm:text-xl">
             <span className="font-semibold text-white">Cali Enamora</span> nace para mostrar el
             Valle del Cauca como un destino vivo, diverso y sostenible. Conectamos viajeros con
             experiencias auténticas alrededor de cuatro pilares —cultura, naturaleza, gastronomía y
@@ -107,7 +107,7 @@ export const NosotrosSection: React.FC = () => {
               style={glassCard}
             >
               <h3 className="mb-3 text-2xl font-bold text-white">{item.titulo}</h3>
-              <p className="leading-relaxed text-white/65">{item.texto}</p>
+              <p className="leading-relaxed text-white">{item.texto}</p>
             </motion.div>
           ))}
         </div>
@@ -136,7 +136,7 @@ export const NosotrosSection: React.FC = () => {
                 </svg>
               </div>
               <h4 className="mb-2 text-lg font-bold text-white">{valor.titulo}</h4>
-              <p className="text-sm leading-relaxed text-white/60">{valor.descripcion}</p>
+              <p className="text-sm leading-relaxed text-white">{valor.descripcion}</p>
             </motion.div>
           ))}
         </div>
@@ -154,7 +154,7 @@ export const NosotrosSection: React.FC = () => {
               style={glassCard}
             >
               <div className="mb-1 text-3xl font-extrabold text-white sm:text-4xl">{stat.num}</div>
-              <div className="text-sm text-white/55">{stat.label}</div>
+              <div className="text-sm text-white">{stat.label}</div>
             </motion.div>
           ))}
         </div>

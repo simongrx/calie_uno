@@ -63,12 +63,12 @@ export function EventoDetalle({ evento }: { evento: Evento }) {
         <div className="space-y-6 lg:col-span-2">
           <div className="spotlight-card rounded-2xl p-6 sm:p-8" style={glassCard}>
             <h3 className="mb-3 text-lg font-bold text-white">Sobre el evento</h3>
-            <p className="leading-relaxed text-white/70">{evento.descripcion}</p>
+            <p className="leading-relaxed text-white">{evento.descripcion}</p>
 
             {evento.tags?.length > 0 && (
               <div className="mt-6 flex flex-wrap gap-2">
                 {evento.tags.map((t) => (
-                  <span key={t} className="rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white/70">
+                  <span key={t} className="rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white">
                     {t}
                   </span>
                 ))}

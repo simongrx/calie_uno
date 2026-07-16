@@ -161,7 +161,7 @@ export const RutasSection: React.FC = () => {
                     {/* Content */}
                     <div className="p-5 sm:p-6 flex flex-col flex-grow">
                       <h3 className="text-lg sm:text-xl font-bold text-white mb-2 line-clamp-2">{ruta.nombre}</h3>
-                      <p className="text-sm text-white/60 mb-4 flex-grow line-clamp-3">{ruta.descripcion}</p>
+                      <p className="text-sm text-white mb-4 flex-grow line-clamp-3">{ruta.descripcion}</p>
  
                       <div className="flex gap-4 mb-5 text-xs text-white/40">
                         <span>{ruta.puntos.length} paradas</span>
@@ -201,7 +201,7 @@ export const RutasSection: React.FC = () => {
               <motion.button
                 onClick={cerrarRuta}
                 whileHover={{ x: -4 }}
-                className="flex items-center gap-2 text-white/60 hover:text-white transition-colors mb-8 text-sm font-medium"
+                className="flex items-center gap-2 text-white hover:text-white transition-colors mb-8 text-sm font-medium"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -216,7 +216,7 @@ export const RutasSection: React.FC = () => {
  
         {!rutaSeleccionada && rutasFiltradas.length === 0 && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
-            <p className="text-white/50 text-lg">No hay rutas disponibles para este pilar</p>
+            <p className="text-white text-lg">No hay rutas disponibles para este pilar</p>
           </motion.div>
         )}
       </div>

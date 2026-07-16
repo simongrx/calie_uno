@@ -112,7 +112,7 @@ export const PilaresSection: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white">
             Los 4 Pilares de <GradientText variant="brand">Cali Enamora</GradientText>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-400 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-white sm:text-lg">
             Cada pilar representa una dimensión única de la experiencia turística que ofrecemos.
           </p>
         </RevealText>
@@ -128,7 +128,7 @@ export const PilaresSection: React.FC = () => {
           {pilares.map((pilar) => (
             <motion.a
               key={pilar.id}
-              href="#rutas"
+              href="/rutas"
               variants={itemVariants}
               whileHover={{ scale: 1.02, boxShadow: `0 24px 60px ${pilar.glow}` }}
               whileTap={{ scale: 0.99 }}

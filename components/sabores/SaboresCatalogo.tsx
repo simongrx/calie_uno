@@ -116,7 +116,7 @@ export function SaboresCatalogo({
               </motion.div>
             ) : (
               <div className="py-12 text-center">
-                <p className="text-lg text-white/50">No hay restaurantes con esa calificación.</p>
+                <p className="text-lg text-white">No hay restaurantes con esa calificación.</p>
                 <motion.button
                   onClick={() => setFiltroRating(0)}
                   whileHover={{ scale: 1.05 }}
@@ -153,7 +153,7 @@ export function SaboresCatalogo({
                   </div>
                   <div className="flex flex-grow flex-col p-6 text-center sm:p-7">
                     <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">{plan.nombre}</h3>
-                    <p className="mb-4 flex-grow text-sm text-white/60">{plan.descripcion}</p>
+                    <p className="mb-4 flex-grow text-sm text-white">{plan.descripcion}</p>
                     <motion.a
                       href="/#contacto"
                       whileHover={{ scale: 1.03 }}

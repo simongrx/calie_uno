@@ -41,7 +41,7 @@ export default async function RutaDetallePage({
       <div className="container-custom">
         <Link
           href="/rutas"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-white/60 transition-colors hover:text-white"
+          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-white"
         >
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

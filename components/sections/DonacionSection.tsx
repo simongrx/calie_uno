@@ -36,11 +36,12 @@ const icoCapacit = (
   <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 14l9-5-9-5-9 5 9 5zm0 0v7m-5-9.2v4.2c0 1.1 2.24 2 5 2s5-.9 5-2v-4.2" /></svg>
 );
 
+// Líneas de impacto (antes "líneas de inversión / ROI"): a dónde va cada donación.
 const lineas = [
-  { titulo: 'Infraestructura', roi: '+400%', plazo: '24-36 meses', icon: icoInfra },
-  { titulo: 'Experiencias', roi: '+300%', plazo: '12-18 meses', icon: icoExp },
-  { titulo: 'Plataforma Digital', roi: '+250%', plazo: '18-24 meses', icon: icoPlataforma },
-  { titulo: 'Capacitación', roi: '+150%', plazo: '6-12 meses', icon: icoCapacit },
+  { titulo: 'Infraestructura', impacto: '+12 km', detalle: 'de senderos y señalética', icon: icoInfra },
+  { titulo: 'Experiencias', impacto: '+40', detalle: 'experiencias creadas al año', icon: icoExp },
+  { titulo: 'Plataforma Digital', impacto: '100%', detalle: 'acceso abierto a la comunidad', icon: icoPlataforma },
+  { titulo: 'Capacitación', impacto: '+300', detalle: 'personas formadas', icon: icoCapacit },
 ];
 
 const temas = [
@@ -58,18 +59,22 @@ function StatBox({ num, label }: { num: string; label: string }) {
       style={glassCard}
     >
       <span className="text-gradient-brand text-3xl font-extrabold sm:text-4xl">{num}</span>
-      <p className="mt-1.5 text-xs leading-snug text-white/60 sm:text-sm">{label}</p>
+      <p className="mt-1.5 text-xs leading-snug text-white sm:text-sm">{label}</p>
     </motion.div>
   );
 }
 
-export const InversoresSection: React.FC = () => {
+/**
+ * Sección de Donación — reutiliza el diseño (bento + lupa) de la antigua sección
+ * de Inversores, con narrativa de donación e invitación a convertirse en Benefactor.
+ */
+export const DonacionSection: React.FC = () => {
   return (
-    <section className="section bg-transparent relative overflow-hidden">
+    <section id="donar" className="section bg-transparent relative overflow-hidden">
       <div className="container-custom relative z-10">
         <SectionTitle
-          titulo="Oportunidades de Inversión"
-          subtitulo="Una iniciativa de impacto con retorno financiero sostenible en el turismo experiencial del Valle"
+          titulo="Conviértete en Benefactor"
+          subtitulo="Tu donación sostiene un modelo de turismo que transforma comunidades del Valle del Cauca. Cada aporte deja huella."
           alineacion="center"
           conLinea={true}
           className="mb-10 sm:mb-14"
@@ -82,31 +87,31 @@ export const InversoresSection: React.FC = () => {
           viewport={{ once: true, amount: 0.15 }}
           className="grid auto-rows-[164px] grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4"
         >
-          {/* Lente interactivo — Focos de inversión (grande) */}
+          {/* Lente interactivo — En qué se invierte tu donación (grande) */}
           <motion.div variants={itemVariants} className="col-span-2 row-span-2">
             <MagnifiedBento
-              title="Focos de Inversión"
-              description="Arrastra la lupa para explorar las áreas donde construimos valor."
+              title="Tu donación en acción"
+              description="Arrastra la lupa para explorar las áreas donde tu aporte genera valor."
               rows={temas}
               className="h-full"
             />
           </motion.div>
 
-          {/* +12% crecimiento (ancho) */}
+          {/* Dato de contexto (ancho) */}
           <motion.div
             variants={itemVariants}
             className="spotlight-card col-span-2 flex flex-col justify-center rounded-3xl p-6"
             style={glassCard}
           >
             <span className="text-gradient-brand text-4xl font-extrabold sm:text-5xl">+12%</span>
-            <p className="mt-2 text-sm text-white/70">Crecimiento anual del turismo experiencial global</p>
+            <p className="mt-2 text-sm text-white">Crecimiento anual del turismo experiencial global</p>
           </motion.div>
 
           {/* Stats */}
           <StatBox num="2M+" label="Turistas/año en la región" />
           <StatBox num="100%" label="Enfoque sostenible" />
 
-          {/* 4 líneas de inversión */}
+          {/* 4 líneas de impacto */}
           {lineas.map((l) => (
             <motion.div
               key={l.titulo}
@@ -122,11 +127,11 @@ export const InversoresSection: React.FC = () => {
                 >
                   {l.icon}
                 </span>
-                <span className="text-gradient-brand text-2xl font-extrabold sm:text-3xl">{l.roi}</span>
+                <span className="text-gradient-brand text-2xl font-extrabold sm:text-3xl">{l.impacto}</span>
               </div>
               <div>
                 <h4 className="text-sm font-bold leading-snug text-white sm:text-base">{l.titulo}</h4>
-                <p className="mt-1 text-xs text-white/45">ROI estimado · {l.plazo}</p>
+                <p className="mt-1 text-xs text-white/45">{l.detalle}</p>
               </div>
             </motion.div>
           ))}
@@ -141,18 +146,18 @@ export const InversoresSection: React.FC = () => {
             style={glassCard}
           >
             <div>
-              <h4 className="text-lg font-bold text-white sm:text-xl">Impacto real, potencial global</h4>
-              <p className="mt-1 max-w-xl text-sm text-white/60">
-                Un modelo turístico rentable, escalable y con impacto social positivo a largo plazo.
+              <h4 className="text-lg font-bold text-white sm:text-xl">Sé parte del cambio</h4>
+              <p className="mt-1 max-w-xl text-sm text-white">
+                Con tu donación impulsamos un modelo turístico sostenible y con impacto social a largo plazo.
               </p>
             </div>
             <motion.a
-              href="#contacto"
+              href="/contacto"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.97 }}
               className="btn-glass-primary shrink-0"
             >
-              Conversemos
+              Quiero donar
             </motion.a>
           </motion.div>
         </motion.div>
@@ -161,4 +166,4 @@ export const InversoresSection: React.FC = () => {
   );
 };
 
-export default InversoresSection;
+export default DonacionSection;

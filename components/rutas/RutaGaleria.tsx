@@ -71,7 +71,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
                 </motion.div>
               </div>
               {/* Número */}
-              <div className="absolute bottom-2 right-2 text-xs text-white/60 font-medium"
+              <div className="absolute bottom-2 right-2 text-xs text-white font-medium"
                 style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', padding: '2px 8px', borderRadius: '20px' }}>
                 {index + 1}/{imagenes.length}
               </div>
@@ -109,7 +109,7 @@ export const RutaGaleria: React.FC<RutaGaleriaProps> = ({ imagenes, nombreRuta }
 
               {/* Controles */}
               <div className="absolute top-4 right-4 flex gap-2">
-                <span className="spotlight-card text-white/60 text-sm px-5 py-1 rounded-full"
+                <span className="spotlight-card text-white text-sm px-5 py-1 rounded-full"
                   style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)' }}>
                   {imagenAmpliada + 1} / {imagenes.length}
                 </span>

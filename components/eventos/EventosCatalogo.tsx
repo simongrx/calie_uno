@@ -117,8 +117,8 @@ export function EventosCatalogo({ eventos }: { eventos: Evento[] }) {
                   </div>
                   <div className="flex flex-grow flex-col p-6 text-center sm:p-7">
                     <h3 className="mb-2 text-lg font-bold text-white sm:text-xl">{evento.nombre}</h3>
-                    <p className="mb-4 line-clamp-2 flex-grow text-sm text-white/60">{evento.descripcion}</p>
-                    <div className="mb-5 space-y-1 text-sm text-white/50">
+                    <p className="mb-4 line-clamp-2 flex-grow text-sm text-white">{evento.descripcion}</p>
+                    <div className="mb-5 space-y-1 text-sm text-white">
                       <p>{evento.ubicacion}</p>
                       <p>{evento.fechaInicio}</p>
                     </div>
@@ -145,7 +145,7 @@ export function EventosCatalogo({ eventos }: { eventos: Evento[] }) {
 
       {eventosFiltrados.length === 0 && (
         <div className="py-12 text-center">
-          <p className="text-lg text-white/50">No hay eventos disponibles para este pilar</p>
+          <p className="text-lg text-white">No hay eventos disponibles para este pilar</p>
         </div>
       )}
     </>

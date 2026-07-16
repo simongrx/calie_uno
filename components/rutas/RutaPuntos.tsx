@@ -86,7 +86,7 @@ export const RutaPuntos: React.FC<RutaPuntosProps> = ({ puntos }) => {
 
               {/* Duración */}
               {punto.duracion && (
-                <div className="absolute bottom-4 right-4 flex items-center gap-1 text-white/80 text-xs"
+                <div className="absolute bottom-4 right-4 flex items-center gap-1 text-white text-xs"
                   style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)', padding: '4px 8px', borderRadius: '20px' }}>
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -99,7 +99,7 @@ export const RutaPuntos: React.FC<RutaPuntosProps> = ({ puntos }) => {
             {/* Contenido */}
             <div className="p-4 sm:p-5">
               <h4 className="text-base font-bold text-white mb-1">{punto.nombre}</h4>
-              <p className="text-sm text-white/60 mb-3">{punto.descripcion}</p>
+              <p className="text-sm text-white mb-3">{punto.descripcion}</p>
 
               {/* Expandible */}
               <AnimatePresence>
@@ -111,7 +111,7 @@ export const RutaPuntos: React.FC<RutaPuntosProps> = ({ puntos }) => {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="pt-3 mt-3 text-sm text-white/70 leading-relaxed"
+                    <div className="pt-3 mt-3 text-sm text-white leading-relaxed"
                       style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
                       {punto.detalles}
                     </div>

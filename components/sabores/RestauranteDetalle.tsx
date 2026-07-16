@@ -59,7 +59,7 @@ export function RestauranteDetalle({ restaurante }: { restaurante: Restaurante }
         <div className="absolute bottom-6 left-6 right-6 z-10">
           <div className="mb-3"><PilarBadge pilar={restaurante.pilar} tamaño="sm" showLabel /></div>
           <h1 className="mb-2 text-3xl font-bold text-white drop-shadow-lg sm:text-4xl lg:text-5xl">{restaurante.nombre}</h1>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/80">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white">
             <Estrellas rating={restaurante.rating} />
             <span className="font-semibold text-white/90">{restaurante.precioPromedio}</span>
             <span className="inline-flex items-center gap-1">
@@ -75,7 +75,7 @@ export function RestauranteDetalle({ restaurante }: { restaurante: Restaurante }
         <div className="space-y-6 lg:col-span-2">
           <div className="spotlight-card rounded-2xl p-6 sm:p-8" style={glassCard}>
             <h3 className="mb-3 text-lg font-bold text-white">Sobre el lugar</h3>
-            <p className="leading-relaxed text-white/70">{restaurante.descripcion}</p>
+            <p className="leading-relaxed text-white">{restaurante.descripcion}</p>
           </div>
 
           <div className="spotlight-card rounded-2xl p-6 sm:p-8" style={glassCard}>
@@ -83,7 +83,7 @@ export function RestauranteDetalle({ restaurante }: { restaurante: Restaurante }
             <p className="mt-1 text-xl font-bold text-brand-orange">{restaurante.platoInsignia}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {restaurante.especialidad.map((esp) => (
-                <span key={esp} className="rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white/70">{esp}</span>
+                <span key={esp} className="rounded-full bg-white/10 px-3 py-1 text-xs capitalize text-white">{esp}</span>
               ))}
             </div>
           </div>

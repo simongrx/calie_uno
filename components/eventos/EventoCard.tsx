@@ -95,7 +95,7 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
             {formatearRango(evento.fechaInicio, evento.fechaFin)}
           </p>
           {evento.hora && (
-            <p className="text-white/60 text-xs">{evento.hora}</p>
+            <p className="text-white text-xs">{evento.hora}</p>
           )}
         </div>
       </div>
@@ -109,12 +109,12 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
         </h3>
  
         {/* Descripción */}
-        <p className="text-sm text-white/60 mb-4 line-clamp-2 flex-grow leading-relaxed">
+        <p className="text-sm text-white mb-4 line-clamp-2 flex-grow leading-relaxed">
           {evento.descripcion}
         </p>
  
         {/* Ubicación */}
-        <div className="flex items-center gap-2 text-xs text-white/50 mb-4">
+        <div className="flex items-center gap-2 text-xs text-white mb-4">
           <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -132,7 +132,7 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
         {/* Cupos */}
         {evento.cuposDisponibles !== undefined && (
           <div className="mb-4">
-            <div className="flex justify-between text-xs text-white/50 mb-1">
+            <div className="flex justify-between text-xs text-white mb-1">
               <span>Cupos disponibles</span>
               <span className="text-red-500 font-semibold">{evento.cuposDisponibles.toLocaleString()}</span>
             </div>
@@ -165,7 +165,7 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
                     <p className="text-xs text-white/40 uppercase tracking-wider mb-2">Categorías</p>
                     <div className="flex flex-wrap gap-2">
                       {evento.tags.map((tag) => (
-                        <span key={tag} className="text-xs px-2.5 py-1 rounded-full text-white/60"
+                        <span key={tag} className="text-xs px-2.5 py-1 rounded-full text-white"
                           style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)' }}>
                           {tag}
                         </span>
@@ -178,17 +178,17 @@ export const EventosCard: React.FC<EventosCardProps> = ({ evento, variante = 'co
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   <div className="p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
                     <p className="text-xs text-white/40 mb-1">Inicio</p>
-                    <p className="text-xs text-white/80 font-medium">{formatearFecha(evento.fechaInicio)}</p>
+                    <p className="text-xs text-white font-medium">{formatearFecha(evento.fechaInicio)}</p>
                   </div>
                   <div className="p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
                     <p className="text-xs text-white/40 mb-1">Cierre</p>
-                    <p className="text-xs text-white/80 font-medium">{formatearFecha(evento.fechaFin)}</p>
+                    <p className="text-xs text-white font-medium">{formatearFecha(evento.fechaFin)}</p>
                   </div>
                 </div>
  
                 {/* Horario */}
                 {evento.hora && (
-                  <div className="flex items-center gap-2 text-xs text-white/50 mb-3">
+                  <div className="flex items-center gap-2 text-xs text-white mb-3">
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>

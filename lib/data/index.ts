@@ -13,6 +13,7 @@ import { eventos } from '@/data/eventos';
 import { restaurantes, planesExperiencia } from '@/data/restaurantes';
 import { aliados } from '@/data/aliados';
 import { testimonios } from '@/data/testimonios';
+import { merchandising } from '@/data/merchandising';
 import type {
   Ruta,
   Evento,
@@ -20,6 +21,7 @@ import type {
   PlanExperiencia,
   Aliado,
   Testimonio,
+  Producto,
   PilarType,
 } from '@/types';
 
@@ -54,3 +56,9 @@ export const getAliados = (): Aliado[] => aliados;
 
 /* ---------------- Testimonios ---------------- */
 export const getTestimonios = (): Testimonio[] => testimonios;
+
+/* ---------------- Merchandising (vitrina placeholder) ---------------- */
+export const getMerchandising = (): Producto[] => merchandising;
+export const getMerchandisingDestacados = (): Producto[] =>
+  merchandising.filter((p) => p.destacado);
+export const getMerchandisingSlugs = (): string[] => merchandising.map((p) => p.id);

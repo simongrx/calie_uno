@@ -37,7 +37,7 @@ export default function Error({
         <h1 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
           Algo salió mal
         </h1>
-        <p className="mb-8 max-w-md text-white/65">
+        <p className="mb-8 max-w-md text-white">
           Tuvimos un problema cargando esta sección. Puedes intentarlo de nuevo o volver al inicio.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4">

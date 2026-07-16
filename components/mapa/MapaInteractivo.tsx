@@ -35,7 +35,7 @@ const crearIcono = (color: string, numero: number) => {
         fill="${color}" filter="url(#s${numero})" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
       <circle cx="18" cy="14" r="7" fill="rgba(255,255,255,0.15)"/>
       <text x="18" y="18" text-anchor="middle" dominant-baseline="middle"
-        font-family="Outfit,sans-serif" font-size="11" font-weight="700" fill="white">
+        font-family="DM Sans,sans-serif" font-size="11" font-weight="700" fill="white">
         ${numero}
       </text>
     </svg>

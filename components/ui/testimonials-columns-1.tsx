@@ -35,7 +35,7 @@ export const TestimonialsColumn = (props: {
                 className="spotlight-card w-full max-w-xs rounded-3xl border border-white/10 bg-white/[0.05] p-8 text-white shadow-xl shadow-black/30 backdrop-blur-md"
                 style={{ WebkitBackdropFilter: 'blur(12px)', backdropFilter: 'blur(12px)' }}
               >
-                <div className="text-sm leading-relaxed text-white/80">{text}</div>
+                <div className="text-sm leading-relaxed text-white">{text}</div>
                 <div className="mt-5 flex items-center gap-2">
                   <img
                     width={40}
@@ -46,7 +46,7 @@ export const TestimonialsColumn = (props: {
                   />
                   <div className="flex flex-col">
                     <div className="font-medium leading-5 tracking-tight text-white">{name}</div>
-                    <div className="leading-5 tracking-tight text-white/60">{role}</div>
+                    <div className="leading-5 tracking-tight text-white">{role}</div>
                   </div>
                 </div>
               </div>

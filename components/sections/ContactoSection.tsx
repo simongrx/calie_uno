@@ -144,7 +144,7 @@ export const ContactoSection: React.FC = () => {
                         {item.titulo}
                       </h4>
 
-                      <p className="text-gray-300 text-sm sm:text-base break-words hover:text-red-500 transition-colors">
+                      <p className="text-white text-sm sm:text-base break-words hover:text-red-500 transition-colors">
                         {item.contenido}
                       </p>
 
@@ -221,7 +221,7 @@ export const ContactoSection: React.FC = () => {
                   Envíanos un Mensaje
                 </h3>
 
-                <p className="text-gray-300 text-sm sm:text-base mb-8">
+                <p className="text-white text-sm sm:text-base mb-8">
                   Completa el formulario y nuestro equipo se pondrá en contacto contigo pronto.
                 </p>
 
@@ -340,7 +340,7 @@ export const ContactoSection: React.FC = () => {
                   {/* PRIVACIDAD */}
                   <motion.p
                     variants={itemVariants}
-                    className="text-xs sm:text-sm text-gray-400 text-center"
+                    className="text-xs sm:text-sm text-white text-center"
                   >
                     Tu información será tratada con confidencialidad y conforme a nuestra
                     política de privacidad.

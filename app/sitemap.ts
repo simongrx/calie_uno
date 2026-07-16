@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Páginas estáticas
   const staticPaths = [
     '',
+    '/turista',
+    '/corporativa',
     '/rutas',
     '/mapa',
     '/eventos',
@@ -16,7 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/pilares',
     '/academia',
     '/aliados',
-    '/invertir',
     '/nosotros',
     '/contacto',
   ];

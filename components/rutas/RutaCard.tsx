@@ -88,12 +88,12 @@ export const RutaCard: React.FC<RutaCardProps> = ({ ruta, onClick, destacada = f
           {ruta.nombre}
         </h3>
 
-        <p className="text-sm text-white/60 mb-4 line-clamp-3 flex-grow leading-relaxed">
+        <p className="text-sm text-white mb-4 line-clamp-3 flex-grow leading-relaxed">
           {ruta.descripcion}
         </p>
 
         {/* Info row */}
-        <div className="flex items-center gap-4 mb-5 text-xs text-white/50">
+        <div className="flex items-center gap-4 mb-5 text-xs text-white">
           {ruta.distancia && (
             <div className="flex items-center gap-1">
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -50,14 +50,14 @@ function Unidad({ valor, label }: { valor: number; label: string }) {
             exit={{ y: 20, opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="text-lg sm:text-xl font-bold text-white absolute"
-            style={{ fontFamily: 'Outfit, sans-serif' }}
+            style={{ fontFamily: 'DM Sans, sans-serif' }}
           >
             {valorStr}
           </motion.span>
         </AnimatePresence>
       </div>
       <span className="text-xs text-white/40 mt-1.5 font-medium uppercase tracking-wider"
-        style={{ fontFamily: 'Outfit, sans-serif', fontSize: '9px' }}>
+        style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '9px' }}>
         {label}
       </span>
     </div>
@@ -125,7 +125,7 @@ export const EventosCountdown: React.FC<EventosCountdownProps> = ({ fechaInicio,
   return (
     <div>
       <p className="text-xs text-white/40 uppercase tracking-wider mb-2"
-        style={{ fontFamily: 'Outfit, sans-serif' }}>
+        style={{ fontFamily: 'DM Sans, sans-serif' }}>
         Comienza en
       </p>
       <div className="flex items-end gap-2">

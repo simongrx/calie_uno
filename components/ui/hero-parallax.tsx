@@ -94,7 +94,7 @@ export const Header = () => {
   return (
     <div className="container-custom relative left-0 top-0 mx-auto w-full py-16 sm:py-24">
       <span
-        className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white/80"
+        className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-white"
         style={{
           background: 'rgba(255, 41, 0, 0.18)',
           border: '1px solid rgba(255, 41, 0, 0.4)',
@@ -110,7 +110,7 @@ export const Header = () => {
       >
         El Valle del Cauca, <br /> en imágenes
       </h2>
-      <p className="mt-6 max-w-2xl text-base text-white/65 sm:mt-8 sm:text-xl">
+      <p className="mt-6 max-w-2xl text-base text-white sm:mt-8 sm:text-xl">
         Cultura, naturaleza, sabores y bienestar: un recorrido visual por las
         experiencias que enamoran de Cali y su región. Desliza para descubrirlas
         y entra a conocer nuestros cuatro pilares.

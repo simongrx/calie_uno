@@ -51,7 +51,7 @@ function IntroSection({
         >
           {intro}
         </p>
-        <span className="mt-12 inline-flex animate-bounce flex-col items-center gap-1 text-sm font-semibold uppercase tracking-[0.3em] text-white/55">
+        <span className="mt-12 inline-flex animate-bounce flex-col items-center gap-1 text-sm font-semibold uppercase tracking-[0.3em] text-white">
           Desliza
           <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -98,7 +98,7 @@ function RutasSection({
           {title}
         </h2>
         {description && (
-          <p className="mb-10 max-w-2xl text-base text-white/65 sm:text-lg">{description}</p>
+          <p className="mb-10 max-w-2xl text-base text-white sm:text-lg">{description}</p>
         )}
 
         <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">

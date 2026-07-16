@@ -52,7 +52,7 @@ export function MagnifiedBento({ title, description, rows, className }: Magnifie
           ) : (
             <div
               key={i}
-              className="flex w-fit items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-xs text-white/55 backdrop-blur-sm"
+              className="flex w-fit items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-xs text-white backdrop-blur-sm"
             >
               <PillIcon />
               <span>{label}</span>
@@ -103,7 +103,7 @@ export function MagnifiedBento({ title, description, rows, className }: Magnifie
 
       <div className="p-4 sm:p-5">
         <h3 className="text-lg font-bold tracking-tight text-white">{title}</h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-white/60">{description}</p>
+        <p className="mt-1.5 text-sm leading-relaxed text-white">{description}</p>
       </div>
     </div>
   );

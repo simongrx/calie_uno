@@ -35,7 +35,7 @@ export function MapaPopup({ punto, ruta, indice }: MapaPopupProps) {
         border: `1px solid ${color}40`,
         borderRadius: "12px",
         overflow: "hidden",
-        fontFamily: "Outfit, sans-serif",
+        fontFamily: "DM Sans, sans-serif",
         width: "260px",
       }}
     >
