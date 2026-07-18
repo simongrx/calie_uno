@@ -18,7 +18,21 @@ export interface SegmentCTAProps {
   subtitulo?: string;
   acciones: SegmentAccion[];
   className?: string;
+  /** Clase de color del título (default rojo de marca). */
+  tituloColorClass?: string;
+  /** font-size del título (default clamp normal). */
+  tituloFontSize?: string;
+  /** Card de vidrio detrás del contenido (para legibilidad sobre fondos con imagen/video). */
+  conFondo?: boolean;
 }
+
+const fondoCardStyle: React.CSSProperties = {
+  background: 'rgba(10, 22, 54, 0.6)',
+  backdropFilter: 'blur(16px)',
+  WebkitBackdropFilter: 'blur(16px)',
+  border: '1px solid rgba(255,255,255,0.12)',
+  boxShadow: '0 24px 70px rgba(0,0,0,0.45)',
+};
 
 const ghostStyle: React.CSSProperties = {
   background: 'rgba(255,255,255,0.06)',
@@ -69,6 +83,9 @@ export const SegmentCTA: React.FC<SegmentCTAProps> = ({
   subtitulo,
   acciones,
   className = '',
+  tituloColorClass = 'text-brand-orange',
+  tituloFontSize = 'clamp(1.5rem, 4vw, 3rem)',
+  conFondo = false,
 }) => {
   return (
     <section className={`section bg-transparent relative overflow-hidden ${className}`}>
@@ -78,15 +95,18 @@ export const SegmentCTA: React.FC<SegmentCTAProps> = ({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mx-auto flex max-w-4xl flex-col items-center text-center"
+          className={`mx-auto flex max-w-4xl flex-col items-center text-center ${
+            conFondo ? 'rounded-[2rem] px-8 py-12 sm:px-14 sm:py-14' : ''
+          }`}
+          style={conFondo ? fondoCardStyle : undefined}
         >
           <motion.h2
             variants={itemVariants}
-            className="text-brand-orange"
+            className={tituloColorClass}
             style={{
               fontFamily: "'CaliEnamora', cursive",
               fontWeight: 400,
-              fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+              fontSize: tituloFontSize,
               lineHeight: 0.9,
             }}
           >

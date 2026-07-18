@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { RutasPilaresSection } from '@/components/sections/RutasPilaresSection';
-import { RestaurantesSection } from '@/components/sections/RestaurantesSection';
+import { SaboresExperienciasHero } from '@/components/sections/SaboresExperienciasHero';
 import { MerchandisingSection } from '@/components/sections/MerchandisingSection';
 import { EventosMarqueeSection } from '@/components/sections/EventosMarqueeSection';
 import { TestimoniosSection } from '@/components/sections/TestimoniosSection';
@@ -18,8 +18,8 @@ export default function TuristaPage() {
       {/* Rutas por pilar */}
       <RutasPilaresSection />
 
-      {/* Sabores y experiencias */}
-      <RestaurantesSection />
+      {/* Sabores y experiencias — hero animado (frase → título) que lleva a /sabores */}
+      <SaboresExperienciasHero />
 
       {/* Merchandising */}
       <MerchandisingSection />

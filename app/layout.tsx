@@ -138,11 +138,21 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* Fuentes: DM Sans (cuerpo) + Stack Sans Text (subtítulos) */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Stack+Sans+Text:wght@200..700&display=swap"
-          rel="stylesheet"
+        {/* Fuentes: DM Sans (cuerpo) + Stack Sans Text (subtítulos).
+            Se inyecta la hoja por script (fuera del árbol de React) para que
+            React 19 NO trate el <link rel=stylesheet> como recurso suspensey y
+            bloquee la página si la carga externa tarda o se bloquea. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Stack+Sans+Text:wght@200..700&display=swap';document.head.appendChild(l);})();`,
+          }}
         />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Stack+Sans+Text:wght@200..700&display=swap"
+          />
+        </noscript>
 
         {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

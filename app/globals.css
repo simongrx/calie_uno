@@ -597,13 +597,15 @@
    letra en `em` para un ritmo juguetón. Sin @layer para ganar a las
    utilidades y a los overrides de h2 en globals.
    ============================================ */
-.ce-title-playful { display: inline-block; letter-spacing: -0.035em; }
+.ce-title-playful { display: inline-block; letter-spacing: -0.05em; }
 .ce-title-playful > span { line-height: 0.9; }
-.ce-title-playful > span:nth-child(5n + 1) { font-size: 1.14em; }
-.ce-title-playful > span:nth-child(5n + 2) { font-size: 0.82em; transform: translateY(0.05em); }
-.ce-title-playful > span:nth-child(5n + 3) { font-size: 1.04em; }
-.ce-title-playful > span:nth-child(5n + 4) { font-size: 0.9em; transform: translateY(-0.04em); }
-.ce-title-playful > span:nth-child(5n + 5) { font-size: 1.22em; }
+/* Distribución de tamaños entre letras (ciclo de 6, más contraste). */
+.ce-title-playful > span:nth-child(6n + 1) { font-size: 1.32em; }
+.ce-title-playful > span:nth-child(6n + 2) { font-size: 0.7em; transform: translateY(0.06em); }
+.ce-title-playful > span:nth-child(6n + 3) { font-size: 1.05em; }
+.ce-title-playful > span:nth-child(6n + 4) { font-size: 0.85em; transform: translateY(-0.05em); }
+.ce-title-playful > span:nth-child(6n + 5) { font-size: 1.46em; }
+.ce-title-playful > span:nth-child(6n + 6) { font-size: 0.78em; transform: translateY(0.04em); }
 
 /* ============================================
    GRADIENTES DE TEXTO

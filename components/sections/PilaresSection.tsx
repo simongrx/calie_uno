@@ -1,176 +1,271 @@
 'use client';
 
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import Image from 'next/image';
+import { motion, useTransform, type MotionValue } from 'framer-motion';
 import { PilarType } from '@/types';
-import { GradientText } from '@/components/ui/GradientText';
-import { RevealText } from '@/components/ui/RevealText';
-import { FloatingElement } from '@/components/ui/FloatingElement';
+import { ScrollFloatText } from '@/components/ui/scroll-float-text';
+import {
+  ContainerScroll,
+  ContainerSticky,
+  useContainerScrollContext,
+} from '@/components/ui/process-timeline';
+import { SegmentCTA, type SegmentAccion } from '@/components/ui/SegmentCTA';
 
 interface PilarInfo {
   id: PilarType;
   nombre: string;
   descripcion: string;
   stat: string;
-  icono: React.ReactNode;
+  imagen: string;
   gradient: string;
   glow: string;
-  /** Clases de span para el bento asimétrico */
-  span: string;
-  large?: boolean;
 }
-
-const iconoCultura = (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-  </svg>
-);
-const iconoNaturaleza = (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-  </svg>
-);
-const iconoGastronomia = (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    {/* Tenedor */}
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 2v7c0 1.1.9 2 2 2a2 2 0 0 0 2-2V2" />
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 2v20" />
-    {/* Cuchillo */}
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
-  </svg>
-);
-const iconoBienestar = (
-  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-  </svg>
-);
 
 const pilares: PilarInfo[] = [
   {
     id: 'cultura',
     nombre: 'Cultura',
     descripcion:
-      'Museos, galerías, arquitectura colonial y eventos que celebran la identidad del Valle.',
+      'Museos, galerías, arquitectura colonial y eventos que celebran la identidad viva del Valle del Cauca.',
     stat: '50+ eventos',
-    icono: iconoCultura,
+    imagen: '/images/pilares/cultura.png',
     gradient: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
-    glow: 'rgba(139, 92, 246, 0.45)',
-    span: 'md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2',
-    large: true,
+    glow: 'rgba(139, 92, 246, 0.5)',
   },
   {
     id: 'naturaleza',
     nombre: 'Naturaleza',
-    descripcion: 'Paisajes, cascadas y rutas ecológicas en plena biodiversidad.',
+    descripcion:
+      'Paisajes, cascadas y rutas ecológicas en plena biodiversidad del suroccidente colombiano.',
     stat: '15 rutas',
-    icono: iconoNaturaleza,
+    imagen: '/images/pilares/naturaleza.webp',
     gradient: 'linear-gradient(135deg, #10B981 0%, #047857 100%)',
-    glow: 'rgba(16, 185, 129, 0.45)',
-    span: '',
+    glow: 'rgba(16, 185, 129, 0.5)',
   },
   {
     id: 'gastronomia',
     nombre: 'Gastronomía',
-    descripcion: 'Sabores auténticos del Pacífico en restaurantes y mercados locales.',
+    descripcion:
+      'Sabores auténticos del Pacífico en restaurantes, mercados y cocinas tradicionales locales.',
     stat: '45 restaurantes',
-    icono: iconoGastronomia,
+    imagen: '/images/pilares/gastronomia.jpg',
     gradient: 'linear-gradient(135deg, #EF4444 0%, #B91C1C 100%)',
-    glow: 'rgba(239, 68, 68, 0.45)',
-    span: '',
+    glow: 'rgba(239, 68, 68, 0.5)',
   },
   {
     id: 'bienestar',
     nombre: 'Bienestar',
-    descripcion: 'Yoga, meditación, spas naturales y experiencias de bienestar integral.',
+    descripcion:
+      'Yoga, meditación, termales y experiencias de bienestar integral para reconectar cuerpo y mente.',
     stat: '20+ opciones',
-    icono: iconoBienestar,
+    imagen: '/images/pilares/bienestar.jpg',
     gradient: 'linear-gradient(135deg, #06B6D4 0%, #0E7490 100%)',
-    glow: 'rgba(6, 182, 212, 0.45)',
-    span: 'md:col-span-3 lg:col-span-2',
+    glow: 'rgba(6, 182, 212, 0.5)',
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-};
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+interface PilaresSectionProps {
+  ctaTitulo?: string;
+  ctaSubtitulo?: string;
+  ctaAcciones?: SegmentAccion[];
+}
+
+const DEFAULT_CTA: Required<PilaresSectionProps> = {
+  ctaTitulo: '¿Cómo quieres vivirlo?',
+  ctaSubtitulo:
+    'Elige tu camino: descubre el Valle como viajero o súmate al movimiento que lo hace posible.',
+  ctaAcciones: [
+    { label: 'Quiero ser turista', href: '/turista', variante: 'primary', descripcion: 'Rutas, sabores, eventos y más' },
+    { label: 'Quiero hacer parte', href: '/corporativa', variante: 'ghost', descripcion: 'Asóciate, alíate o dona' },
+  ],
 };
 
-export const PilaresSection: React.FC = () => {
+function PilarCard({
+  pilar,
+  index,
+  y,
+}: {
+  pilar: PilarInfo;
+  index: number;
+  y: MotionValue<string>;
+}) {
   return (
-    <section id="pilares" className="section bg-transparent relative overflow-hidden">
-      {/* Formas decorativas flotantes (sutiles) */}
-      <FloatingElement color="rgba(139, 92, 246, 0.18)" size={240} position="top-24 right-10" delay={0} parallax={70} />
-      <FloatingElement color="rgba(6, 182, 212, 0.16)" size={200} position="bottom-20 left-8" delay={2} parallax={-60} />
+    <motion.div
+      style={{ y, zIndex: 10 + index, boxShadow: `0 30px 80px -24px ${pilar.glow}` }}
+      className="absolute inset-0 overflow-hidden rounded-[1.75rem] border border-white/12 will-change-transform"
+    >
+      <Image
+        src={pilar.imagen}
+        alt={pilar.nombre}
+        fill
+        sizes="(max-width: 768px) 92vw, 46vw"
+        className="object-cover"
+      />
+      {/* Degradado para legibilidad */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1636]/94 via-[#0A1636]/45 to-[#0A1636]/20" />
 
-      <div className="container-custom relative z-10">
-        {/* Título con reveal */}
-        <RevealText type="vertical" className="mb-12 text-center sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-white">
-            Los 4 Pilares de <GradientText variant="brand">Cali Enamora</GradientText>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-white sm:text-lg">
-            Cada pilar representa una dimensión única de la experiencia turística que ofrecemos.
-          </p>
-        </RevealText>
+      {/* Número */}
+      <span
+        className="absolute left-6 top-6 inline-flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white"
+        style={{ backgroundImage: pilar.gradient }}
+      >
+        {String(index + 1).padStart(2, '0')}
+      </span>
 
-        {/* Bento grid asimétrico */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid auto-rows-[232px] grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4"
+      {/* Contenido inferior */}
+      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-7">
+        <h3
+          className="text-white"
+          style={{
+            fontFamily: "'CaliEnamora', cursive",
+            fontWeight: 400,
+            fontSize: 'clamp(2.2rem, 4.5vw, 4rem)',
+            lineHeight: 0.9,
+          }}
         >
-          {pilares.map((pilar) => (
-            <motion.a
-              key={pilar.id}
-              href="/rutas"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, boxShadow: `0 24px 60px ${pilar.glow}` }}
-              whileTap={{ scale: 0.99 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              style={{ backgroundImage: pilar.gradient, willChange: 'transform' }}
-              className={`spotlight-card group relative flex flex-col overflow-hidden rounded-2xl p-5 text-center text-white shadow-lg sm:p-6 ${pilar.span}`}
-            >
-              {/* Ícono decorativo de fondo */}
-              <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 opacity-10 transition-opacity duration-300 group-hover:opacity-20">
-                <div className="h-full w-full [&>svg]:h-full [&>svg]:w-full">{pilar.icono}</div>
-              </div>
-
-              {/* Contenido centrado */}
-              <div className="relative flex min-h-0 flex-1 flex-col items-center justify-center">
-                <div className="spotlight-card mb-3 inline-flex rounded-xl bg-white/15 p-2.5 backdrop-blur-sm [&>svg]:h-7 [&>svg]:w-7">
-                  {pilar.icono}
-                </div>
-                <h3 className={`mb-2 font-bold ${pilar.large ? 'text-3xl sm:text-4xl' : 'text-xl sm:text-2xl'}`}>
-                  {pilar.nombre}
-                </h3>
-                <p className={`mx-auto leading-snug text-white/90 ${pilar.large ? 'max-w-md text-base' : 'max-w-[15rem] text-sm'}`}>
-                  {pilar.descripcion}
-                </p>
-              </div>
-
-              {/* Footer: stat + explorar */}
-              <div className="relative mt-auto flex items-center justify-between gap-2 pt-3">
-                <span className="spotlight-card rounded-full bg-white/15 px-5 py-1.5 text-sm font-semibold backdrop-blur-sm">
-                  {pilar.stat}
-                </span>
-                <span className="inline-flex items-center gap-1 text-sm font-semibold">
-                  Explorar
-                  <svg className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
-              </div>
-            </motion.a>
-          ))}
-        </motion.div>
+          <ScrollFloatText text={pilar.nombre} className="ce-title-playful" />
+        </h3>
+        <p
+          className="max-w-md text-sm leading-relaxed text-white sm:text-base"
+          style={{ fontFamily: "'Stack Sans Text', sans-serif" }}
+        >
+          {pilar.descripcion}
+        </p>
+        <span className="w-fit rounded-full bg-white/14 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm sm:text-sm">
+          {pilar.stat}
+        </span>
       </div>
-    </section>
+    </motion.div>
+  );
+}
+
+function StageInner({ cta }: { cta: Required<PilaresSectionProps> }) {
+  const { scrollYProgress: rawP } = useContainerScrollContext();
+
+  // REVEAL: el stage entra desde la derecha sobre el intro fijo (primer tramo).
+  const enterX = useTransform(rawP, [0, 0.1], ['100%', '0%']);
+
+  // REMAP: las fases internas arrancan en 0 justo al terminar el reveal (~solape 100vh
+  // sobre rango 800vh ≈ 0.125). Así internalP=0 = portada exacta (nítido, sin cards).
+  const p = useTransform(rawP, [0.14, 1], [0, 1]);
+
+  // Video: nítido en portada → blur al entrar cards → nítido de nuevo en la CTA.
+  const videoFilter = useTransform(
+    p,
+    [0.18, 0.32, 0.86, 0.94],
+    ['blur(0px)', 'blur(14px)', 'blur(14px)', 'blur(0px)']
+  );
+  const videoScale = useTransform(p, [0.18, 0.32, 0.86, 0.94], [1, 1.06, 1.06, 1]);
+  const overlayOpacity = useTransform(p, [0.18, 0.32, 0.86, 0.94], [0.12, 0.5, 0.5, 0.3]);
+
+  // Título de pilares: del centro a la izquierda (grande), persiste hasta el outro.
+  const titleX = useTransform(p, [0.18, 0.32], ['0vw', '-26vw']);
+  const titleOpacity = useTransform(p, [0.78, 0.86], [1, 0]);
+
+  // Cards: suben desde abajo en su sub-rango; reposo con desfase por índice (pila).
+  const rest = (i: number) => `${(i - (pilares.length - 1)) * 5}%`; // card0 más arriba, última centrada
+  const cardY0 = useTransform(p, [0.22, 0.33], ['150%', rest(0)]);
+  const cardY1 = useTransform(p, [0.37, 0.48], ['150%', rest(1)]);
+  const cardY2 = useTransform(p, [0.52, 0.63], ['150%', rest(2)]);
+  const cardY3 = useTransform(p, [0.66, 0.77], ['150%', rest(3)]);
+  const cardsY = [cardY0, cardY1, cardY2, cardY3];
+  // Cards y título desaparecen del todo (0.86) ANTES de que entre la CTA (0.88).
+  const cardsOpacity = useTransform(p, [0.78, 0.86], [1, 0]);
+
+  // CTA: fade-in al final (tras 0.86) sobre el video nítido → sin traslape con cards.
+  const ctaOpacity = useTransform(p, [0.88, 0.97], [0, 1]);
+  const ctaPointer = useTransform(ctaOpacity, (o) => (o > 0.6 ? 'auto' : 'none'));
+
+  return (
+    <motion.div style={{ x: enterX }} className="absolute inset-0 will-change-transform">
+      {/* Video de fondo */}
+      <motion.video
+        style={{ filter: videoFilter, scale: videoScale }}
+        className="absolute inset-0 z-0 h-full w-full object-cover will-change-transform"
+        src="/videos/pilares-web.mp4"
+        poster="/images/pilares/poster.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+
+      {/* Oscurecido */}
+      <motion.div style={{ opacity: overlayOpacity }} className="absolute inset-0 z-[1] bg-[#0A1636]" />
+
+      {/* Título de pilares (centro → izquierda) */}
+      <motion.div
+        style={{ opacity: titleOpacity }}
+        className="pointer-events-none absolute inset-0 z-[5] flex items-center justify-center px-6 sm:px-10"
+      >
+        <motion.div style={{ x: titleX }} className="text-left">
+          <h2
+            className="text-white"
+            style={{
+              fontFamily: "'CaliEnamora', cursive",
+              fontWeight: 400,
+              fontSize: 'clamp(2.6rem, 10vw, 8.5rem)',
+              lineHeight: 0.74,
+              marginBottom: 0,
+            }}
+          >
+            <ScrollFloatText text="Los 4 Pilares de" className="ce-title-playful" />
+          </h2>
+          <Image
+            src="/recursos/LOGOTIPO%20-%20NEGATIVO%20+%20CORAZON.svg"
+            alt="Cali Enamora"
+            width={296}
+            height={247}
+            className="mt-3 h-auto w-[clamp(11rem,26vw,22rem)]"
+            unoptimized
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Cards (suben desde abajo, apiladas a la derecha) */}
+      <motion.div
+        style={{ opacity: cardsOpacity }}
+        className="absolute inset-0 z-[10] flex items-center justify-center px-4 sm:justify-end sm:px-10 md:pr-16"
+      >
+        <div className="relative h-[60vh] w-[92vw] max-w-[640px] sm:w-[46vw]">
+          {pilares.map((pilar, i) => (
+            <PilarCard key={pilar.id} pilar={pilar} index={i} y={cardsY[i]} />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* CTA final (fade-in sobre video nítido) */}
+      <motion.div
+        style={{ opacity: ctaOpacity, pointerEvents: ctaPointer }}
+        className="absolute inset-0 z-[20] flex items-center justify-center"
+      >
+        <SegmentCTA
+          titulo={cta.ctaTitulo}
+          subtitulo={cta.ctaSubtitulo}
+          acciones={cta.ctaAcciones}
+          tituloColorClass="text-white"
+          tituloFontSize="clamp(3rem, 8vw, 6rem)"
+          conFondo
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export const PilaresSection: React.FC<PilaresSectionProps> = (props) => {
+  const cta: Required<PilaresSectionProps> = {
+    ctaTitulo: props.ctaTitulo ?? DEFAULT_CTA.ctaTitulo,
+    ctaSubtitulo: props.ctaSubtitulo ?? DEFAULT_CTA.ctaSubtitulo,
+    ctaAcciones: props.ctaAcciones ?? DEFAULT_CTA.ctaAcciones,
+  };
+  return (
+    <ContainerScroll id="pilares" className="relative z-10 h-[900vh] -mt-[100vh] bg-transparent">
+      <ContainerSticky className="h-screen">
+        <StageInner cta={cta} />
+      </ContainerSticky>
+    </ContainerScroll>
   );
 };
 

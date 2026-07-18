@@ -107,14 +107,15 @@ export const Header: React.FC = () => {
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link href="/" className="flex items-center">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logotipo%20CaliE-OCQi041dgJdYAvK07Eyaa6DieRdlH5.png"
+                src="/recursos/LOGOTIPO%20-%20NEGATIVO%20+%20CORAZON.svg"
                 alt="Cali Enamora Logo"
-                width={60}
-                height={30}
+                width={120}
+                height={100}
                 className={`w-auto transition-all duration-500 ${
                   isScrolled ? 'h-10' : 'h-10 sm:h-14'
                 }`}
                 priority
+                unoptimized
               />
             </Link>
           </motion.div>

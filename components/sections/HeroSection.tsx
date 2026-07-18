@@ -222,7 +222,7 @@ export const HeroSection: React.FC = () => {
       {/* LOADER */}
       <div className="loader" ref={loaderRef}>
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logotipo%20CaliE-OCQi041dgJdYAvK07Eyaa6DieRdlH5.png"
+          src="/recursos/CORAZON%20-%20AMARILLO.svg"
           alt="Cali Enamora"
         />
         <div className="bar">

@@ -12,7 +12,7 @@ export const merchandising: Producto[] = [
     descripcion: 'Algodón orgánico con el wordmark de marca. Hecha en el Valle.',
     precio: 79000,
     categoria: 'ropa',
-    imagen: '/images/galeria/cultura/foto-1.webp',
+    imagen: '/images/merch/camiseta.jpg',
     destacado: true,
   },
   {
@@ -21,7 +21,7 @@ export const merchandising: Producto[] = [
     descripcion: 'Gorra bordada inspirada en los colores del Petronio.',
     precio: 55000,
     categoria: 'accesorios',
-    imagen: '/images/galeria/cultura/foto-2.webp',
+    imagen: '/images/merch/gorra.jpg',
   },
   {
     id: 'mug-cerro',
@@ -29,7 +29,7 @@ export const merchandising: Producto[] = [
     descripcion: 'Taza de cerámica con la silueta del cerro más icónico de Cali.',
     precio: 42000,
     categoria: 'hogar',
-    imagen: '/images/galeria/naturaleza/foto-1.webp',
+    imagen: '/images/merch/mug.jpg',
     destacado: true,
   },
   {
@@ -38,7 +38,7 @@ export const merchandising: Producto[] = [
     descripcion: 'Bolsa de lona reutilizable con arte del paisaje vallecaucano.',
     precio: 48000,
     categoria: 'accesorios',
-    imagen: '/images/galeria/naturaleza/foto-3.webp',
+    imagen: '/images/merch/totebag.jpg',
   },
   {
     id: 'libreta-rutas',
@@ -46,7 +46,7 @@ export const merchandising: Producto[] = [
     descripcion: 'Cuaderno de viaje para registrar tus experiencias en la región.',
     precio: 38000,
     categoria: 'souvenirs',
-    imagen: '/images/galeria/cultura/foto-4.webp',
+    imagen: '/images/merch/libreta.jpg',
   },
   {
     id: 'termo-bienestar',
@@ -54,7 +54,7 @@ export const merchandising: Producto[] = [
     descripcion: 'Botella térmica de acero para tus recorridos de naturaleza.',
     precio: 89000,
     categoria: 'hogar',
-    imagen: '/images/galeria/bienestar/foto-2.webp',
+    imagen: '/images/merch/termo.jpg',
   },
   {
     id: 'pin-salsa',
@@ -71,7 +71,7 @@ export const merchandising: Producto[] = [
     descripcion: 'Buzo unisex de algodón felpado, edición limitada.',
     precio: 149000,
     categoria: 'ropa',
-    imagen: '/images/galeria/gastronomia/foto-3.webp',
+    imagen: '/images/merch/hoodie.jpg',
     destacado: true,
   },
 ];

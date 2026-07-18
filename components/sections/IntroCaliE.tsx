@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { SectionTitle } from '@/components/ui/SectionTitle';
 
 const glassCard: React.CSSProperties = {
   background: 'rgba(255, 255, 255, 0.05)',
@@ -42,13 +42,46 @@ export const IntroCaliE: React.FC = () => {
   return (
     <section className="section bg-transparent">
       <div className="container-custom">
-        <SectionTitle
-          titulo="¿Qué es Cali-e?"
-          subtitulo="Una corporación ciudadana que enamora al mundo del Valle del Cauca a través del turismo experiencial y sostenible"
-          alineacion="center"
-          conLinea={true}
-          className="mb-12 sm:mb-16"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.5 }}
+          className="mb-12 flex flex-col items-center gap-4 text-center sm:mb-16"
+        >
+          {/* Línea decorativa */}
+          <div className="spotlight-card h-0.5 w-16 rounded-full bg-gradient-brand" />
+
+          {/* Título "¿Qué es [logo]?" — el wordmark se reemplaza por el logotipo de marca */}
+          <h2
+            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-brand-orange"
+            style={{
+              fontFamily: "'CaliEnamora', cursive",
+              fontWeight: 400,
+              fontSize: 'clamp(1.75rem, 5.5vw, 4.5rem)',
+              lineHeight: 0.9,
+            }}
+          >
+            <span>¿Qué es</span>
+            <Image
+              src="/recursos/LOGOTIPO%20-%20NEGATIVO%20+%20CORAZON.svg"
+              alt="Cali Enamora"
+              width={120}
+              height={100}
+              className="inline-block h-[1.6em] w-auto align-middle"
+              unoptimized
+            />
+            <span>?</span>
+          </h2>
+
+          <p
+            className="max-w-2xl px-4 text-base text-white sm:px-0 sm:text-lg"
+            style={{ fontFamily: "'Stack Sans Text', sans-serif" }}
+          >
+            Una corporación ciudadana que enamora al mundo del Valle del Cauca a través del turismo
+            experiencial y sostenible
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
