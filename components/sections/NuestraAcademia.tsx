@@ -155,6 +155,16 @@ const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
+// Entrada breve tipo "pop" — sólo para las Quick Cards (no afecta Pilares/Impacto,
+// que siguen usando `itemVariants`).
+const quickCardsContainerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+};
+const quickCardVariants: Variants = {
+  hidden: { opacity: 0, y: 24, scale: 0.85 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: 'backOut' } },
+};
 const fadeContent: Variants = {
   hidden: { opacity: 0, y: 12 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
@@ -182,7 +192,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
 
         {/* ============ QUICK CARDS ============ */}
         <motion.div
-          variants={containerVariants}
+          variants={quickCardsContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -191,7 +201,7 @@ export const NuestraAcademia: React.FC<NuestraAcademiaProps> = ({ className = ''
           {quickCards.map((card) => (
             <motion.div
               key={card.titulo}
-              variants={itemVariants}
+              variants={quickCardVariants}
               whileHover={{ y: -6 }}
               className="spotlight-card flex flex-col items-center rounded-2xl p-6 text-center transition-colors duration-300 sm:p-7"
               style={glassCard}

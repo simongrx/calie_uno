@@ -152,6 +152,17 @@ function Stage({ stageRef }: { stageRef: React.RefObject<HTMLDivElement | null> 
           )}
         </LayoutGroup>
 
+        {/* Descripción breve bajo el título (entra junto al CTA) */}
+        <motion.p
+          initial={false}
+          animate={showCta ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: showCta ? 0.08 : 0 }}
+          className="-mt-4 max-w-xl text-balance text-sm leading-relaxed text-white/80 sm:text-base"
+        >
+          Del fogón de leña a la cocina de autor: restaurantes, mercados y planes
+          que se saborean y se recuerdan.
+        </motion.p>
+
         {/* Botón CTA (aparece cuando el título ya está formado) */}
         <motion.div
           initial={false}

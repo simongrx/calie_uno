@@ -211,14 +211,15 @@ function StageInner({ cta }: { cta: Required<PilaresSectionProps> }) {
               marginBottom: 0,
             }}
           >
-            <ScrollFloatText text="Los 4 Pilares de" className="ce-title-playful" />
+            <ScrollFloatText text="Nuestros Pilares" className="ce-title-playful" />
           </h2>
+          {/* mx-auto: el logo es display:block, así queda centrado respecto al <h2> */}
           <Image
             src="/recursos/LOGOTIPO%20-%20NEGATIVO%20+%20CORAZON.svg"
             alt="Cali Enamora"
             width={296}
             height={247}
-            className="mt-3 h-auto w-[clamp(11rem,26vw,22rem)]"
+            className="mt-3 h-auto w-[clamp(11rem,26vw,22rem)] mx-auto"
             unoptimized
           />
         </motion.div>

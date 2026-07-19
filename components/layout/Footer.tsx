@@ -4,6 +4,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+/**
+ * Morado de la colina inferior de `/images/footer.png` (muestreado del propio
+ * archivo). Se aplica SOLO al bloque de contenido que va debajo de la
+ * ilustración: el PNG tiene el cielo transparente, así que el `<footer>` debe
+ * quedar sin fondo para que se vea la aurora a través de él.
+ */
+const FOOTER_BG = '#251E50';
+
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
@@ -28,12 +36,23 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-100 relative overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-brand"></div>
-      </div>
+    <footer className="relative overflow-hidden text-gray-100">
+      {/* Ilustración de Cali (parte superior del footer). Decorativa y SIN fondo:
+          su cielo es transparente, así que deja ver la aurora global. La colina
+          morada de su base empalma con FOOTER_BG del bloque de abajo. */}
+      <Image
+        src="/images/footer.png"
+        alt=""
+        aria-hidden
+        width={1983}
+        height={793}
+        sizes="100vw"
+        className="block h-auto w-full select-none"
+      />
 
+      {/* Bloque inferior: aquí sí va el morado sólido, justo donde la
+          ilustración ya es opaca (sin costura). */}
+      <div style={{ backgroundColor: FOOTER_BG }}>
       <div className="container-custom relative z-10">
         {/* Main Footer Content */}
         <motion.div
@@ -88,7 +107,7 @@ export const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange transition-colors duration-300 text-lg"
+                  className="w-10 h-10 rounded-full bg-white/10 ring-1 ring-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors duration-300 text-lg"
                   title={social.label}
                 >
                   {social.icon}
@@ -180,7 +199,7 @@ export const Footer: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="border-t border-gray-800 py-8 sm:py-12 my-8 sm:my-12"
+          className="border-t border-white/12 py-8 sm:py-12 my-8 sm:my-12"
         >
           <div className="max-w-md mx-auto sm:max-w-none sm:flex sm:items-center sm:justify-between">
             <div className="mb-4 sm:mb-0">
@@ -199,7 +218,7 @@ export const Footer: React.FC = () => {
               <input
                 type="email"
                 placeholder="tu@email.com"
-                className="flex-1 px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-orange transition-all duration-300"
+                className="flex-1 px-4 py-2 rounded-lg bg-white/10 ring-1 ring-white/10 text-white placeholder-white/45 focus:outline-none focus:ring-2 focus:ring-brand-orange transition-all duration-300"
                 required
               />
               <motion.button
@@ -219,7 +238,7 @@ export const Footer: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="border-t border-gray-800 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between text-sm text-white gap-4"
+          className="border-t border-white/12 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between text-sm text-white gap-4"
         >
           <p>
             © {currentYear} Cali Enamora. Todos los derechos reservados.
@@ -245,6 +264,7 @@ export const Footer: React.FC = () => {
             </Link>
           </div>
         </motion.div>
+      </div>
       </div>
 
       {/* Back to top button */}

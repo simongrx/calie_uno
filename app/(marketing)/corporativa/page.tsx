@@ -7,6 +7,7 @@ import { EstructuraApoyoSection } from '@/components/sections/EstructuraApoyoSec
 import { DonacionSection } from '@/components/sections/DonacionSection';
 import { ContactoSection } from '@/components/sections/ContactoSection';
 import { SegmentCTA } from '@/components/ui/SegmentCTA';
+import { SectionShell } from '@/components/ui/SectionShell';
 
 export const metadata: Metadata = {
   title: 'Hacer parte | Cali Enamora',
@@ -18,38 +19,54 @@ export default function CorporativaPage() {
   return (
     <>
       {/* Quiénes somos */}
-      <NosotrosSection />
+      <SectionShell>
+        <NosotrosSection />
+      </SectionShell>
 
-      {/* Cómo nació Cali-e */}
-      <OrigenSection />
+      {/* Cómo nació Cali-e (timeline horizontal pinned; sin blur para no romper el sticky) */}
+      <SectionShell seam={false}>
+        <OrigenSection />
+      </SectionShell>
 
       {/* Academia */}
-      <NuestraAcademia />
+      <SectionShell>
+        <NuestraAcademia />
+      </SectionShell>
 
       {/* Visibilidad de aliados */}
-      <AliadosSection />
+      <SectionShell>
+        <AliadosSection />
+      </SectionShell>
 
-      {/* Jerarquía: Asociados → Aliados → Benefactores */}
-      <EstructuraApoyoSection />
+      {/* Jerarquía: Asociados → Aliados → Benefactores (pinned; sin blur para no romper el sticky) */}
+      <SectionShell seam={false}>
+        <EstructuraApoyoSection />
+      </SectionShell>
 
       {/* Donación */}
-      <DonacionSection />
+      <SectionShell>
+        <DonacionSection />
+      </SectionShell>
 
-      {/* Contacto */}
-      <ContactoSection />
+      {/* Contacto — pegado a la sección de Benefactor (Donación) */}
+      <SectionShell>
+        <ContactoSection compactTop />
+      </SectionShell>
 
       {/* Cierre → Turista */}
-      <SegmentCTA
-        titulo="¿Quieres explorar nuestras rutas, eventos y experiencias?"
-        subtitulo="Descubre el otro lado de Cali Enamora: el Valle del Cauca que puedes vivir como viajero."
-        acciones={[
-          {
-            label: 'Explorar como turista',
-            href: '/turista',
-            variante: 'primary',
-          },
-        ]}
-      />
+      <SectionShell>
+        <SegmentCTA
+          titulo="¿Quieres explorar nuestras rutas, eventos y experiencias?"
+          subtitulo="Descubre el otro lado de Cali Enamora: el Valle del Cauca que puedes vivir como viajero."
+          acciones={[
+            {
+              label: 'Explorar como turista',
+              href: '/turista',
+              variante: 'primary',
+            },
+          ]}
+        />
+      </SectionShell>
     </>
   );
 }

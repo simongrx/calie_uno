@@ -4,7 +4,16 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
-export const ContactoSection: React.FC = () => {
+interface ContactoSectionProps {
+  /**
+   * Reduce el padding superior. Se usa en /corporativa, donde esta sección va
+   * pegada a "Conviértete en Benefactor". (Estilo inline: `.section` vive fuera
+   * de las capas CSS, así que las utilidades de Tailwind no la sobrescriben.)
+   */
+  compactTop?: boolean;
+}
+
+export const ContactoSection: React.FC<ContactoSectionProps> = ({ compactTop = false }) => {
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -91,10 +100,25 @@ export const ContactoSection: React.FC = () => {
     <section
       id="contacto"
       className="section bg-transparent relative overflow-hidden"
+      style={compactTop ? { paddingTop: '2rem' } : undefined}
     >
       {/* EFECTOS */}
-      <div className="spotlight-card absolute top-20 right-10 w-40 h-40 bg-red-600/5 rounded-full blur-3xl" />
-      <div className="spotlight-card absolute bottom-20 left-10 w-40 h-40 bg-yellow-400/5 rounded-full blur-3xl" />
+      {/* Blobs decorativos. Sin `spotlight-card`: esa clase fija `position:relative`
+          desde CSS sin capa y ganaba sobre `absolute`, dejándolos en el flujo y
+          añadiendo ~320px de espacio muerto al inicio de la sección. */}
+      <div aria-hidden className="pointer-events-none absolute top-20 right-10 w-40 h-40 bg-red-600/5 rounded-full blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute bottom-20 left-10 w-40 h-40 bg-yellow-400/5 rounded-full blur-3xl" />
+
+      {/* Velo de entrada: esta sección (más opaca) emerge del navy sin corte seco */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-48"
+        style={{ background: 'linear-gradient(180deg, #0A1636 0%, rgba(10,22,54,0) 100%)' }}
+        initial={{ opacity: 1 }}
+        whileInView={{ opacity: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
+      />
 
       <div className="container-custom relative z-10">
 

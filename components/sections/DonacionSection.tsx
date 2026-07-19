@@ -18,8 +18,8 @@ const containerVariants: Variants = {
   visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20, scale: 0.97 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 24, scale: 0.85 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'backOut' } },
 };
 
 // Iconos SVG inline (sin dependencias)
@@ -69,8 +69,14 @@ function StatBox({ num, label }: { num: string; label: string }) {
  * de Inversores, con narrativa de donación e invitación a convertirse en Benefactor.
  */
 export const DonacionSection: React.FC = () => {
+  // paddingBottom inline: `.section` vive fuera de las capas CSS y las
+  // utilidades de Tailwind no la sobrescriben. Acerca Contacto a esta sección.
   return (
-    <section id="donar" className="section bg-transparent relative overflow-hidden">
+    <section
+      id="donar"
+      className="section bg-transparent relative overflow-hidden"
+      style={{ paddingBottom: '2rem' }}
+    >
       <div className="container-custom relative z-10">
         <SectionTitle
           titulo="Conviértete en Benefactor"
