@@ -22,6 +22,8 @@ export interface SegmentCTAProps {
   tituloColorClass?: string;
   /** font-size del título (default clamp normal). */
   tituloFontSize?: string;
+  /** Ancho máximo del bloque. Súbelo si usas un `tituloFontSize` grande. */
+  anchoMaxClass?: string;
   /** Card de vidrio detrás del contenido (para legibilidad sobre fondos con imagen/video). */
   conFondo?: boolean;
 }
@@ -85,6 +87,7 @@ export const SegmentCTA: React.FC<SegmentCTAProps> = ({
   className = '',
   tituloColorClass = 'text-brand-orange',
   tituloFontSize = 'clamp(1.5rem, 4vw, 3rem)',
+  anchoMaxClass = 'max-w-4xl',
   conFondo = false,
 }) => {
   return (
@@ -95,7 +98,7 @@ export const SegmentCTA: React.FC<SegmentCTAProps> = ({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className={`mx-auto flex max-w-4xl flex-col items-center text-center ${
+          className={`mx-auto flex ${anchoMaxClass} flex-col items-center text-center ${
             conFondo ? 'rounded-[2rem] px-8 py-12 sm:px-14 sm:py-14' : ''
           }`}
           style={conFondo ? fondoCardStyle : undefined}

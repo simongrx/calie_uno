@@ -53,11 +53,15 @@ export default function CorporativaPage() {
         <ContactoSection compactTop />
       </SectionShell>
 
-      {/* Cierre → Turista */}
-      <SectionShell>
+      {/* Cierre → Turista. seam={false}: como el footer mide más de un viewport,
+          esta sección sale por arriba antes de llegar al fondo del documento y la
+          costura la desvanecía a opacity 0 (invisible pero ocupando espacio). */}
+      <SectionShell seam={false}>
         <SegmentCTA
           titulo="¿Quieres explorar nuestras rutas, eventos y experiencias?"
           subtitulo="Descubre el otro lado de Cali Enamora: el Valle del Cauca que puedes vivir como viajero."
+          tituloFontSize="clamp(3rem, 8vw, 6rem)"
+          anchoMaxClass="max-w-6xl"
           acciones={[
             {
               label: 'Explorar como turista',

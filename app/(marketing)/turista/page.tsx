@@ -34,6 +34,8 @@ export default function TuristaPage() {
       <SegmentCTA
         titulo="¿Quieres conocer cómo hacemos posible esto?"
         subtitulo="Detrás de cada ruta hay una comunidad, aliados y benefactores que sostienen el proyecto. Conoce el lado corporativo de Cali Enamora."
+        tituloFontSize="clamp(3rem, 8vw, 6rem)"
+        anchoMaxClass="max-w-6xl"
         acciones={[
           {
             label: 'Descubre cómo lo hacemos',

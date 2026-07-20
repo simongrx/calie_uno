@@ -39,16 +39,25 @@ export const Footer: React.FC = () => {
     <footer className="relative overflow-hidden text-gray-100">
       {/* Ilustración de Cali (parte superior del footer). Decorativa y SIN fondo:
           su cielo es transparente, así que deja ver la aurora global. La colina
-          morada de su base empalma con FOOTER_BG del bloque de abajo. */}
-      <Image
-        src="/images/footer.png"
-        alt=""
-        aria-hidden
-        width={1983}
-        height={793}
-        sizes="100vw"
-        className="block h-auto w-full select-none"
-      />
+          morada de su base empalma con FOOTER_BG del bloque de abajo.
+
+          El 26,5% superior del PNG está 100% vacío (primera fila con dibujo: 210
+          de 793), y esa banda se leía como un hueco enorme antes del footer. La
+          recortamos con un margen negativo EN PORCENTAJE: los % se resuelven
+          contra el ANCHO del contenedor, y como alto = 40% del ancho (793/1983),
+          la banda equivale a 26,5% × 40% ≈ 10,6% del ancho. Así el recorte
+          escala solo, sin perder ni un píxel del dibujo. */}
+      <div className="overflow-hidden">
+        <Image
+          src="/images/footer.png"
+          alt=""
+          aria-hidden
+          width={1983}
+          height={793}
+          sizes="100vw"
+          className="-mt-[10.6%] block h-auto w-full select-none"
+        />
+      </div>
 
       {/* Bloque inferior: aquí sí va el morado sólido, justo donde la
           ilustración ya es opaca (sin costura). */}

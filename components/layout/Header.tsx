@@ -107,7 +107,7 @@ export const Header: React.FC = () => {
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
             <Link href="/" className="flex items-center">
               <Image
-                src="/recursos/LOGOTIPO%20-%20NEGATIVO%20+%20CORAZON.svg"
+                src="/recursos/logotipo-negativo-corazon.svg"
                 alt="Cali Enamora Logo"
                 width={120}
                 height={100}

@@ -58,13 +58,13 @@ export const IntroCaliE: React.FC = () => {
             style={{
               fontFamily: "'CaliEnamora', cursive",
               fontWeight: 400,
-              fontSize: 'clamp(1.75rem, 5.5vw, 4.5rem)',
+              fontSize: 'clamp(3.5rem, 11vw, 9rem)',
               lineHeight: 0.9,
             }}
           >
             <span>¿Qué es</span>
             <Image
-              src="/recursos/LOGOTIPO%20-%20NEGATIVO%20+%20CORAZON.svg"
+              src="/recursos/logotipo-negativo-corazon.svg"
               alt="Cali Enamora"
               width={120}
               height={100}

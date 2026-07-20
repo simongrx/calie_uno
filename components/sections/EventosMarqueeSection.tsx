@@ -23,7 +23,11 @@ export function EventosMarqueeSection() {
       tagline="Agenda cultural del Valle"
       title={
         <>
-          <ScrollFloatText text="Vive los eventos" className="ce-title-playful" />
+          <ScrollFloatText text="Vive los " className="ce-title-playful" />
+          {/* "eventos" resaltado: blanco y mayor que el resto de la línea */}
+          <span className="text-white" style={{ fontSize: '1.25em' }}>
+            <ScrollFloatText text="eventos" className="ce-title-playful" />
+          </span>
           <br />
           <ScrollFloatText text="que laten en Cali" className="ce-title-playful" />
         </>

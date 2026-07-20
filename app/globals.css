@@ -599,13 +599,15 @@
    ============================================ */
 .ce-title-playful { display: inline-block; letter-spacing: -0.05em; }
 .ce-title-playful > span { line-height: 0.9; }
-/* Distribución de tamaños entre letras (ciclo de 6, más contraste). */
-.ce-title-playful > span:nth-child(6n + 1) { font-size: 1.32em; }
-.ce-title-playful > span:nth-child(6n + 2) { font-size: 0.7em; transform: translateY(0.06em); }
-.ce-title-playful > span:nth-child(6n + 3) { font-size: 1.05em; }
-.ce-title-playful > span:nth-child(6n + 4) { font-size: 0.85em; transform: translateY(-0.05em); }
-.ce-title-playful > span:nth-child(6n + 5) { font-size: 1.46em; }
-.ce-title-playful > span:nth-child(6n + 6) { font-size: 0.78em; transform: translateY(0.04em); }
+/* Distribución de tamaños entre letras (ciclo de 6). Variación contenida:
+   rango 0.85em–1.23em (la mayor es 1.45× la menor) para que se note el ritmo
+   sin que el título se vea irregular. */
+.ce-title-playful > span:nth-child(6n + 1) { font-size: 1.16em; }
+.ce-title-playful > span:nth-child(6n + 2) { font-size: 0.85em; transform: translateY(0.03em); }
+.ce-title-playful > span:nth-child(6n + 3) { font-size: 1.03em; }
+.ce-title-playful > span:nth-child(6n + 4) { font-size: 0.93em; transform: translateY(-0.03em); }
+.ce-title-playful > span:nth-child(6n + 5) { font-size: 1.23em; }
+.ce-title-playful > span:nth-child(6n + 6) { font-size: 0.89em; transform: translateY(0.02em); }
 
 /* ============================================
    GRADIENTES DE TEXTO

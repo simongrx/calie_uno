@@ -95,11 +95,11 @@ export function AnimatedMarqueeHero({
         )}
 
         <h2
-          className="max-w-5xl text-balance text-brand-orange"
+          className="max-w-7xl text-balance text-brand-orange"
           style={{
             fontFamily: "'CaliEnamora', cursive",
             fontWeight: 400,
-            fontSize: 'clamp(1.75rem, 5.5vw, 4.5rem)',
+            fontSize: 'clamp(3.5rem, 11vw, 9rem)',
             lineHeight: 0.9,
           }}
         >
